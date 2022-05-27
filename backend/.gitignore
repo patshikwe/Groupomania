@@ -1,0 +1,7 @@
+# Fichier contenant des dossiers et fichiers non suivis
+
+node_modules
+
+.env
+
+images
