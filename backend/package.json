@@ -17,6 +17,8 @@
   "author": "patshikwe@yahoo.fr",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "mongoose": "^6.3.4",
+    "mongoose-unique-validator": "^3.0.0"
   }
 }

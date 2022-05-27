@@ -5,7 +5,7 @@ const http = require('http');
 const app = require('./app');
 
 /* La fonction normalizePort renvoie un port valide, 
-qu'il soit fourni sous la forme d'un numéro ou d'une chaîne.
+   qu'il soit fourni sous la forme d'un numéro ou d'une chaîne.
 */
 const normalizePort = val => {
    const port = parseInt(val, 10);
@@ -25,7 +25,7 @@ app.set('port', port);
 
 
 /* La fonction errorHandler recherche les différentes erreurs et les gère de manière appropriée. 
-Elle est ensuite enregistrée dans le serveur.
+   Elle est ensuite enregistrée dans le serveur.
 */
 const errorHandler = error => {
     if (error.syscall !== 'listen') {
@@ -54,7 +54,7 @@ const server = http.createServer(app);
 server.on('error', errorHandler);
 
 /* un écouteur d'évènements, consignant le port ou le canal nommé 
-sur lequel le serveur s'exécute dans la console.
+   sur lequel le serveur s'exécute dans la console.
 */
 server.on('listerning', () => {
     const adress = server.adress();
