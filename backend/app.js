@@ -6,6 +6,9 @@ const express = require('express');
 // Création de l'application express 
 const app = express();
 
+// Importation routes
+const postRoutes = require("./routes/post");
+const userRoutes = require('./routes/user');
 
 
 /* Correction des erreurs de CORS
@@ -25,10 +28,12 @@ app.use((req, res, next) => {
     );
     next();
   });
-// ***************************  *************************************************
-app.use((req, res) => {
-res.json({ message: 'Votre requête a bien été reçue !' });
-});
+
+// *************************** # *************************************************
+
+
+app.use('/api/post', postRoutes);
+app.use('/api/auth', userRoutes);
 
 
 console.log('Bonjour :) => Server Ok');
