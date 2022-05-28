@@ -7,9 +7,9 @@ const userCtrl = require('../controllers/user');
 
 
 /* Routes
-   userCtrl => chemin vers controllers/user.js
-   signup =>
-   login =>
+   userCtrl -> chemin vers controllers/user.js
+   signup -> correspond à exports.signup
+   login -> correspond à exports.login
 */
 router.post('/signup', userCtrl.signup);
 router.post('/login', userCtrl.login);
