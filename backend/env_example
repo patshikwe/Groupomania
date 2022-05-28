@@ -1,0 +1,6 @@
+// Ces sont des variables d'environnement à remplir
+
+DB_USER="#####"
+DB_PASSWORD="#####"
+DB_NAME="#####"
+SECRET_WORD_TOKEN="#############################"
