@@ -2,14 +2,30 @@
 
 // Importation module express
 const express = require('express');
-
 // Création de l'application express 
 const app = express();
+
+// Importation Mongoose
+const mongoose = require('mongoose');
+
+// Importation dotenv
+const dotenv = require('dotenv');
+dotenv.config();
 
 // Importation routes
 const postRoutes = require("./routes/post");
 const userRoutes = require('./routes/user');
 
+
+// Logique de connexion à MongoDB
+mongoose
+  .connect(
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.jdge6.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`,
+    { useNewUrlParser: true, useUnifiedTopology: true }
+  )
+  .then(() => console.log("Connexion à MongoDB réussie !"))
+  .catch(() => console.log("Connexion à MongoDB échouée !"));
+// **************************************************************************************************************************************************
 
 /* Correction des erreurs de CORS
    1er header permet d'accéder à cette API depuis n'importe quelle origine.
@@ -35,8 +51,6 @@ app.use((req, res, next) => {
 app.use('/api/post', postRoutes);
 app.use('/api/auth', userRoutes);
 
-
-console.log('Bonjour :) => Server Ok');
 
 /* Ce middleware extrait le corps Json venant de l'application front-end
     pour la gestion de requête POST.
