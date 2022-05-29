@@ -47,16 +47,14 @@ app.use((req, res, next) => {
 
 // *************************** # *************************************************
 
-
-app.use('/api/post', postRoutes);
-app.use('/api/auth', userRoutes);
-
-
 /* Ce middleware extrait le corps Json venant de l'application front-end
     pour la gestion de requête POST.
 */
 app.use(express.json());
 
+
+app.use('/api/post', postRoutes);
+app.use('/api/auth', userRoutes);
 
 
 module.exports = app;
