@@ -6,7 +6,7 @@ const fs = require('fs');
 const { db } = require("../models/Post");
 
 
-// Création sauce *************************
+// Création post *************************
 exports.createPost = (req, res, next) => {
   const postObject = JSON.parse(req.body.post);
   delete postObject._id;
@@ -63,3 +63,79 @@ exports.deletePost = (req, res, next) => {
     .catch(error => res.status(500).json({ error }));
 };
   
+// Middleware pour liké (liked) ******************************
+/**
+ * @param {Number} like 
+ * @param {string} userId
+ * @param {string} postId
+ * @param {object} usersLiked
+ * @param {object} usersDisliked
+ * @param $inc - incrémente un champ d'une valeur spécifiée. 
+ * @param $push - ajoute une valeur spécifiée à un tableau.
+ * @param $pull - supprime d'un tableau existant toutes les instances d'une valeur 
+ * ou de valeurs qui correspondent à une condition spécifiée.
+ */
+ exports.likes = (req, res, next) => {
+  const like = req.body.like ;
+  const userId = req.body.userId;
+  const postId = req.params.id;
+  
+    switch (like) {
+      case 1:
+          Post.updateOne(
+            { _id: postId },
+            {
+              $inc: { likes: 1 },
+              $push: { usersLiked: userId },
+            }
+          )
+            .then(() => res.status(200).json({ message: "J'aime!" }))
+            .catch((error) => res.status(400).json({ error }));
+        break;
+
+      case 0:
+        Post.findOne({ _id: postId })
+          .then((post) => {
+            if (post.usersLiked.includes(userId)) {
+              Post.updateOne(
+                { _id: postId },
+                {
+                  $inc: { likes: -1 },
+                  $pull: { usersLiked: userId },
+                }
+              )
+                .then(() =>
+                  res.status(200).json({ message: "J'aime, annulé." })
+                )
+                .catch((error) => res.status(400).json({ error }));
+            } else if (post.usersDisliked.includes(userId)) {
+              Post.updateOne(
+                { _id: postId },
+                {
+                  $inc: { dislikes: -1 },
+                  $pull: { usersDisliked: userId },
+                }
+              )
+                .then(() =>
+                  res.status(200).json({ message: "Je n'aime pas, annulé." })
+                )
+                .catch((error) => res.status(400).json({ error }));
+            }
+          })
+          .catch((error) => res.status(500).json({ error }));
+        break;
+
+      case -1:
+          Post.updateOne(
+            { _id: postId },
+            {
+              $inc: { dislikes: 1 },
+              $push: { usersDisliked: userId },
+            }
+          )
+            .then(() => res.status(200).json({ message: "Je n'aime pas!" }))
+            .catch((error) => res.status(400).json({ error }));
+        break;
+    }
+};
+
