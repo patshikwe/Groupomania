@@ -2,11 +2,15 @@
 
 // Importation module express
 const express = require('express');
-// Création de l'application express 
-const app = express();
 
 // Importation Mongoose
 const mongoose = require('mongoose');
+
+// Importation 
+const path = require('path');
+
+// Création de l'application express 
+const app = express();
 
 // Importation dotenv
 const dotenv = require('dotenv');
@@ -52,7 +56,7 @@ app.use((req, res, next) => {
 */
 app.use(express.json());
 
-
+app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/post', postRoutes);
 app.use('/api/auth', userRoutes);
 
