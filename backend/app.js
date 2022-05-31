@@ -12,13 +12,13 @@ const path = require('path');
 // Création de l'application express 
 const app = express();
 
-// Importation dotenv
-const dotenv = require('dotenv');
-dotenv.config();
-
 // Importation routes
 const postRoutes = require("./routes/post");
 const userRoutes = require('./routes/user');
+
+// Importation dotenv
+const dotenv = require('dotenv');
+dotenv.config();
 
 
 // Logique de connexion à MongoDB
