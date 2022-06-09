@@ -1,4 +1,7 @@
-import logo from '../assets/logo/icon-left-font-monochrome-black.svg';
+
+import logo from './assets/logo/icon-left-font-monochrome-black.svg';
+import Routes from "./components/Routes"
+
 
 
 function App() {
@@ -10,6 +13,9 @@ function App() {
           Bienvenue dans votre espace d'échange entre collègues!
         </p>
       </header>
+
+      <Routes />
+
     </div>
   );
 }
