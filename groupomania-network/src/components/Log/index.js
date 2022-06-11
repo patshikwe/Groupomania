@@ -3,20 +3,20 @@
 import React from 'react'
 import { useState } from 'react'
 import SignUp from './SignUp'
-import ToLogin from './ToLogin'
+import Login from './Login'
 import '../../styles/pages/Profil.css'
 
-const Log = () => {
-    const [signUpModal, setSignUpModal] = useState(true)
-    const [toLoginModal, setTologinModal] = useState(false)
+const Log = (props) => {
+    const [signUpModal, setSignUpModal] = useState(props.signup)
+    const [loginModal, setLoginModal] = useState(props.login)
 
     const handleModals = (e) => {
         if (e.target.id === "register") {
-            setTologinModal(false);
+            setLoginModal(false);
             setSignUpModal(true);
         } else if (e.target.id === "login") {
             setSignUpModal(false);
-            setTologinModal(true);
+            setLoginModal(true);
         }
     };
 
@@ -27,10 +27,10 @@ const Log = () => {
                     <li onClick={handleModals} id="register" 
                     className={signUpModal ? "active-btn" : null}>S'inscrire </li>
                     <li onClick={handleModals} id="login" 
-                    className={toLoginModal ? "active-btn" : null}>Se connecter </li>
+                    className={loginModal ? "active-btn" : null}>Se connecter </li>
                 </ul>
                 {signUpModal && <SignUp />}
-                {toLoginModal && <ToLogin />}
+                {loginModal && <Login />}
             </div>
         </div>
     )
