@@ -37,15 +37,7 @@ mongoose
    3ème header permet d'envoyer des requêtes avec les méthodes mentionnées.  
 */
 app.use((req, res, next) => {
-  
-  const url = "http://localhost:3000"
-  
-  if (req.headers.origin === url) {
-    const origin = req.headers.origin;
-    console.log(origin);
-    console.log(url);
-
-     res.setHeader("Access-Control-Allow-Origin", origin);
+  res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(
       "Access-Control-Allow-Headers",
       "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
@@ -54,10 +46,7 @@ app.use((req, res, next) => {
       "Access-Control-Allow-Methods",
       "GET, POST, PUT, DELETE, PATCH, OPTIONS"
     );
-    next();
-    console.log("Echec ==> CORS")
-  }
-              
+    next();           
 });
 
 // *************************** # *************************************************
