@@ -11,7 +11,7 @@ const userCtrl = require('../controllers/user');
    signup -> correspond à exports.signup
    login -> correspond à exports.login
 */
-router.post('/signup', userCtrl.signup);
+router.post('/register', userCtrl.signup);
 router.post('/login', userCtrl.login);
 
 

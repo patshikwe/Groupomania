@@ -11,11 +11,12 @@ exports.signup = (req, res, next) => {
       const user = new User({
         email: req.body.email,
         password: hash,
-        username: req.body.username
+        pseudo: req.body.pseudo
       });
       user.save()
         .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
         .catch(error => res.status(400).json({ error }));
+        console.log("Echec ====>")
     })
     .catch(error => res.status(500).json({ error }));
 };
@@ -43,6 +44,8 @@ exports.login = (req, res, next) => {
           });
         })
         .catch(error => res.status(500).json({ error }));
+        console.log("Echec ===> connexion 1");
     })
     .catch(error => res.status(500).json({ error }));
-};
+    console.log("Echec ===> connexion 2");
+};  
