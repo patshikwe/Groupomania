@@ -1,7 +1,6 @@
 // Formulaire de connexion - logique
 
-import React from 'react'
-import { useState } from 'react';
+import { React,useState } from 'react';
 import axios from 'axios'
 
 const Login = () => {
@@ -16,6 +15,7 @@ const Login = () => {
         axios({
             method: "post",
             url: `${process.env.REACT_APP_API_URL}api/auth/login`,
+            mode:'cors',
             withCredentials: true,
             data: {
                 email,
@@ -23,7 +23,7 @@ const Login = () => {
             },
         })
             .then((res) => {
-                // console.log(res);
+                console.log(res);
                 if (res.data.errors) {
                     emailError.innerHTML = res.data.errors.email;
                     passwordError.innerHTML = res.data.errors.password;

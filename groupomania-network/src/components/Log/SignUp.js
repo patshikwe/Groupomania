@@ -1,62 +1,62 @@
 // Formulaire d'inscription - logique
 
-import React from 'react'
 import axios from 'axios'
-import { useState } from 'react';
+import { React,useState } from 'react';
 import Login from './Login';
 
 const SignUp = () => {
     const [formSubmit, setFormSubmit] = useState(false);
-    const [pseudo, setPseudo] = useState("");
+    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [controlPassword, setControlPassword] = useState("");
-  
+    
     const handleRegister = async (e) => {
-        e.preventDefault();
-        const terms = document.getElementById("terms");
-        const pseudoError = document.querySelector(".pseudo.error");
-        const emailError = document.querySelector(".email.error");
-        // const passwordError = document.querySelector(".password.error");
-        const passwordConfirmError = document.querySelector(
-          ".password-confirm.error"
-        );
-        const termsError = document.querySelector(".terms.error");
-    
-        passwordConfirmError.innerHTML = "";
-        termsError.innerHTML = "";
-    
-        if (password !== controlPassword || !terms.checked) {
-          if (password !== controlPassword)
-            passwordConfirmError.innerHTML =
-              "Les mots de passe ne correspondent pas";
-    
-          if (!terms.checked)
-            termsError.innerHTML = "Veuillez valider les conditions générales";
-        } else {
+      e.preventDefault();
+      const terms = document.getElementById("terms");
+      const usernameError = document.querySelector(".username.error");
+      const emailError = document.querySelector(".email.error");
+      const passwordError = document.querySelector(".password.error");
+      const passwordConfirmError = document.querySelector(
+        ".password-confirm.error"
+      );
+      const termsError = document.querySelector(".terms.error");
+
+      passwordConfirmError.innerHTML = "";
+      termsError.innerHTML = "";
+
+      if (password !== controlPassword || !terms.checked) {
+        if (password !== controlPassword)
+          passwordConfirmError.innerHTML =
+            "Les mots de passe ne correspondent pas";
+
+        if (!terms.checked)
+          termsError.innerHTML = "Veuillez valider les conditions générales";
+      } else {
           await axios({
             method: "post",
-            url: `${process.env.REACT_APP_API_URL}api/auth/register`,
+            url: `http://localhost:5000/api/auth/register`,
+            mode:'cors', 
             data: {
-              pseudo,
+              username,
               email,
               password,
             },
           })
-            .then((res) => {
-              console.log(res);
-              if (res.data.errors) {
-                pseudoError.innerHTML = res.data.errors.pseudo;
-                emailError.innerHTML = res.data.errors.email;
-              } else {
-                setFormSubmit(true);
-              }
-            })
-            .catch((err) => console.log(err));
+          .then((res) => {
+            console.log(res);
+            if (res.data.errors) {
+              usernameError.innerHTML = res.data.errors.username;
+              emailError.innerHTML = res.data.errors.email;
+              passwordError.innerHTML = res.data.errors.password;
+            } else {
+              setFormSubmit(true);
+            }
+          })
+          .catch((err) => console.log(err));
         }
-      };
+    };
     
-
     return (
         <>
         {formSubmit ? (
@@ -69,16 +69,16 @@ const SignUp = () => {
           </>
         ) : (
           <form action="" onSubmit={handleRegister} id="sign-up-form">
-            <label htmlFor="pseudo">Pseudo</label>
+            <label htmlFor="username">Username</label>
             <br />
             <input
               type="text"
-              name="pseudo"
-              id="pseudo"
-              onChange={(e) => setPseudo(e.target.value)}
-              value={pseudo}
+              name="username"
+              id="username"
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
             />
-            <div className="pseudo error"></div>
+            <div className="username error"></div>
             <br />
             <label htmlFor="email">Email</label>
             <br />
