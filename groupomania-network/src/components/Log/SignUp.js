@@ -1,6 +1,5 @@
 // Formulaire d'inscription - logique
 
-import axios from 'axios'
 import { React,useState } from 'react';
 import Login from './Login';
 
@@ -32,29 +31,7 @@ const SignUp = () => {
 
         if (!terms.checked)
           termsError.innerHTML = "Veuillez valider les conditions générales";
-      } else {
-          await axios({
-            method: "post",
-            url: 'http://localhost:5000/api/auth/register',
-            mode:'cors', 
-            data: {
-              username,
-              email,
-              password,
-            },
-          })
-          .then((res) => {
-            console.log(res);
-            if (res.data.errors) {
-              usernameError.innerHTML = res.data.errors.username;
-              emailError.innerHTML = res.data.errors.email;
-              passwordError.innerHTML = res.data.errors.password;
-            } else {
-              setFormSubmit(true);
-            }
-          })
-          .catch((err) => console.log(err));
-        }
+      }
     };
     
     return (
