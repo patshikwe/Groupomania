@@ -10,17 +10,20 @@ exports.signup = (req, res, next) => {
     .then(hash => {
       console.log( req.body.email,req.body.username);
 
-      const user = User.create({
+      const user = new User({
         email: req.body.email,
         password: hash,
         username: req.body.username
-      })
-        .then((res) => res.status(201).json({res:user._id }))
+      });
+      user.save()
+        .then(() => res.status(201).json({userId:user._id }))
+        console.log("res ok")
         .catch(error => res.status(400).json({ error }));
         
-        console.log("Echec ====>")
+        console.log("Echec pas de res ====>")
     })
     .catch(error => res.status(500).json({ error }));
+    console.log('erreur serveur ===>')
 };
 
 
