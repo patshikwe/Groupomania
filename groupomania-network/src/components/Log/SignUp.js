@@ -35,7 +35,7 @@ const SignUp = () => {
       } else {
           await axios({
             method: "post",
-            url: `http://localhost:5000/api/auth/register`,
+            url: 'http://localhost:5000/api/auth/register',
             mode:'cors', 
             data: {
               username,
@@ -69,7 +69,7 @@ const SignUp = () => {
           </>
         ) : (
           <form action="" onSubmit={handleRegister} id="sign-up-form">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">Pseudo</label>
             <br />
             <input
               type="text"
