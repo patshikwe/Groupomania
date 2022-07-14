@@ -2,7 +2,7 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Home from '../../pages/Home'
-import Profil from '../../pages/Frofil'
+import Profil from '../../pages/Profil'
 import Trending from '../../pages/Trending'
 
 
