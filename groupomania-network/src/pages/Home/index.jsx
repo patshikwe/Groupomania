@@ -1,9 +1,9 @@
 // Page d'accueil(Home page)
 
 import React from 'react'
-import logo from '../assets/logo/icon-left-font-monochrome-black.svg'
+import logo from '../../assets/logo/icon-left-font-monochrome-black.svg'
 
-const Home = () => {
+const index = () => {
     return (
         <div>
             <header className="">
@@ -16,4 +16,4 @@ const Home = () => {
     )
 } 
 
-export default Home
+export default index

@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-const Trending = () => {
+const index = () => {
     return (
         <div>
             Ici Accueil Trending
@@ -9,4 +9,4 @@ const Trending = () => {
     )
 }
 
-export default Trending
+export default index

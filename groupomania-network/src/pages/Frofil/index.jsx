@@ -1,10 +1,10 @@
 
 import React from 'react'
-import logo from '../assets/logo/icon-left-font-monochrome-black.svg';
-import Log from '../components/Log'
-import '../styles/pages/Profil.css'
+import logo from '../../assets/logo/icon-left-font-monochrome-black.svg'
+import Log from '../../components/Log'
+import '../../styles/pages/Profil.css'
 
-const Profil = () => {
+const index = () => {
     
 
     return (
@@ -19,4 +19,4 @@ const Profil = () => {
     )
 }
 
-export default Profil
+export default index
