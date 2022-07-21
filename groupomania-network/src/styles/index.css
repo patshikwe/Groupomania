@@ -21,7 +21,7 @@ a:visited {
 }
 
 /* Variables couleurs: primaire, secondaire, tertiaire */
-html {
+:root {
     --primary-light: #FD2D01;
     --secondary-lessClear: #FFD7D7;
     --tertiery-dark: #4E5166;

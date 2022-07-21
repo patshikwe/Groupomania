@@ -28,11 +28,19 @@ li {
 
 .active-btn {
     background: whitesmoke;
+    color: var(--primary-light);
 }
 
 li:hover {
     transform: translateX(4px);
 }
 
+input {
+    border-radius: 5px;
+}
+
+input:last-child {
+    width: 100px;
+}
 
 /* @media screen and(max-width: 550px) {} */

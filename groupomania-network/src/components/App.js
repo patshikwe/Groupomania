@@ -1,14 +1,8 @@
-
-
-import Routes from "./Routes"
-import { React } from "react"
-
+import Routes from './Routes'
+import { React } from 'react'
 
 const App = () => {
-  
-  return (
-      <Routes />
-  );
+  return <Routes />
 }
 
-export default App;
+export default App
