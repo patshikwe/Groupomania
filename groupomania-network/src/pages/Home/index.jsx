@@ -13,6 +13,7 @@ const DivContainer = styled.div`
   margin-left: 5px;
   margin-right: 5px;
   padding-top: 5px;
+  width: auto;
 `
 const Header = styled.header`
   display: grid;
@@ -24,6 +25,9 @@ const Header = styled.header`
 const DivLogo = styled.div`
   .logo {
     width: 13em;
+    @media (max-width: 455px) {
+      width: 8em;
+    }
   }
 `
 
@@ -35,11 +39,17 @@ const DivFaIcon = styled.div`
     border-radius: 10px;
     margin-left: 3em;
     cursor: pointer;
+    @media (max-width: 455px) {
+      width: 1em;
+    }
   }
   .powerOff {
     width: 2em;
     border-radius: 10px;
     cursor: pointer;
+    @media (max-width: 455px) {
+      width: 1em;
+    }
   }
   .user:hover,
   .powerOff:hover {
