@@ -9,7 +9,7 @@ export const SurveyContainer = styled.div`
   padding-top: 5px;
   width: auto;
 `
-export const DivForm = styled.div`
+export const SectionForm = styled.section`
   display: grid;
   border: none;
   background: var(--secondary-lessClear);
@@ -20,12 +20,17 @@ export const DivForm = styled.div`
   padding: 20px;
   border-radius: 20px;
 
+  h1 {
+    margin-bottom: 1rem;
+    text-shadow: 1px 1px 1px #ec8484;
+  }
+
   input {
     border-radius: 5px;
   }
 
   input:last-child {
-    width: 100px;
+    width: 7rem;
     cursor: pointer;
     :hover {
       color: ${colors.primary};

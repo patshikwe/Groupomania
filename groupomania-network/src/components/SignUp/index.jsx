@@ -1,15 +1,15 @@
-import SignUp from '../../pages/Connect/SignUp'
+import SignUp from '../../pages/Auth/SignUp'
 import { SurveyContainer } from '../../utils/style/StyleAdd'
-import { DivForm } from '../../utils/style/StyleAdd'
+import { SectionForm } from '../../utils/style/StyleAdd'
 import Header from '../Header'
 
 const index = () => {
   return (
     <SurveyContainer>
       <Header></Header>
-      <DivForm>
+      <SectionForm>
         <SignUp></SignUp>
-      </DivForm>
+      </SectionForm>
     </SurveyContainer>
   )
 }
