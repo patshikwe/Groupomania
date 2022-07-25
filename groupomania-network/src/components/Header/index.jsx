@@ -31,12 +31,12 @@ const NavContainer = styled.nav`
 `
 const StyledLink = styled(Link)`
   color: ${colors.tertieryDark};
-  text-decoration: none;
   :hover {
     background: white;
     color: ${colors.primary};
     box-shadow: ${colors.tertieryDark} 1px 1px 2px;
     border-radius: 2px;
+    transform: translateX(3px);
   }
 `
 

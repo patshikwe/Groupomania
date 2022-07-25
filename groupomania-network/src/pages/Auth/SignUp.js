@@ -11,9 +11,9 @@ const SignUp = () => {
   const handleRegister = async (e) => {
     e.preventDefault()
     const terms = document.getElementById('terms')
-    const usernameError = document.querySelector('.username.error')
-    const emailError = document.querySelector('.email.error')
-    const passwordError = document.querySelector('.password.error')
+    // const usernameError = document.querySelector('.username.error')
+    // const emailError = document.querySelector('.email.error')
+    // const passwordError = document.querySelector('.password.error')
     const passwordConfirmError = document.querySelector(
       '.password-confirm.error'
     )
@@ -30,6 +30,10 @@ const SignUp = () => {
       if (!terms.checked)
         termsError.innerHTML = 'Veuillez valider les conditions générales'
     }
+    console.log(username)
+    console.log(email)
+    console.log(password)
+    console.log(controlPassword)
   }
 
   return (
@@ -42,6 +46,7 @@ const SignUp = () => {
           type="text"
           name="username"
           id="username"
+          required
           onChange={(e) => setUsername(e.target.value)}
           value={username}
         />
@@ -53,6 +58,7 @@ const SignUp = () => {
           type="text"
           name="email"
           id="email"
+          required
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
@@ -64,6 +70,7 @@ const SignUp = () => {
           type="password"
           name="password"
           id="password"
+          required
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
@@ -75,6 +82,7 @@ const SignUp = () => {
           type="password"
           name="password"
           id="password-conf"
+          required
           onChange={(e) => setControlPassword(e.target.value)}
           value={controlPassword}
         />

@@ -8,6 +8,8 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault()
+    console.log(email)
+    console.log(password)
   }
   return (
     <>
@@ -19,6 +21,7 @@ const Login = () => {
           type="text"
           name="email"
           id="email"
+          required
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
@@ -30,6 +33,7 @@ const Login = () => {
           type="password"
           name="password"
           id="password"
+          required
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />

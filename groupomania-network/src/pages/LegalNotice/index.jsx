@@ -37,7 +37,7 @@ const index = () => {
       <Paragraph>
         L’édition et la direction de la publication du site www.groupomania.com
         est assurée par TSHIMPAKA KWEKWE Patrick, domicilié Rue du Bonheur, dont
-        le numéro de téléphone est 06333333336, et l'adresse e-mail
+        le numéro de téléphone est 06333333336, et l'adresse e-mail est
         quedubonheur@mail.com.
       </Paragraph>
       <TitleTwo>ARTICLE 2 : L’hébergeur</TitleTwo>
