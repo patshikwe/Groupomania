@@ -1,4 +1,4 @@
-import Routes from './Routes'
+import Routes from './components/Routes'
 import { React } from 'react'
 
 const App = () => {

@@ -5,7 +5,7 @@ import logo from '../../assets/logo/icon-left-font-monochrome-black.svg'
 import user from '../../assets/logo/circle-user.svg'
 import powerOff from '../../assets/logo/power-off.svg'
 import styled from 'styled-components'
-import colors from '../../styles/pages/colors'
+import colors from '../../utils/style/colors'
 
 const DivContainer = styled.div`
   display: flex;
