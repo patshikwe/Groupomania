@@ -11,6 +11,7 @@ const Header = styled.header`
   border-radius: 10px;
   box-shadow: #23272b3d 2px 3px 3px;
   margin-bottom: 10px;
+  width: auto;
 `
 const DivLogo = styled.div`
   .logo {

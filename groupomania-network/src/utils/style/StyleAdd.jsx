@@ -7,6 +7,7 @@ export const SurveyContainer = styled.div`
   margin-left: 5px;
   margin-right: 5px;
   padding-top: 5px;
+  width: auto;
 `
 export const DivForm = styled.div`
   display: grid;
