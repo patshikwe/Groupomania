@@ -23,6 +23,12 @@ const SignUp = () => {
     passwordConfirmError.innerHTML = ''
     termsError.innerHTML = ''
 
+    const data = {
+      username,
+      email,
+      password,
+    }
+
     if (password !== controlPassword || !terms.checked) {
       if (password !== controlPassword)
         passwordConfirmError.innerHTML =
@@ -34,11 +40,7 @@ const SignUp = () => {
       await axios({
         method: 'post',
         url: 'http://localhost:5000/api/auth/register',
-        data: {
-          username,
-          email,
-          password,
-        },
+        data,
       })
         .then((res) => {
           console.log(res)
