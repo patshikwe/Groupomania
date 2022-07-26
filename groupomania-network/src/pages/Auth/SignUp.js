@@ -1,6 +1,7 @@
 // Formulaire d'inscription - logique
 
 import { React, useState } from 'react'
+import axios from 'axios'
 
 const SignUp = () => {
   const [username, setUsername] = useState('')
@@ -29,6 +30,20 @@ const SignUp = () => {
 
       if (!terms.checked)
         termsError.innerHTML = 'Veuillez valider les conditions générales'
+    } else {
+      await axios({
+        method: 'post',
+        url: 'http://localhost:5000/api/auth/register',
+        data: {
+          username,
+          email,
+          password,
+        },
+      })
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => console.log(err))
     }
     console.log(username)
     console.log(email)
