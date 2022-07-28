@@ -6,9 +6,9 @@ import Header from '../Header'
 const index = () => {
   return (
     <SurveyContainer>
-      <Header></Header>
+      <Header />
       <SectionForm>
-        <SignUp></SignUp>
+        <SignUp />
       </SectionForm>
     </SurveyContainer>
   )

@@ -1,6 +1,7 @@
 // Formulaire de connexion - logique
 
 import { React, useState } from 'react'
+import axios from 'axios'
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -10,6 +11,31 @@ const Login = () => {
     e.preventDefault()
     console.log(email)
     console.log(password)
+
+    const emailError = document.querySelector('.email.error')
+    const passwordError = document.querySelector('.password.error')
+
+    axios({
+      method: 'post',
+      url: 'http://localhost:5000/api/auth/login',
+      data: {
+        email,
+        password,
+      },
+    })
+      .then((res) => {
+        console.log(res)
+        if (res.data.errors) {
+          emailError.innerHTML = res.data.errors.email
+          passwordError.innerHTML = res.data.errors.password
+        } else {
+          // window.location = '/home'
+          console.log(res)
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
   return (
     <>

@@ -44,6 +44,7 @@ const SignUp = () => {
       })
         .then((res) => {
           console.log(res)
+          window.location = '/login'
         })
         .catch((err) => console.log(err))
     }
