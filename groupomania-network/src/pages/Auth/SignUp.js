@@ -1,74 +1,87 @@
-// Formulaire d'inscription - logique
+//=== Formulaire d'inscription - logique
 
 import { React, useState } from 'react'
 import axios from 'axios'
 
 const SignUp = () => {
-  const [username, setUsername] = useState('')
+  // useState pour stocker les données
+  const [pseudo, setPseudo] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [controlPassword, setControlPassword] = useState('')
 
+  console.log(pseudo)
+  console.log(email)
+  console.log(password)
+  console.log(controlPassword)
+
+  // Récupération des éléments HTML
+  const terms = document.getElementById('terms')
+  const pseudoError = document.querySelector('.pseudo.error')
+  const emailError = document.querySelector('.email.error')
+  const passwordError = document.querySelector('.password.error')
+  const passwordConfirmError = document.querySelector('.password-confirm.error')
+  const termsError = document.querySelector('.terms.error')
+
   const handleRegister = async (e) => {
     e.preventDefault()
-    const terms = document.getElementById('terms')
-    // const usernameError = document.querySelector('.username.error')
-    // const emailError = document.querySelector('.email.error')
-    // const passwordError = document.querySelector('.password.error')
-    const passwordConfirmError = document.querySelector(
-      '.password-confirm.error'
-    )
-    const termsError = document.querySelector('.terms.error')
 
+    // Vider les inputs textes et infos erreurs
+    document.querySelector('#pseudo').value = ''
+    document.querySelector('#email').value = ''
+    document.querySelector('#password').value = ''
+    document.querySelector('#password-conf').value = ''
     passwordConfirmError.innerHTML = ''
     termsError.innerHTML = ''
 
-    const data = {
-      username,
-      email,
-      password,
-    }
-
+    // Validation du formulaire et envoi ****
     if (password !== controlPassword || !terms.checked) {
       if (password !== controlPassword)
         passwordConfirmError.innerHTML =
           'Les mots de passe ne correspondent pas'
+      passwordConfirmError.style.color = 'red'
 
       if (!terms.checked)
         termsError.innerHTML = 'Veuillez valider les conditions générales'
+      termsError.style.color = 'red'
     } else {
       await axios({
         method: 'post',
         url: 'http://localhost:5000/api/auth/register',
-        data,
+        data: {
+          pseudo,
+          email,
+          password,
+        },
       })
         .then((res) => {
           console.log(res)
+          if (res.data.errors) {
+            pseudoError.innerHTML = res.data.errors.pseudo
+            emailError.innerHTML = res.data.errors.email
+            passwordError.innerHTML = res.data.errors.password
+          }
           window.location = '/login'
         })
         .catch((err) => console.log(err))
     }
-    console.log(username)
-    console.log(email)
-    console.log(password)
-    console.log(controlPassword)
   }
 
   return (
     <>
       <h1>S'inscrire</h1>
       <form action="" onSubmit={handleRegister} id="sign-up-form">
-        <label htmlFor="username">Pseudo</label>
+        <label htmlFor="pseudo">Pseudo</label>
         <br />
         <input
           type="text"
-          name="username"
-          id="username"
+          name="pseudo"
+          id="pseudo"
           required
-          onChange={(e) => setUsername(e.target.value)}
-          value={username}
+          onChange={(e) => setPseudo(e.target.value)}
+          value={pseudo}
         />
-        <div className="username error"></div>
+        <div className="pseudo error"></div>
         <br />
         <label htmlFor="email">Email</label>
         <br />

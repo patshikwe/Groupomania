@@ -36,6 +36,9 @@ const Login = () => {
       .catch((err) => {
         console.log(err)
       })
+
+    document.getElementById('email').value = ''
+    document.getElementById('password').value = ''
   }
   return (
     <>
