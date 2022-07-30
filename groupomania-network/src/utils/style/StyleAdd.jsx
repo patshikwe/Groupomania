@@ -25,6 +25,10 @@ export const SectionForm = styled.section`
     text-shadow: 1px 1px 1px #ec8484;
   }
 
+  .error {
+    color: red;
+  }
+
   input {
     border-radius: 5px;
   }

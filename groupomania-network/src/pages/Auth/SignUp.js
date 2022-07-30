@@ -10,11 +10,6 @@ const SignUp = () => {
   const [password, setPassword] = useState('')
   const [controlPassword, setControlPassword] = useState('')
 
-  console.log(pseudo)
-  console.log(email)
-  console.log(password)
-  console.log(controlPassword)
-
   // Récupération des éléments HTML
   const terms = document.getElementById('terms')
   const pseudoError = document.querySelector('.pseudo.error')
@@ -39,11 +34,9 @@ const SignUp = () => {
       if (password !== controlPassword)
         passwordConfirmError.innerHTML =
           'Les mots de passe ne correspondent pas'
-      passwordConfirmError.style.color = 'red'
 
       if (!terms.checked)
         termsError.innerHTML = 'Veuillez valider les conditions générales'
-      termsError.style.color = 'red'
     } else {
       await axios({
         method: 'post',
@@ -61,7 +54,7 @@ const SignUp = () => {
             emailError.innerHTML = res.data.errors.email
             passwordError.innerHTML = res.data.errors.password
           }
-          window.location = '/login'
+          // window.location = '/login'
         })
         .catch((err) => console.log(err))
     }
