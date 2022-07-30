@@ -7,7 +7,9 @@ const { isEmail } = require('validator')
 
 /* la propriété unique de uniqueValidator empêchent 
    plusieurs enregistrements  d'un même compte utilisateur.
+  La vérification des emails se fait avec isEMail 
 */
+
 const userSchema = mongoose.Schema(
   {
     email: {
@@ -31,13 +33,6 @@ const userSchema = mongoose.Schema(
   { timestamps: true }
 )
 
-userSchema.pre('save', async function (next) {
-  const salt = await bcrypt.genSalt()
-  this.password = await bcrypt.hash(this.password, salt)
-  next()
-})
-
 userSchema.plugin(uniqueValidator)
 
-const UserModel = mongoose.model('User', userSchema)
-module.export = UserModel
+module.exports = mongoose.model('User', userSchema)
