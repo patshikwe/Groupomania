@@ -20,7 +20,7 @@ const userSchema = mongoose.Schema(
       lowercase: true,
       validate: [isEmail],
     },
-    password: { type: String, required: true, max: 1024, minlength: 6 },
+    password: { type: String, required: true, maxLength: 1024, minlength: 6 },
     pseudo: {
       type: String,
       required: true,

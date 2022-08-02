@@ -3,7 +3,6 @@
 const User = require('../models/User')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const { signUpErrors } = require('../utils/errors')
 
 exports.signup = (req, res, next) => {
   bcrypt
@@ -14,21 +13,14 @@ exports.signup = (req, res, next) => {
         email: req.body.email,
         password: hash,
       })
-      try {
-        console.log('==> instruction try')
-        user.save().then(() => res.status(201).json({ user: user._id }))
-        console.log(user, 'vérif ...')
-      } catch (err) {
-        const errors = signUpErrors(err)
-        res.status(200).send({ errors })
-        console.log('===> catch err')
-      }
+      user
+        .save()
+        .then(() => {
+          return res.status(201).json({ user: user._id })
+        })
+        .catch((err) => res.status(200).json({ err }))
     })
-    .catch(() =>
-      res
-        .status(500)
-        .json({ error: 'Le serveur a rencontré un problème inattendu' })
-    )
+    .catch((error) => res.status(500).json({ error }))
 }
 
 exports.login = (req, res, next) => {

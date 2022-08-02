@@ -12,9 +12,6 @@ const SignUp = () => {
 
   // Récupération des éléments HTML
   const terms = document.getElementById('terms')
-  const pseudoError = document.querySelector('.pseudo.error')
-  const emailError = document.querySelector('.email.error')
-  const passwordError = document.querySelector('.password.error')
   const passwordConfirmError = document.querySelector('.password-confirm.error')
   const termsError = document.querySelector('.terms.error')
 
@@ -49,12 +46,11 @@ const SignUp = () => {
       })
         .then((res) => {
           console.log(res)
-          if (res.data.errors) {
-            pseudoError.innerHTML = res.data.errors.pseudo
-            emailError.innerHTML = res.data.errors.email
-            passwordError.innerHTML = res.data.errors.password
+          if (res.data.err) {
+            console.log('===> accès err')
+            alert(res.data.err.message)
           } else if (res.data.error) {
-            alert(res.data.error)
+            alert('Le serveur a rencontré un problème inattendu')
           } else {
             window.location = '/login'
           }
