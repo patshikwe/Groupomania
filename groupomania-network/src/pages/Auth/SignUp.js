@@ -53,8 +53,11 @@ const SignUp = () => {
             pseudoError.innerHTML = res.data.errors.pseudo
             emailError.innerHTML = res.data.errors.email
             passwordError.innerHTML = res.data.errors.password
+          } else if (res.data.error) {
+            alert(res.data.error)
+          } else {
+            window.location = '/login'
           }
-          // window.location = '/login'
         })
         .catch((err) => console.log(err))
     }
@@ -91,7 +94,7 @@ const SignUp = () => {
         <label htmlFor="password">Mot de passe</label>
         <br />
         <input
-          type="password"
+          type="text"
           name="password"
           id="password"
           required

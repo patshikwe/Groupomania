@@ -9,8 +9,6 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault()
-    console.log(email)
-    console.log(password)
 
     const emailError = document.querySelector('.email.error')
     const passwordError = document.querySelector('.password.error')
@@ -25,12 +23,18 @@ const Login = () => {
     })
       .then((res) => {
         console.log(res)
-        if (res.data.errors) {
-          emailError.innerHTML = res.data.errors.email
-          passwordError.innerHTML = res.data.errors.password
+
+        if (res.data.errorEmail || res.data.errorPassword) {
+          if (res.data.errorEmail) {
+            emailError.innerHTML = res.data.errorEmail
+          }
+          if (res.data.errorPassword) {
+            passwordError.innerHTML = res.data.errorPassword
+          }
+        } else if (res.data.error) {
+          alert(res.data.error)
         } else {
-          // window.location = '/home'
-          console.log(res)
+          window.location = '/home'
         }
       })
       .catch((err) => {

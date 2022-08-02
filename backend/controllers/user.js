@@ -17,27 +17,33 @@ exports.signup = (req, res, next) => {
       try {
         console.log('==> instruction try')
         user.save().then(() => res.status(201).json({ user: user._id }))
-        console.log(user, '1')
+        console.log(user, 'vérif ...')
       } catch (err) {
         const errors = signUpErrors(err)
         res.status(200).send({ errors })
         console.log('===> catch err')
       }
     })
-    .catch((error) => res.status(500).json({ error }))
+    .catch(() =>
+      res
+        .status(500)
+        .json({ error: 'Le serveur a rencontré un problème inattendu' })
+    )
 }
 
 exports.login = (req, res, next) => {
-  UserModel.findOne({ email: req.body.email })
+  User.findOne({ email: req.body.email })
     .then((user) => {
       if (!user) {
-        return res.status(401).json({ error: 'Utilisateur non trouvé !' })
+        return res.status(200).json({ errorEmail: 'Utilisateur non trouvé !' })
       }
       bcrypt
         .compare(req.body.password, user.password)
         .then((valid) => {
           if (!valid) {
-            return res.status(401).json({ error: 'Mot de passe incorrect !' })
+            return res
+              .status(200)
+              .json({ errorPassword: 'Mot de passe incorrect !' })
           }
           res.status(200).json({
             userId: user._id,
@@ -46,7 +52,15 @@ exports.login = (req, res, next) => {
             }),
           })
         })
-        .catch((error) => res.status(500).json({ error }))
+        .catch(() =>
+          res
+            .status(500)
+            .json({ error: 'Le serveur a rencontré un problème inattendu' })
+        )
     })
-    .catch((error) => res.status(500).json({ error }))
+    .catch(() =>
+      res
+        .status(500)
+        .json({ error: 'Le serveur a rencontré un problème inattendu' })
+    )
 }
