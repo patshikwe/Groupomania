@@ -14,6 +14,7 @@ const SignUp = () => {
   const terms = document.getElementById('terms')
   const passwordConfirmError = document.querySelector('.password-confirm.error')
   const termsError = document.querySelector('.terms.error')
+  const passwordError = document.querySelector('.password.error')
 
   const handleRegister = async (e) => {
     e.preventDefault()
@@ -49,6 +50,8 @@ const SignUp = () => {
           if (res.data.err) {
             console.log('===> accès err')
             alert(res.data.err.message)
+          } else if (res.data.errors) {
+            passwordError.innerHTML = res.data.errors
           } else if (res.data.error) {
             alert('Le serveur a rencontré un problème inattendu')
           } else {
@@ -102,7 +105,7 @@ const SignUp = () => {
         <label htmlFor="password-conf">Confirmer mot de passe</label>
         <br />
         <input
-          type="password"
+          type="text"
           name="password"
           id="password-conf"
           required
