@@ -5,7 +5,6 @@ import axios from 'axios'
 
 const SignUp = () => {
   // useState pour stocker les données
-  const [pseudo, setPseudo] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [controlPassword, setControlPassword] = useState('')
@@ -20,7 +19,6 @@ const SignUp = () => {
     e.preventDefault()
 
     // Vider les inputs textes et infos erreurs
-    document.querySelector('#pseudo').value = ''
     document.querySelector('#email').value = ''
     document.querySelector('#password').value = ''
     document.querySelector('#password-conf').value = ''
@@ -40,7 +38,6 @@ const SignUp = () => {
         method: 'post',
         url: 'http://localhost:5000/api/auth/register',
         data: {
-          pseudo,
           email,
           password,
         },
@@ -66,18 +63,6 @@ const SignUp = () => {
     <>
       <h1>S'inscrire</h1>
       <form action="" onSubmit={handleRegister} id="sign-up-form">
-        <label htmlFor="pseudo">Pseudo</label>
-        <br />
-        <input
-          type="text"
-          name="pseudo"
-          id="pseudo"
-          required
-          onChange={(e) => setPseudo(e.target.value)}
-          value={pseudo}
-        />
-        <div className="pseudo error"></div>
-        <br />
         <label htmlFor="email">Email</label>
         <br />
         <input
