@@ -21,14 +21,6 @@ const userSchema = mongoose.Schema(
       validate: [isEmail],
     },
     password: { type: String, required: true, maxLength: 1000, minLength: 6 },
-    pseudo: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-      minLength: 3,
-      maxLength: 50,
-    },
   },
   { timestamps: true }
 )
