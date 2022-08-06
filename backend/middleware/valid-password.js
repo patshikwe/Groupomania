@@ -30,7 +30,7 @@ module.exports = (req, res, next) => {
   } else {
     return res.status(200).json({
       errors:
-        "Le mot de passe doit avoir: caractères min 6, au moins 2 chiffres, lettres majuscules et minuscules, et pas d'espace.",
+        "Le mot de passe doit avoir: 6 caractères mini, au moins 2 chiffres, lettres majuscules et minuscules, et pas d'espace.",
     })
   }
 }
