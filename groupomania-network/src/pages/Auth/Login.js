@@ -41,8 +41,9 @@ const Login = () => {
         console.log(err)
       })
 
-    document.getElementById('email').value = ''
-    document.getElementById('password').value = ''
+    // Vider les inputs
+    setEmail('')
+    setPassword('')
   }
   return (
     <>

@@ -19,9 +19,9 @@ const SignUp = () => {
     e.preventDefault()
 
     // Vider les inputs textes et infos erreurs
-    document.querySelector('#email').value = ''
-    document.querySelector('#password').value = ''
-    document.querySelector('#password-conf').value = ''
+    setEmail('')
+    setPassword('')
+    setControlPassword('')
     passwordConfirmError.innerHTML = ''
     termsError.innerHTML = ''
 
