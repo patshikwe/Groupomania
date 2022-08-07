@@ -1,4 +1,4 @@
-//=== Fichier logique métier
+//=== Fichier logique métier pour Post
 
 // Importation
 const Post = require('../models/Post')
@@ -72,7 +72,6 @@ exports.deletePost = (req, res, next) => {
  * @param {string} userId
  * @param {string} postId
  * @param {object} usersLiked
- * @param {object} usersDisliked
  * @param $inc - incrémente un champ d'une valeur spécifiée.
  * @param $push - ajoute une valeur spécifiée à un tableau.
  * @param $pull - supprime d'un tableau existant toutes les instances d'une valeur
@@ -109,33 +108,9 @@ exports.likes = (req, res, next) => {
             )
               .then(() => res.status(200).json({ message: "J'aime, annulé." }))
               .catch((error) => res.status(400).json({ error }))
-          } else if (post.usersDisliked.includes(userId)) {
-            Post.updateOne(
-              { _id: postId },
-              {
-                $inc: { dislikes: -1 },
-                $pull: { usersDisliked: userId },
-              }
-            )
-              .then(() =>
-                res.status(200).json({ message: "Je n'aime pas, annulé." })
-              )
-              .catch((error) => res.status(400).json({ error }))
           }
         })
         .catch((error) => res.status(500).json({ error }))
-      break
-
-    case -1:
-      Post.updateOne(
-        { _id: postId },
-        {
-          $inc: { dislikes: 1 },
-          $push: { usersDisliked: userId },
-        }
-      )
-        .then(() => res.status(200).json({ message: "Je n'aime pas!" }))
-        .catch((error) => res.status(400).json({ error }))
       break
   }
 }
