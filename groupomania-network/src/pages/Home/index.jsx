@@ -6,6 +6,8 @@ import user from '../../assets/logo/circle-user.svg'
 import powerOff from '../../assets/logo/power-off.svg'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
+import { Header } from '../../components/Header'
+import { DivLogo } from '../../components/Header'
 
 const DivContainer = styled.div`
   display: flex;
@@ -14,21 +16,6 @@ const DivContainer = styled.div`
   margin-right: 5px;
   padding-top: 5px;
   width: auto;
-`
-const Header = styled.header`
-  display: grid;
-  grid-template-columns: 50% 50%;
-  border: 1px solid ${colors.primary};
-  border-radius: 10px;
-  box-shadow: #23272b3d 2px 3px 3px;
-`
-const DivLogo = styled.div`
-  .logo {
-    width: 13em;
-    @media (max-width: 455px) {
-      width: 8em;
-    }
-  }
 `
 
 const DivFaIcon = styled.div`

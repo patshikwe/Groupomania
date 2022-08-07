@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import logo from '../../assets/logo/icon-left-font-monochrome-black.svg'
 import colors from '../../utils/style/colors'
 
-const Header = styled.header`
+export const Header = styled.header`
   display: grid;
   grid-template-columns: 50% 50%;
   align-items: center;
@@ -13,7 +13,7 @@ const Header = styled.header`
   margin-bottom: 10px;
   width: auto;
 `
-const DivLogo = styled.div`
+export const DivLogo = styled.div`
   .logo {
     width: 13em;
     @media (max-width: 455px) {
