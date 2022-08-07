@@ -1,17 +1,20 @@
 // === Fichier modèle publication (post)
 
 // Importation module mongoose
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
-const ModelsPost = mongoose.Schema({
-  userId:{type: String, required: true},
-  title:{type: String, required: true },
-  description:{type: String, required: true },
-  imageUrl:{type: String, required: false },
-  likes:{type: Number, default:0},
-  dislikes:{type: Number, default:0},
-  usersLiked:{type:[String]},
-  usersDisliked:{type:[String]},
-});
+const ModelsPost = mongoose.Schema(
+  {
+    userId: { type: String, required: true },
+    message: {
+      type: String,
+      trim: true,
+      maxlength: 500,
+    },
+    imageUrl: { type: String, required: false },
+    likes: { type: Number, default: 0 },
+  },
+  { timestamps: true }
+)
 
-module.exports = mongoose.model('Post', ModelsPost);
+module.exports = mongoose.model('Post', ModelsPost)
