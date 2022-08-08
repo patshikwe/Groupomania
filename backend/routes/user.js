@@ -18,5 +18,6 @@ router.post('/login', userCtrl.login)
 
 // Option utilisateurs
 router.get('/', userController.getAllUsers)
+router.get('/:id', userController.userInfo)
 
 module.exports = router

@@ -13,3 +13,17 @@ exports.getAllUsers = (req, res, next) => {
     .then((users) => res.status(200).json(users))
     .catch((error) => res.status(400).json({ error }))
 }
+
+// Récupération des données d'un utilisateur
+exports.userInfo = (req, res, next) => {
+  if (!objectId.isValid(req.params.id))
+    return res.status(400).send(`id inconnu : ${req.params.id}`)
+
+  User.findById(req.params.id, (err, docs) => {
+    if (!err) {
+      res.send(docs)
+    } else {
+      console.log('id inconnu : ' + err)
+    }
+  }).select('-password')
+}
