@@ -1,5 +1,6 @@
 //== Fichier d'inscription et d'authentification d'utilisateur
 
+// Importation
 const User = require('../models/User')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
@@ -40,7 +41,7 @@ exports.login = (req, res, next) => {
           res.status(200).json({
             userId: user._id,
             token: jwt.sign({ userId: user._id }, 'SECRET_WORD_TOKEN', {
-              expiresIn: '8h',
+              expiresIn: '24h',
             }),
           })
         })
