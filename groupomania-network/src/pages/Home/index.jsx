@@ -3,7 +3,7 @@
 import React from 'react'
 import logo from '../../assets/logo/icon-left-font-monochrome-black.svg'
 import user from '../../assets/logo/circle-user.svg'
-import powerOff from '../../assets/logo/power-off.svg'
+import Logout from '../Auth/Logout'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import { Header } from '../../components/Header'
@@ -30,14 +30,7 @@ const DivFaIcon = styled.div`
       width: 1em;
     }
   }
-  .powerOff {
-    width: 2em;
-    border-radius: 10px;
-    cursor: pointer;
-    @media (max-width: 455px) {
-      width: 1em;
-    }
-  }
+
   .user:hover,
   .powerOff:hover {
     box-shadow: ${colors.primary} 1px 1px 7px 1px;
@@ -53,7 +46,7 @@ const index = () => {
         </DivLogo>
         <DivFaIcon>
           <img src={user} className="user" alt="logo utilisateur" />
-          <img src={powerOff} className="powerOff" alt="logo de déconnexion" />
+          <Logout />
         </DivFaIcon>
       </Header>
       <div>Ici Acueil Home</div>

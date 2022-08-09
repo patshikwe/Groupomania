@@ -23,6 +23,7 @@ const Login = () => {
     })
       .then((res) => {
         console.log(res)
+        localStorage.setItem('token', res.data.token)
 
         if (res.data.errorEmail || res.data.errorPassword) {
           if (res.data.errorEmail) {
