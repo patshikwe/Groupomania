@@ -1,7 +1,6 @@
 // Fichier modif et suppression des utilisateurs
 
 // importation
-const { deleteOne } = require('../models/User')
 const User = require('../models/User')
 const objectId = require('mongoose').Types.ObjectId
 
