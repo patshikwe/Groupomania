@@ -21,19 +21,28 @@ const DivContainer = styled.div`
 const DivFaIcon = styled.div`
   display: flex;
   justify-content: space-around;
+  padding-top: 4px;
+  .user:hover,
+  .powerOff:hover {
+    box-shadow: ${colors.primary} 1px 1px 7px 1px;
+  }
+`
+const DivUser = styled.div`
+  display: grid;
   .user {
     width: 2em;
     border-radius: 10px;
-    margin-left: 3em;
     cursor: pointer;
     @media (max-width: 455px) {
       width: 1em;
     }
   }
-
-  .user:hover,
-  .powerOff:hover {
-    box-shadow: ${colors.primary} 1px 1px 7px 1px;
+  span {
+    color: ${colors.primary};
+    font-weight: bold;
+    @media (max-width: 455px) {
+      font-size: 0.8em;
+    }
   }
 `
 
@@ -45,7 +54,10 @@ const index = () => {
           <img src={logo} className="logo" alt="logo" />
         </DivLogo>
         <DivFaIcon>
-          <img src={user} className="user" alt="logo utilisateur" />
+          <DivUser>
+            <img src={user} className="user" alt="logo utilisateur" />
+            <span>Bienvenue: nom@mail.com</span>
+          </DivUser>
           <Logout />
         </DivFaIcon>
       </Header>

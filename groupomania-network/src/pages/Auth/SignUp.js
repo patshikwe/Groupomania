@@ -45,7 +45,6 @@ const SignUp = () => {
         .then((res) => {
           console.log(res)
           if (res.data.err) {
-            console.log('===> accès err')
             alert(res.data.err.message)
           } else if (res.data.errors) {
             passwordError.innerHTML = res.data.errors
@@ -90,7 +89,7 @@ const SignUp = () => {
         <label htmlFor="password-conf">Confirmer mot de passe</label>
         <br />
         <input
-          type="text"
+          type="password"
           name="password"
           id="password-conf"
           required

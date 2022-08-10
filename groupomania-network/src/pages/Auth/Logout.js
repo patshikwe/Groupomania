@@ -14,13 +14,20 @@ const DivPowerOff = styled.div`
   }
 `
 
-const Logout = () => {
+// Suppression du token dans localStorage
+function Logout() {
   const removeToken = () => {
     localStorage.removeItem('token')
+    window.location.replace('/')
   }
   return (
     <DivPowerOff onClick={removeToken}>
-      <img src={powerOff} className="powerOff" alt="logo de déconnexion" />
+      <img
+        src={powerOff}
+        title="Déconnexion"
+        className="powerOff"
+        alt="logo de déconnexion"
+      />
     </DivPowerOff>
   )
 }
