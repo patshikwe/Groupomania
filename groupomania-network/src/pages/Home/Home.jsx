@@ -6,8 +6,8 @@ import user from '../../assets/logo/circle-user.svg'
 import Logout from '../Auth/Logout'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
-import { Header } from '../../components/Header'
-import { DivLogo } from '../../components/Header'
+import { Header } from '../../components/Header/HeaderNav'
+import { DivLogo } from '../../components/Header/HeaderNav'
 
 const DivContainer = styled.div`
   display: flex;
@@ -46,24 +46,29 @@ const DivUser = styled.div`
   }
 `
 
-const index = () => {
-  return (
-    <DivContainer>
-      <Header>
-        <DivLogo>
-          <img src={logo} className="logo" alt="logo" />
-        </DivLogo>
-        <DivFaIcon>
-          <DivUser>
-            <img src={user} className="user" alt="logo utilisateur" />
-            <span>Bienvenue: nom@mail.com</span>
-          </DivUser>
-          <Logout />
-        </DivFaIcon>
-      </Header>
-      <div>Ici Acueil Home</div>
-    </DivContainer>
-  )
+const Home = () => {
+  const token = window.localStorage.getItem('token')
+  if (token) {
+    return (
+      <DivContainer>
+        <Header>
+          <DivLogo>
+            <img src={logo} className="logo" alt="logo" />
+          </DivLogo>
+          <DivFaIcon>
+            <DivUser>
+              <img src={user} className="user" alt="logo utilisateur" />
+              <span>Bienvenue: nom@mail.com</span>
+            </DivUser>
+            <Logout />
+          </DivFaIcon>
+        </Header>
+        <div>Ici Acueil Home</div>
+      </DivContainer>
+    )
+  } else {
+    window.location = '/login'
+  }
 }
 
-export default index
+export default Home

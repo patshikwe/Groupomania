@@ -40,7 +40,7 @@ const StyledLink = styled(Link)`
   }
 `
 
-const index = () => {
+const HeaderNav = () => {
   return (
     <Header>
       <DivLogo>
@@ -54,4 +54,4 @@ const index = () => {
   )
 }
 
-export default index
+export default HeaderNav
