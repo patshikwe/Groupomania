@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import { Header } from '../../components/Header/HeaderNav'
 import { DivLogo } from '../../components/Header/HeaderNav'
+// import { useParams } from 'react-router-dom'
 
 const DivContainer = styled.div`
   display: flex;
@@ -47,6 +48,10 @@ const DivUser = styled.div`
 `
 
 const Home = () => {
+  let params = new URLSearchParams(window.location.search)
+  let uid = params.get('userId')
+  console.log(uid)
+
   const token = window.localStorage.getItem('token')
   if (token) {
     return (

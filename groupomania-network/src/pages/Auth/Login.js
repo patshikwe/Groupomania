@@ -35,7 +35,7 @@ const Login = () => {
         } else if (res.data.error) {
           alert(res.data.error)
         } else {
-          window.location.replace(`/home?userId=${res.data.userId}`)
+          window.location = `/home?userId=${res.data.userId}`
         }
       })
       .catch((err) => {
