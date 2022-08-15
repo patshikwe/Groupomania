@@ -2,6 +2,7 @@
 
 import powerOff from '../../assets/logo/power-off.svg'
 import styled from 'styled-components'
+import colors from '../../utils/style/colors'
 
 const DivPowerOff = styled.div`
   .powerOff {
@@ -11,6 +12,9 @@ const DivPowerOff = styled.div`
     @media (max-width: 455px) {
       width: 1em;
     }
+  }
+  .powerOff:hover {
+    box-shadow: ${colors.primary} 1px 1px 7px 1px;
   }
 `
 
