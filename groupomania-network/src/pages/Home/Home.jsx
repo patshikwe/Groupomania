@@ -10,6 +10,7 @@ import { Header } from '../../components/Header/HeaderNav'
 import { DivLogo } from '../../components/Header/HeaderNav'
 import { Uidcontext } from '../../utils/HomeContext'
 import { useState } from 'react'
+import Postform from './PostForm'
 import axios from 'axios'
 
 const DivContainer = styled.div`
@@ -19,6 +20,17 @@ const DivContainer = styled.div`
   margin-right: 5px;
   padding-top: 5px;
   width: auto;
+  heigth: auto;
+`
+
+const ContainerPosts = styled.div`
+  border: 1px solid ${colors.primary};
+  border-radius: 10px;
+  box-shadow: #23272b3d 2px 3px 3px;
+  position: relative;
+  left: 6%;
+  width: 90%;
+  height: auto;
 `
 
 const DivFaIcon = styled.div`
@@ -45,6 +57,73 @@ const DivUser = styled.div`
     }
   }
 `
+const WritePost = styled.div`
+  display: grid;
+  height: 130px;
+  border: 1px solid ${colors.primary};
+  box-shadow: #23272b3d 2px 3px 3px;
+  border-radius: 10px;
+  width: 80%;
+  height: 220px;
+  position: relative;
+  left: 10%;
+  margin-top: 10px;
+
+  .user {
+    width: 2em;
+    border-radius: 10px;
+    position: relative;
+    top: 30%;
+    left: 45%;
+    @media (max-width: 455px) {
+      left: 38%;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // input(saisie texte)
+  input:first-child {
+    border: 1px solid ${colors.primary};
+    border-radius: 20px;
+    box-shadow: #23272b3d 2px 3px 3px;
+    width: 75%;
+    height: 3rem;
+    position: relative;
+    left: 10%;
+    text-align: center;
+    font-weight: bold;
+    @media (max-width: 455px) {
+      height: 2.5rem;
+    }
+  }
+
+  // input(envoyé)
+  input:last-child {
+    border: 1px solid ${colors.primary};
+    border-radius: 20px;
+    box-shadow: #23272b3d 2px 3px 3px;
+    background-color: white;
+    position: relative;
+    top: 20%;
+    left: 65%;
+    width: 20%;
+    height: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    :hover {
+      background-color: ${colors.primary};
+      color: white;
+    }
+    @media (max-width: 455px) {
+      width: 35%;
+      left: 50%;
+    }
+  }
+`
 
 const Home = () => {
   const [uid, setUid] = useState(null)
@@ -57,7 +136,6 @@ const Home = () => {
     .get(`http://localhost:5000/api/auth/${userId}`)
     .then((res) => {
       console.log(res.data)
-      console.log(res.data.email)
       setUid(res.data._id)
       setEmail(res.data.email)
     })
@@ -78,13 +156,24 @@ const Home = () => {
             </DivLogo>
             <DivFaIcon>
               <DivUser>
-                <img src={user} className="user" alt="logo utilisateur" />
+                <img
+                  src={user}
+                  className="user"
+                  alt="logo utilisateur"
+                  title="Profil"
+                />
                 <span>Bienvenue {email}</span>
               </DivUser>
               <Logout />
             </DivFaIcon>
           </Header>
-          <div>Ici Acueil Home</div>
+          <ContainerPosts>
+            <WritePost>
+              <img src={user} className="user" alt="logo utilisateur" />
+              <Postform />
+            </WritePost>
+            <div>post</div>
+          </ContainerPosts>
         </DivContainer>
       </Uidcontext.Provider>
     )
