@@ -48,13 +48,15 @@ const DivUser = styled.div`
     }
   }
   span {
-    color: ${colors.primary};
     font-weight: bold;
     letter-spacing: 0.3em;
     @media (max-width: 455px) {
       font-size: 0.8em;
       letter-spacing: 0.1em;
     }
+  }
+  span:last-child {
+    color: ${colors.primary};
   }
 `
 const WritePost = styled.div`
@@ -162,7 +164,8 @@ const Home = () => {
                   alt="logo utilisateur"
                   title="Profil"
                 />
-                <span>Bienvenue {email}</span>
+                <span>Bienvenue</span>
+                <span>{email}</span>
               </DivUser>
               <Logout />
             </DivFaIcon>
