@@ -49,7 +49,7 @@ const Login = () => {
   return (
     <>
       <h1>Se connecter</h1>
-      <form action="" onSubmit={handleLogin} id="sign-up-form">
+      <form action="" onSubmit={handleLogin} id="login-form">
         <label htmlFor="email">Email</label>
         <br />
         <input
