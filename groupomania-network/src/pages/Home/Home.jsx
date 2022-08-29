@@ -88,23 +88,23 @@ const WritePost = styled.div`
   }
 
   // input(saisie texte)
-  input:first-child {
+  textarea {
     border: 1px solid ${colors.primary};
-    border-radius: 20px;
+    border-radius: 8px;
     box-shadow: #23272b3d 2px 3px 3px;
     width: 75%;
-    height: 3rem;
+    height: 4rem;
     position: relative;
     left: 10%;
     text-align: center;
     font-weight: bold;
     @media (max-width: 455px) {
-      height: 2.5rem;
+      height: 3rem;
     }
   }
 
   // input(envoyé)
-  input:last-child {
+  input {
     border: 1px solid ${colors.primary};
     border-radius: 20px;
     box-shadow: #23272b3d 2px 3px 3px;
@@ -128,29 +128,29 @@ const WritePost = styled.div`
 `
 
 const Home = () => {
-  const [uid, setUid] = useState(null)
+  const [userId, setuserId] = useState(null)
   const [email, setEmail] = useState(null)
   let params = new URLSearchParams(window.location.search)
-  let userId = params.get('userId')
-  console.log(userId)
+  let Id = params.get('userId')
+  console.log(Id)
 
   axios
-    .get(`http://localhost:5000/api/auth/${userId}`)
+    .get(`http://localhost:5000/api/auth/${Id}`)
     .then((res) => {
       console.log(res.data)
-      setUid(res.data._id)
+      setuserId(res.data._id)
       setEmail(res.data.email)
     })
     .catch((err) => {
       console.log(err)
     })
 
-  console.log(uid)
+  console.log(userId)
 
   const token = window.localStorage.getItem('token')
   if (token) {
     return (
-      <Uidcontext.Provider value={uid}>
+      <Uidcontext.Provider value={userId}>
         <DivContainer>
           <Header>
             <DivLogo>
