@@ -89,7 +89,7 @@ const WritePost = styled.div`
 
   // input(saisie texte)
   textarea {
-    border: 1px solid ${colors.primary};
+    border: 1px solid ${colors.tertieryDark};
     border-radius: 8px;
     box-shadow: #23272b3d 2px 3px 3px;
     width: 75%;
@@ -119,6 +119,7 @@ const WritePost = styled.div`
     :hover {
       background-color: ${colors.primary};
       color: white;
+      border: 1px solid ${colors.tertieryDark};
     }
     @media (max-width: 455px) {
       width: 35%;
