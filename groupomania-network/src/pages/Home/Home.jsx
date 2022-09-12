@@ -149,7 +149,9 @@ const Home = () => {
   console.log(userId)
 
   const token = window.localStorage.getItem('token')
-  if (token) {
+
+  // condition pour sécuriser la session
+  if (token && Id !== null) {
     return (
       <Uidcontext.Provider value={userId}>
         <DivContainer>
