@@ -55,8 +55,20 @@ const DivUser = styled.div`
       letter-spacing: 0.1em;
     }
   }
+  @keyframes displayUser {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
   span:last-child {
     color: ${colors.primary};
+    animation: displayUser 3.5s;
   }
 `
 const WritePost = styled.div`
