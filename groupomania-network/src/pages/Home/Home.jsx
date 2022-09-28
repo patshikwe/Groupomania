@@ -44,17 +44,24 @@ const DivUser = styled.div`
     width: 2em;
     border-radius: 10px;
     @media (max-width: 455px) {
-      width: 1em;
+      width: 1.5em;
+      position: relative;
+      bottom: 2px;
     }
   }
-  span {
-    font-weight: bold;
-    letter-spacing: 0.3em;
-    @media (max-width: 455px) {
-      font-size: 0.8em;
-      letter-spacing: 0.1em;
-    }
-  }
+`
+const WritePost = styled.div`
+  display: grid;
+  border: 1px solid ${colors.primary};
+  box-shadow: #23272b3d 2px 3px 3px;
+  border-radius: 10px;
+  width: 80%;
+  height: 360px;
+  position: relative;
+  left: 10%;
+  margin-top: 10px;
+
+  // Animation pour le span du h1
   @keyframes displayUser {
     0% {
       opacity: 0;
@@ -72,36 +79,25 @@ const DivUser = styled.div`
       opacity: 1;
     }
   }
-  span:last-child {
+  h1 span {
     color: ${colors.primary};
     animation: displayUser 3.5s;
   }
-`
-const WritePost = styled.div`
-  display: grid;
-  border: 1px solid ${colors.primary};
-  box-shadow: #23272b3d 2px 3px 3px;
-  border-radius: 10px;
-  width: 80%;
-  height: 360px;
-  position: relative;
-  left: 10%;
-  margin-top: 10px;
 
-  .user {
-    width: 2em;
-    border-radius: 10px;
-    position: relative;
-    top: 21%;
-    left: 45%;
+  h1 {
+    text-align: center;
+    letter-spacing: 0.3em;
     @media (max-width: 455px) {
-      left: 38%;
+      padding-top: 4%;
+      font-size: 1.5em;
+      letter-spacing: 0.1em;
     }
   }
 
   form {
     display: flex;
     flex-direction: column;
+    height: auto;
   }
 
   // input(saisie texte)
@@ -282,15 +278,15 @@ const Home = () => {
                   alt="logo utilisateur"
                   title="Profil"
                 />
-                <span>Bienvenue</span>
-                <span>{email}</span>
               </DivUser>
               <Logout />
             </DivFaIcon>
           </Header>
           <ContainerPosts>
             <WritePost>
-              <img src={user} className="user" alt="logo utilisateur" />
+              <h1>
+                Bienvenue, <span>{email}</span>
+              </h1>
               <Postform user={email} />
             </WritePost>
             <div>post</div>
