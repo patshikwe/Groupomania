@@ -59,7 +59,13 @@ const DivUser = styled.div`
     0% {
       opacity: 0;
     }
+    25% {
+      opacity: 0.15;
+    }
     50% {
+      opacity: 0.25;
+    }
+    75% {
       opacity: 0.5;
     }
     100% {
@@ -73,12 +79,11 @@ const DivUser = styled.div`
 `
 const WritePost = styled.div`
   display: grid;
-  height: 130px;
   border: 1px solid ${colors.primary};
   box-shadow: #23272b3d 2px 3px 3px;
   border-radius: 10px;
   width: 80%;
-  height: 220px;
+  height: 360px;
   position: relative;
   left: 10%;
   margin-top: 10px;
@@ -87,7 +92,7 @@ const WritePost = styled.div`
     width: 2em;
     border-radius: 10px;
     position: relative;
-    top: 30%;
+    top: 21%;
     left: 45%;
     @media (max-width: 455px) {
       left: 38%;
@@ -108,26 +113,107 @@ const WritePost = styled.div`
     height: 4rem;
     position: relative;
     left: 10%;
-    text-align: center;
     font-weight: bold;
     @media (max-width: 455px) {
       height: 3rem;
     }
   }
 
-  // input(envoyé)
-  input {
+  // Prévisualisation lors de saisie
+  .card-container {
+    width: 75%;
+    height: auto;
+    position: relative;
+    left: 10%;
+    top: 1px;
+    border: 3px solid ${colors.secondary};
+    box-shadow: #23272b3d 2px 3px 3px;
+    border-radius: 8px;
+  }
+
+  // carte contenant image, email et date
+  .cardInfoUser {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  // carte image
+  .card-left {
+    width: 2em;
+    img {
+      border-radius: 10px;
+    }
+  }
+
+  // info utilisateur(email)
+  .info-user {
+    h3 {
+      text-shadow: ${colors.secondary} 2px 3px 3px;
+      font-weight: bold;
+    }
+    @media (max-width: 455px) {
+      width: 4em;
+      h3 {
+        font-size: 0.7em;
+      }
+    }
+  }
+
+  // affichage date
+  .date {
+    width: 8em;
+    @media (max-width: 498px) {
+      width: 7em;
+      span {
+        font-size: 0.7em;
+      }
+    }
+  }
+
+  // contenu du message
+  .message-content {
+    border-image: linear-gradient(
+        ${colors.primary},
+        ${colors.secondary},
+        ${colors.tertieryDark}
+      )
+      5;
+  }
+
+  // logo image pour la selection d'image
+  .containerImage img {
+    width: 2em;
+    position: absolute;
+    left: 25%;
+  }
+
+  // Tous les inputs
+  .background {
+    text-align: center;
     border: 1px solid ${colors.primary};
     border-radius: 20px;
     box-shadow: #23272b3d 2px 3px 3px;
     background-color: white;
+    font-weight: bold;
+  }
+
+  // input file enfant div .containerImage
+  .inputImage {
+    opacity: 0;
     position: relative;
-    top: 20%;
+    width: 2.5em;
+    height: 29px;
+    left: 25%;
+  }
+
+  // input(envoyé)
+  .send {
+    position: relative;
+    top: 5%;
     left: 65%;
     width: 20%;
     height: 25px;
     cursor: pointer;
-    font-weight: bold;
     :hover {
       background-color: ${colors.primary};
       color: white;
@@ -136,6 +222,23 @@ const WritePost = styled.div`
     @media (max-width: 455px) {
       width: 35%;
       left: 50%;
+    }
+  }
+
+  // btn pour annuler les messages
+  .top {
+    width: 100px;
+    height: 25px;
+    position: relative;
+    left: 65%;
+    cursor: pointer;
+    :hover {
+      background-color: ${colors.primary};
+      color: white;
+      border: 1px solid ${colors.tertieryDark};
+    }
+    @media (max-width: 455px) {
+      left: 40%;
     }
   }
 `
@@ -188,7 +291,7 @@ const Home = () => {
           <ContainerPosts>
             <WritePost>
               <img src={user} className="user" alt="logo utilisateur" />
-              <Postform />
+              <Postform user={email} />
             </WritePost>
             <div>post</div>
           </ContainerPosts>
