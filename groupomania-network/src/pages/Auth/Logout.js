@@ -10,7 +10,7 @@ const DivPowerOff = styled.div`
     border-radius: 10px;
     cursor: pointer;
     @media (max-width: 455px) {
-      width: 1em;
+      width: 1.5em;
     }
   }
   .powerOff:hover {
