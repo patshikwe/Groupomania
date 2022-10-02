@@ -19,6 +19,7 @@ function Postform(props) {
   const handlePicture = (e) => {
     e.preventDefault()
     setPostpicture(URL.createObjectURL(e.target.files[0]))
+    setFileImg(e.target.files[0])
   }
 
   const cancelPost = (e) => {

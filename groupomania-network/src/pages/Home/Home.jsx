@@ -12,6 +12,7 @@ import { Uidcontext } from '../../utils/HomeContext'
 import { useState } from 'react'
 import Postform from './PostForm'
 import axios from 'axios'
+// import cadre from '../../assets/img/vintage-wooden-squa-white-background.jpg'
 
 const DivContainer = styled.div`
   display: flex;
@@ -107,28 +108,35 @@ const WritePost = styled.div`
     }
     @media (max-width: 855px) {
       position: relative;
-      bottom: 46px;
+      bottom: 9px;
     }
     @media (max-width: 455px) {
       margin-top: 0;
       position: relative;
-      top: -94px;
+      top: -68px;
     }
   }
 
   // input(saisie texte)
   textarea {
     overflow: auto;
-    border: 1px solid ${colors.tertieryDark};
-    border-radius: 8px;
+    border: 12px double ${colors.tertieryDark};
+    border-image: linear-gradient(
+        ${colors.primary},
+        ${colors.secondary},
+        ${colors.tertieryDark},
+        ${colors.secondary}
+      )
+      5;
+    padding: 5px;
     box-shadow: #23272b3d 2px 3px 3px;
     width: 75%;
-    height: 4rem;
+    height: 10rem;
     position: relative;
     left: 10%;
     font-weight: bold;
     @media (max-width: 455px) {
-      height: 3rem;
+      height: 6rem;
     }
   }
 
@@ -140,7 +148,6 @@ const WritePost = styled.div`
     left: 10%;
     top: 1px;
     border: 3px solid ${colors.secondary};
-    // border: #744610 3px solid;
     border-image: linear-gradient(
         ${colors.primary},
         #4ac4ec,
