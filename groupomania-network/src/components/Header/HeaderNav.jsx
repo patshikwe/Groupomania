@@ -12,12 +12,13 @@ export const Header = styled.header`
   box-shadow: #23272b3d 2px 3px 3px;
   margin-bottom: 10px;
   width: auto;
+  height: 60px;
 `
 export const DivLogo = styled.div`
   .logo {
     width: 13em;
     @media (max-width: 455px) {
-      width: 8em;
+      width: 9em;
     }
   }
 `
