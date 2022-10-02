@@ -20,7 +20,6 @@ const DivContainer = styled.div`
   margin-right: 5px;
   padding-top: 5px;
   width: auto;
-  heigth: auto;
 `
 
 const ContainerPosts = styled.div`
@@ -30,7 +29,7 @@ const ContainerPosts = styled.div`
   position: relative;
   left: 6%;
   width: 90%;
-  height: auto;
+  height: 1550px;
 `
 
 const DivFaIcon = styled.div`
@@ -56,10 +55,16 @@ const WritePost = styled.div`
   box-shadow: #23272b3d 2px 3px 3px;
   border-radius: 10px;
   width: 80%;
-  height: 360px;
+  height: 45%;
   position: relative;
   left: 10%;
   margin-top: 10px;
+  @media (max-width: 1024px) {
+    height: 40%;
+  }
+  @media (max-width: 630px) {
+    height: 36%;
+  }
 
   // Animation pour le span du h1
   @keyframes displayUser {
@@ -85,23 +90,35 @@ const WritePost = styled.div`
   }
 
   h1 {
+    padding-top: 10px;
     text-align: center;
     letter-spacing: 0.3em;
     @media (max-width: 455px) {
-      padding-top: 4%;
       font-size: 1.5em;
       letter-spacing: 0.1em;
     }
   }
 
   form {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     height: auto;
+    @media (min-width: 1200px) {
+      margin-top: 3%;
+    }
+    @media (max-width: 855px) {
+      position: relative;
+      bottom: 46px;
+    }
+    @media (max-width: 455px) {
+      margin-top: 0;
+      position: relative;
+      top: -94px;
+    }
   }
 
   // input(saisie texte)
   textarea {
+    overflow: auto;
     border: 1px solid ${colors.tertieryDark};
     border-radius: 8px;
     box-shadow: #23272b3d 2px 3px 3px;
@@ -123,6 +140,14 @@ const WritePost = styled.div`
     left: 10%;
     top: 1px;
     border: 3px solid ${colors.secondary};
+    // border: #744610 3px solid;
+    border-image: linear-gradient(
+        ${colors.primary},
+        #4ac4ec,
+        ${colors.secondary},
+        ${colors.tertieryDark}
+      )
+      5;
     box-shadow: #23272b3d 2px 3px 3px;
     border-radius: 8px;
   }
@@ -147,7 +172,7 @@ const WritePost = styled.div`
       text-shadow: ${colors.secondary} 2px 3px 3px;
       font-weight: bold;
     }
-    @media (max-width: 455px) {
+    @media (max-width: 500px) {
       width: 4em;
       h3 {
         font-size: 0.7em;
@@ -168,12 +193,36 @@ const WritePost = styled.div`
 
   // contenu du message
   .message-content {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    border: #744610 3px solid;
     border-image: linear-gradient(
         ${colors.primary},
+        #4ac4ec,
         ${colors.secondary},
         ${colors.tertieryDark}
       )
       5;
+    div {
+      width: 100%;
+      display: flex;
+    }
+
+    .divMessage {
+      overflow: auto;
+      // border: blue 1px solid;
+      // background: lightblue;
+    }
+
+    .divPicture {
+      width: 100%;
+      img {
+        width: 100%;
+        @media (max-width: 455px) {
+          width: 98%;
+        }
+      }
+    }
   }
 
   // logo image pour la selection d'image
