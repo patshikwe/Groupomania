@@ -21,6 +21,9 @@ const DivContainer = styled.div`
   margin-right: 5px;
   padding-top: 5px;
   width: auto;
+  img {
+    object-fit: cover;
+  }
 `
 
 const ContainerPosts = styled.div`
@@ -51,23 +54,29 @@ const DivUser = styled.div`
   }
 `
 const WritePost = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border: 1px solid ${colors.primary};
   box-shadow: #23272b3d 2px 3px 3px;
   border-radius: 10px;
   width: 80%;
-  height: 45%;
+  height: auto;
   position: relative;
   left: 10%;
   margin-top: 10px;
-  @media (max-width: 1024px) {
-    height: 40%;
-  }
-  @media (max-width: 630px) {
-    height: 36%;
+
+  // div containeur du h1
+  .divH1 {
+    width: 86%;
+    height: 120px;
+    position: relative;
+    @media (max-width: 1024px) {
+      height: 100px;
+    }
   }
 
-  // Animation pour le span du h1
+  // Animation du span enfant h1
   @keyframes displayUser {
     0% {
       opacity: 0;
@@ -93,19 +102,20 @@ const WritePost = styled.div`
   h1 {
     padding-top: 10px;
     text-align: center;
-    letter-spacing: 0.3em;
-    @media (max-width: 455px) {
-      font-size: 1.5em;
-      letter-spacing: 0.1em;
+    letter-spacing: 0.1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @media (max-width: 580px) {
+      font-size: 1em;
     }
   }
 
   form {
     display: grid;
     height: auto;
-    @media (min-width: 1200px) {
-      margin-top: 3%;
-    }
+    // @media (min-width: 1200px) {
+    //   margin-top: 3%;
+    // }
     @media (max-width: 855px) {
       position: relative;
       bottom: 9px;
@@ -113,7 +123,7 @@ const WritePost = styled.div`
     @media (max-width: 455px) {
       margin-top: 0;
       position: relative;
-      top: -68px;
+      top: -28px;
     }
   }
 
@@ -178,11 +188,13 @@ const WritePost = styled.div`
     h3 {
       text-shadow: ${colors.secondary} 2px 3px 3px;
       font-weight: bold;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     @media (max-width: 500px) {
       width: 4em;
       h3 {
-        font-size: 0.7em;
+        font-size: 0.8em;
       }
     }
   }
@@ -190,7 +202,7 @@ const WritePost = styled.div`
   // affichage date
   .date {
     width: 8em;
-    @media (max-width: 498px) {
+    @media (max-width: 580px) {
       width: 7em;
       span {
         font-size: 0.7em;
@@ -217,12 +229,9 @@ const WritePost = styled.div`
 
     .divMessage {
       overflow: auto;
-      // border: blue 1px solid;
-      // background: lightblue;
     }
 
     .divPicture {
-      width: 100%;
       img {
         width: 100%;
         @media (max-width: 455px) {
@@ -232,14 +241,7 @@ const WritePost = styled.div`
     }
   }
 
-  // logo image pour la selection d'image
-  .containerImage img {
-    width: 2em;
-    position: absolute;
-    left: 25%;
-  }
-
-  // Tous les inputs
+  // classe générale
   .background {
     text-align: center;
     border: 1px solid ${colors.primary};
@@ -251,11 +253,43 @@ const WritePost = styled.div`
 
   // input file enfant div .containerImage
   .inputImage {
-    opacity: 0;
     position: relative;
-    width: 2.5em;
-    height: 29px;
-    left: 25%;
+    height: 26px;
+    left: 10%;
+    width: 186px;
+    border: 1px solid ${colors.primary};
+    box-shadow: #23272b3d 2px 3px 3px;
+    cursor: pointer;
+    font-weight: bold;
+    @media (max-width: 699px) {
+      width: 160px;
+    }
+    @media (max-width: 314px) {
+      width: 141px;
+    }
+  }
+
+  /* style groupé: input(envoyé), btn(annuler les messages) 
+  et inputImage 
+  */
+
+  .send,
+  .top,
+  .inputImage {
+    :hover {
+      background-color: ${colors.primary};
+      color: white;
+      border: 1px solid ${colors.tertieryDark};
+    }
+  }
+
+  // btn pour annuler les messages
+  .top {
+    width: 100px;
+    height: 25px;
+    position: relative;
+    left: 10%;
+    cursor: pointer;
   }
 
   // input(envoyé)
@@ -266,31 +300,12 @@ const WritePost = styled.div`
     width: 20%;
     height: 25px;
     cursor: pointer;
-    :hover {
-      background-color: ${colors.primary};
-      color: white;
-      border: 1px solid ${colors.tertieryDark};
+    @media (min-width: 455px) {
+      // top: -28px;
     }
     @media (max-width: 455px) {
       width: 35%;
       left: 50%;
-    }
-  }
-
-  // btn pour annuler les messages
-  .top {
-    width: 100px;
-    height: 25px;
-    position: relative;
-    left: 65%;
-    cursor: pointer;
-    :hover {
-      background-color: ${colors.primary};
-      color: white;
-      border: 1px solid ${colors.tertieryDark};
-    }
-    @media (max-width: 455px) {
-      left: 40%;
     }
   }
 `
@@ -340,9 +355,11 @@ const Home = () => {
           </Header>
           <ContainerPosts>
             <WritePost>
-              <h1>
-                Bienvenue, <span>{email}</span>
-              </h1>
+              <div className="divH1">
+                <h1>
+                  Bienvenue, <span>{email}</span>
+                </h1>
+              </div>
               <Postform user={email} />
             </WritePost>
             <div>post</div>

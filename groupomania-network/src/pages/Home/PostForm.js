@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { useContext, useState } from 'react'
 import { Uidcontext } from '../../utils/HomeContext'
-import image from '../../assets/logo/image.svg'
 import user from '../../assets/logo/circle-user.svg'
 import { timestampParser } from '../../utils/utils'
 
@@ -86,7 +85,6 @@ function Postform(props) {
           </li>
         ) : null}
         <div className="containerImage">
-          <img src={image} alt="img" />
           <input
             className="inputImage"
             type="file"
