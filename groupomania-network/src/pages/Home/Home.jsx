@@ -1,6 +1,6 @@
 // Page d'accueil(Home page)
 
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../../assets/logo/icon-left-font-monochrome-black.svg'
 import user from '../../assets/logo/circle-user.svg'
 import Logout from '../Auth/Logout'
@@ -9,10 +9,9 @@ import colors from '../../utils/style/colors'
 import { Header } from '../../components/Header/HeaderNav'
 import { DivLogo } from '../../components/Header/HeaderNav'
 import { Uidcontext } from '../../utils/HomeContext'
-import { useState } from 'react'
 import Postform from './PostForm'
 import axios from 'axios'
-// import cadre from '../../assets/img/vintage-wooden-squa-white-background.jpg'
+import '../../styles/index.css'
 
 const DivContainer = styled.div`
   display: flex;
@@ -313,9 +312,28 @@ const WritePost = styled.div`
 const Home = () => {
   const [userId, setuserId] = useState(null)
   const [email, setEmail] = useState(null)
+  const [stateHeader, setstateHeader] = useState(false)
+  const [stateDivlogo, setstateDivlogo] = useState(false)
+  const [stateDivfaicon, settateDivfaicon] = useState(false)
+
   let params = new URLSearchParams(window.location.search)
   let Id = params.get('userId')
   console.log(Id)
+
+  const changeCssScroll = () => {
+    // const scrollvalue = document.documentElement.scrollY
+    if (window.scrollY > 100) {
+      setstateHeader(true)
+      setstateDivlogo(true)
+      settateDivfaicon(true)
+    } else {
+      setstateHeader(false)
+      setstateDivlogo(false)
+      settateDivfaicon(false)
+    }
+  }
+
+  window.addEventListener('scroll', changeCssScroll)
 
   axios
     .get(`http://localhost:5000/api/auth/${Id}`)
@@ -337,11 +355,11 @@ const Home = () => {
     return (
       <Uidcontext.Provider value={userId}>
         <DivContainer>
-          <Header>
-            <DivLogo>
+          <Header className={stateHeader ? 'scroll' : ''}>
+            <DivLogo className={stateDivlogo ? 'height bgr-white ' : ''}>
               <img src={logo} className="logo" alt="logo" />
             </DivLogo>
-            <DivFaIcon>
+            <DivFaIcon className={stateDivfaicon ? 'bgr-white' : ''}>
               <DivUser>
                 <img
                   src={user}
