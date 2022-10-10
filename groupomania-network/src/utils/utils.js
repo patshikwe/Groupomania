@@ -1,3 +1,4 @@
+// Réglage date et heures
 export const timestampParser = (num) => {
   let options = {
     hour: '2-digit',
