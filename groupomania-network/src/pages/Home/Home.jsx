@@ -110,14 +110,12 @@ const WritePost = styled.div`
   }
 
   form {
-    display: grid;
+    display: block;
+    width: 100%;
     height: auto;
-    // @media (min-width: 1200px) {
-    //   margin-top: 3%;
-    // }
     @media (max-width: 855px) {
       position: relative;
-      bottom: 9px;
+      // bottom: 9px;
     }
     @media (max-width: 455px) {
       margin-top: 0;
@@ -141,6 +139,7 @@ const WritePost = styled.div`
     box-shadow: #23272b3d 2px 3px 3px;
     width: 75%;
     height: 10rem;
+    display: block;
     position: relative;
     left: 10%;
     font-weight: bold;
@@ -211,8 +210,8 @@ const WritePost = styled.div`
 
   // contenu du message
   .message-content {
-    display: grid;
-    grid-template-columns: 50% 50%;
+    display: flex;
+    flex-direction: column;
     border: #744610 3px solid;
     border-image: linear-gradient(
         ${colors.primary},
@@ -231,8 +230,10 @@ const WritePost = styled.div`
     }
 
     .divPicture {
+      height: auto;
       img {
         width: 100%;
+        height: 100%;
         @media (max-width: 455px) {
           width: 98%;
         }
@@ -285,26 +286,30 @@ const WritePost = styled.div`
   // btn pour annuler les messages
   .top {
     width: 100px;
-    height: 25px;
+    height: 20px;
     position: relative;
     left: 10%;
     cursor: pointer;
+    @media (max-width: 455px) {
+      width: 24%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 
   // input(envoyé)
   .send {
     position: relative;
     top: 5%;
-    left: 65%;
+    left: 36%;
     width: 20%;
-    height: 25px;
+    height: 20px;
     cursor: pointer;
-    @media (min-width: 455px) {
-      // top: -28px;
-    }
     @media (max-width: 455px) {
-      width: 35%;
-      left: 50%;
+      width: 24%;
+      left: 30%;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 `
