@@ -13,6 +13,7 @@ const ModelsPost = mongoose.Schema(
     },
     imageUrl: { type: String, required: false },
     likes: { type: Number, default: 0 },
+    usersLiked: { type: [String] },
   },
   { timestamps: true }
 )
