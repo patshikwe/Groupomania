@@ -25,8 +25,11 @@ function Postform(props) {
 
   const cancelPost = (e) => {
     setMessage('')
-    setPostpicture('')
     setImageUrl('')
+    if (postPicture) {
+      setPostpicture('')
+      window.location.reload()
+    }
   }
 
   const handleSumit = async (e) => {
@@ -38,8 +41,12 @@ function Postform(props) {
       // const data = new FormData()
       // data.append('userId', userId)
       // data.append('message', message)
+      console.log(data)
+
       if (imageUrl) {
         data = { userId, message, imageUrl }
+        // data.append('imageUrl', imageUrl)
+        console.log(data)
       }
       await axios({
         method: 'post',
