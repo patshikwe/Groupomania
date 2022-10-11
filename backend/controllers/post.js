@@ -7,8 +7,18 @@ const { db } = require('../models/Post')
 
 // Création post *************************
 exports.createPost = (req, res, next) => {
-  const postObject = JSON.parse(req.body.post)
-  delete postObject._id
+  console.log('contenu body', req.body)
+
+  console.log('Création image')
+  console.log(req.protocol)
+  console.log(req.get('host'))
+
+  console.log("C'est le req.file")
+  console.log(req.file, 'sans filename!')
+
+  const postObject = req.body.post
+  delete postObject.userId
+  console.log('suppression id', postObject)
   const post = new Post({
     ...postObject,
     imageUrl: `${req.protocol}://${req.get('host')}/images/${
