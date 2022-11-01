@@ -12,6 +12,7 @@ import { Uidcontext } from '../../utils/HomeContext'
 import Postform from './PostForm'
 import axios from 'axios'
 import '../../styles/index.css'
+import { useContext } from 'react'
 
 const DivContainer = styled.div`
   display: flex;
@@ -44,7 +45,7 @@ const DivUser = styled.div`
   display: grid;
   .user {
     width: 2em;
-    border-radius: 10px;
+    border-radius: 50px;
     @media (max-width: 455px) {
       width: 1.5em;
       position: relative;
@@ -314,27 +315,26 @@ const WritePost = styled.div`
   }
 `
 
-const Home = () => {
-  const [userId, setuserId] = useState(null)
+const Home = (e) => {
+  const [userId, setUserId] = useState(null)
   const [email, setEmail] = useState(null)
   const [stateHeader, setstateHeader] = useState(false)
-  const [stateDivlogo, setstateDivlogo] = useState(false)
-  const [stateDivfaicon, settateDivfaicon] = useState(false)
+  const [stateDivLogo, setstateDivLogo] = useState(false)
+  const [stateDivFaicon, setstateDivFaicon] = useState(false)
 
-  let params = new URLSearchParams(window.location.search)
-  let Id = params.get('userId')
+  const Id = useContext(Uidcontext)
   console.log(Id)
 
   const changeCssScroll = () => {
     // const scrollvalue = document.documentElement.scrollY
     if (window.scrollY > 100) {
       setstateHeader(true)
-      setstateDivlogo(true)
-      settateDivfaicon(true)
+      setstateDivLogo(true)
+      setstateDivFaicon(true)
     } else {
       setstateHeader(false)
-      setstateDivlogo(false)
-      settateDivfaicon(false)
+      setstateDivLogo(false)
+      setstateDivFaicon(false)
     }
   }
 
@@ -344,7 +344,7 @@ const Home = () => {
     .get(`http://localhost:5000/api/auth/${Id}`)
     .then((res) => {
       console.log(res.data)
-      setuserId(res.data._id)
+      setUserId(res.data._id)
       setEmail(res.data.email)
     })
     .catch((err) => {
@@ -358,37 +358,35 @@ const Home = () => {
   // condition pour sécuriser la session
   if (token && Id !== null) {
     return (
-      <Uidcontext.Provider value={userId}>
-        <DivContainer>
-          <Header className={stateHeader ? 'scroll' : ''}>
-            <DivLogo className={stateDivlogo ? 'height bgr-white ' : ''}>
-              <img src={logo} className="logo" alt="logo" />
-            </DivLogo>
-            <DivFaIcon className={stateDivfaicon ? 'bgr-white' : ''}>
-              <DivUser>
-                <img
-                  src={user}
-                  className="user"
-                  alt="logo utilisateur"
-                  title="Profil"
-                />
-              </DivUser>
-              <Logout />
-            </DivFaIcon>
-          </Header>
-          <ContainerPosts>
-            <WritePost>
-              <div className="divH1">
-                <h1>
-                  Bienvenue, <span>{email}</span>
-                </h1>
-              </div>
-              <Postform user={email} />
-            </WritePost>
-            <div>post</div>
-          </ContainerPosts>
-        </DivContainer>
-      </Uidcontext.Provider>
+      <DivContainer>
+        <Header className={stateHeader ? 'scroll' : ''}>
+          <DivLogo className={stateDivLogo ? 'height bgr-white ' : ''}>
+            <img src={logo} className="logo" alt="logo" />
+          </DivLogo>
+          <DivFaIcon className={stateDivFaicon ? 'bgr-white' : ''}>
+            <DivUser>
+              <img
+                src={user}
+                className="user"
+                alt="logo utilisateur"
+                title="Profil"
+              />
+            </DivUser>
+            <Logout />
+          </DivFaIcon>
+        </Header>
+        <ContainerPosts>
+          <WritePost>
+            <div className="divH1">
+              <h1>
+                Bienvenue, <span>{email}</span>
+              </h1>
+            </div>
+            <Postform user={email} />
+          </WritePost>
+          <div>post</div>
+        </ContainerPosts>
+      </DivContainer>
     )
   } else {
     window.location = '/login'

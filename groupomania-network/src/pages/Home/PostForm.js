@@ -23,7 +23,8 @@ function Postform(props) {
     setImageUrl(e.target.files[0])
   }
 
-  const cancelPost = (e) => {
+  // Pour annuler le message
+  function cancelPost(e) {
     setMessage('')
     setImageUrl('')
     if (postPicture) {
@@ -38,19 +39,19 @@ function Postform(props) {
 
     if (message || postPicture) {
       let data = { userId, message }
-      // const data = new FormData()
-      // data.append('userId', userId)
-      // data.append('message', message)
+      // const formData = new FormData()
+      // formData.append('userId', userId)
+      // formData.append('message', message)
       console.log(data)
 
       if (imageUrl) {
         data = { userId, message, imageUrl }
-        // data.append('imageUrl', imageUrl)
+        // formData.append('imageUrl', imageUrl)
         console.log(data)
       }
       await axios({
         method: 'post',
-        url: ' http://localhost:5000/api/post',
+        url: `http://localhost:5000/api/post`,
         data: data,
         headers: {
           'content-type': 'application/json',
