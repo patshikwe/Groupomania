@@ -326,7 +326,6 @@ const Home = (e) => {
   console.log(Id)
 
   const changeCssScroll = () => {
-    // const scrollvalue = document.documentElement.scrollY
     if (window.scrollY > 100) {
       setstateHeader(true)
       setstateDivLogo(true)
@@ -341,7 +340,7 @@ const Home = (e) => {
   window.addEventListener('scroll', changeCssScroll)
 
   axios
-    .get(`http://localhost:5000/api/auth/${Id}`)
+    .get(`${process.env.REACT_APP_API_URL}api/auth/${Id}`)
     .then((res) => {
       console.log(res.data)
       setUserId(res.data._id)

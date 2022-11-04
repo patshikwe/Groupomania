@@ -38,20 +38,20 @@ function Postform(props) {
     console.log(imageUrl)
 
     if (message || postPicture) {
-      let data = { userId, message }
-      // const formData = new FormData()
-      // formData.append('userId', userId)
-      // formData.append('message', message)
+      // let data = { userId, message }
+      const data = new FormData()
+      data.append('userId', userId)
+      data.append('message', message)
       console.log(data)
 
       if (imageUrl) {
-        data = { userId, message, imageUrl }
-        // formData.append('imageUrl', imageUrl)
+        // data = { userId, message, imageUrl }
+        data.append('imageUrl', imageUrl)
         console.log(data)
       }
       await axios({
         method: 'post',
-        url: `http://localhost:5000/api/post`,
+        url: `${process.env.REACT_APP_API_URL}api/post`,
         data: data,
         headers: {
           'content-type': 'application/json',
@@ -110,7 +110,7 @@ function Postform(props) {
           <input
             className="inputImage"
             type="file"
-            name="file"
+            name="imageUrl"
             accept=".jpg, .jpeg, .png"
             onChange={(e) => handlePicture(e)}
           />

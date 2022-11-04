@@ -36,7 +36,7 @@ const SignUp = () => {
     } else {
       await axios({
         method: 'post',
-        url: 'http://localhost:5000/api/auth/register',
+        url: `${process.env.REACT_APP_API_URL}api/auth/register`,
         data: {
           email,
           password,
