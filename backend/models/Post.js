@@ -11,9 +11,6 @@ const ModelsPost = mongoose.Schema(
       trim: true,
       maxlength: 500,
     },
-    imageUrl: { type: String, required: false },
-    likes: { type: Number, default: 0 },
-    usersLiked: { type: [String] },
   },
   { timestamps: true }
 )

@@ -6,7 +6,6 @@ import { timestampParser } from '../../utils/utils'
 import '../../styles/index.css'
 
 function Postform(props) {
-  // const [isLoading, setLoading] = useState(false)
   const token = window.localStorage.getItem('token')
   const [message, setMessage] = useState('')
   const [postPicture, setPostpicture] = useState(null)
@@ -38,15 +37,15 @@ function Postform(props) {
     console.log(imageUrl)
 
     if (message || postPicture) {
-      // let data = { userId, message }
-      const data = new FormData()
-      data.append('userId', userId)
-      data.append('message', message)
-      console.log(data)
+      let data = { userId, message }
+      // const data = new FormData()
+      // data.append('userId', userId)
+      // data.append('message', message)
+      // console.log(data)
 
       if (imageUrl) {
-        // data = { userId, message, imageUrl }
-        data.append('imageUrl', imageUrl)
+        data = { userId, message, imageUrl }
+        // data.append('imageUrl', imageUrl)
         console.log(data)
       }
       await axios({
@@ -60,6 +59,8 @@ function Postform(props) {
       })
         .then((res) => {
           console.log(res)
+          setMessage('')
+          // setPostpicture('')
         })
         .catch((error) => {
           console.log(error)

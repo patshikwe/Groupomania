@@ -54,10 +54,13 @@ app.use((req, res, next) => {
 
 // *************************** # *************************************************
 
-/* Ce middleware extrait le corps Json venant de l'application front-end
+/* Le 1er middleware extrait le corps Json et le second middleware 
+    précise que le req.body contiendra des valeurs de n'importe quel type
+    au lieu de simplement des chaînes venant de l'application front-end
     pour la gestion de requête POST.
 */
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 app.use('/images', express.static(path.join(__dirname, 'images')))
 app.use('/api/post', postRoutes)

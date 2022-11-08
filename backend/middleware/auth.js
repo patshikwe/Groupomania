@@ -6,10 +6,11 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 module.exports = (req, res, next) => {
-  console.log(req.body.userId)
+  console.log('userId', req.body.userId)
   try {
     const token = req.headers.authorization.split(' ')[1]
     console.log('token ===>', token)
+    // console.log('file ===>', req.file)
 
     const decodedToken = jwt.verify(token, `${process.env.SECRET_WORD_TOKEN}`)
     console.log('decodedToken ===>', decodedToken)
