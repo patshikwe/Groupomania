@@ -10,10 +10,12 @@ import { Header } from '../../components/Header/HeaderNav'
 import { DivLogo } from '../../components/Header/HeaderNav'
 import { Uidcontext } from '../../utils/HomeContext'
 import Postform from './PostForm'
+import PostsDisplay from './PostsDisplay'
+
 import axios from 'axios'
 import '../../styles/index.css'
 import { useContext } from 'react'
-import { WritePost } from '../../utils/style/StyleAdd'
+import { WritePost } from '../../utils/style/WritePost'
 
 const DivContainer = styled.div`
   display: flex;
@@ -27,7 +29,7 @@ const DivContainer = styled.div`
   }
 `
 
-const ContainerPosts = styled.div`
+const ContainerPosts = styled.section`
   border: 1px solid ${colors.primary};
   border-radius: 10px;
   box-shadow: #23272b3d 2px 3px 3px;
@@ -115,7 +117,7 @@ const Home = (e) => {
           </DivFaIcon>
         </Header>
         <ContainerPosts>
-          <WritePost>
+          <WritePost className="global">
             <div className="divH1">
               <h1>
                 Bienvenue, <span>{email}</span>
@@ -123,7 +125,7 @@ const Home = (e) => {
             </div>
             <Postform user={email} />
           </WritePost>
-          <div>post</div>
+          <PostsDisplay />
         </ContainerPosts>
       </DivContainer>
     )

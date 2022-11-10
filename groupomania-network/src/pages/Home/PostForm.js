@@ -28,7 +28,7 @@ function Postform(props) {
     setImageUrl('')
     if (postPicture) {
       setPostpicture('')
-      window.location.reload()
+      window.location.reload() //recharger la page
     }
   }
 
@@ -61,6 +61,7 @@ function Postform(props) {
           console.log(res)
           setMessage('')
           // setPostpicture('')
+          window.location.reload()
         })
         .catch((error) => {
           console.log(error)
