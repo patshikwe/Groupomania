@@ -49,6 +49,27 @@
     background: #FD2D01;
 }
 
+.global {
+    align-items: center;
+    border: 1px solid var(--primary-light);
+    box-shadow: #23272b3d 2px 3px 3px;
+    border-radius: 10px;
+    width: 80%;
+    height: auto;
+    position: relative;
+    left: 10%;
+    margin-top: 10px;
+}
+
+.column-reverse {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.last-child:last-child {
+    padding-top: 6px;
+}
+
 a,
 a:visited {
     color: var(--tertiery-dark);
