@@ -36,6 +36,10 @@ export function PostsDisplay() {
       {posts &&
         posts.map((post) => (
           <Card key={post._id}>
+            <p>
+              <span>{post.email}</span>
+              <span>{post.createdAt}</span>
+            </p>
             <p>{post.message}</p>
           </Card>
         ))}

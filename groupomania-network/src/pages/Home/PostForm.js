@@ -13,7 +13,10 @@ function Postform(props) {
 
   // useContext pour l'id de l'utilisateur
   const userId = useContext(Uidcontext)
-  console.log(userId, token)
+
+  console.log(userId, token, props.user)
+  const email = props.user
+  console.log(email)
 
   // Affichage d'image au front
   const handlePicture = (e) => {
@@ -37,7 +40,7 @@ function Postform(props) {
     console.log(imageUrl)
 
     if (message || postPicture) {
-      let data = { userId, message }
+      let data = { userId, message, email }
       // const data = new FormData()
       // data.append('userId', userId)
       // data.append('message', message)
