@@ -69,5 +69,7 @@ export const Card = styled.article`
     font-weight: bold;
     letter-spacing: 0.1rem;
     text-shadow: 0px 1px black;
+    overflow: auto;
+    text-overflow: ellipsis;
   }
 `
