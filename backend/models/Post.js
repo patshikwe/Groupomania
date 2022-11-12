@@ -11,6 +11,7 @@ const ModelsPost = mongoose.Schema(
       trim: true,
       maxlength: 500,
     },
+    email: { type: String, required: true },
   },
   { timestamps: true }
 )
