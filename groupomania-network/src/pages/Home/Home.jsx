@@ -24,6 +24,7 @@ const DivContainer = styled.div`
   margin-right: 5px;
   padding-top: 5px;
   width: auto;
+  height: auto;
   img {
     object-fit: cover;
   }
@@ -36,7 +37,7 @@ const ContainerPosts = styled.section`
   position: relative;
   left: 6%;
   width: 90%;
-  height: 1550px;
+  height: auto;
 `
 
 const DivFaIcon = styled.div`
