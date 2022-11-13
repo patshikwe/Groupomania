@@ -63,6 +63,7 @@ export const Card = styled.article`
   p:nth-child(2) {
     text-shadow: 1px 4px 7px #c77c6c;
     border: 3px solid white;
+    border-radius: 10px;
   }
   span:nth-child(1) {
     color: ${colors.tertieryDark};
