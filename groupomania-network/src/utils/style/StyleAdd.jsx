@@ -73,4 +73,8 @@ export const Card = styled.article`
     overflow: auto;
     text-overflow: ellipsis;
   }
+  .Contenair-delete-img {
+    border: 3px solid black;
+    background: white;
+  }
 `

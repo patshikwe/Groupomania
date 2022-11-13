@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Card } from '../../utils/style/StyleAdd'
+import DeleteItem from './DeleteItem'
 
 const token = localStorage.getItem('token')
 
@@ -41,6 +42,9 @@ export function PostsDisplay() {
               <span>{post.createdAt}</span>
             </p>
             <p>{post.message}</p>
+            <div className="Contenair-delete-img">
+              <DeleteItem />
+            </div>
           </Card>
         ))}
     </div>
