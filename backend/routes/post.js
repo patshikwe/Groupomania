@@ -13,9 +13,8 @@ const postCtrl = require('../controllers/post')
    postCtrl => renvoie au dossier controllers/post.js
    le point relie la fonction, la nomination de la fonction fait référence à son rôle.
 */
-router.post('/', postCtrl.createPost)
+router.post('/', auth, postCtrl.createPost)
 router.get('/', postCtrl.getAllPosts)
-// router.delete('/:id', postCtrl.deletePost)
 
 // router.post('/', auth, multer, postCtrl.createPost)
 // router.get('/', auth, postCtrl.getAllPosts)

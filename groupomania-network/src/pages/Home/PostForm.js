@@ -57,7 +57,6 @@ function Postform(props) {
         url: `${process.env.REACT_APP_API_URL}api/post`,
         data: data,
         headers: {
-          'content-type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
       })
