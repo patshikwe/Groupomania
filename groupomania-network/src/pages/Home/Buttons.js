@@ -34,13 +34,19 @@ const Delete = styled.div`
   }
 `
 
-function Buttons(props) {
-  const userId = props.Id
+function Buttons({ userId, Id, IdPost }) {
+  const token = window.localStorage.getItem('token')
+
+  // Fonction pour supprimer un post
   const handleDelete = async () => {
+    console.log(IdPost)
     await axios({
       method: 'delete',
-      url: `${process.env.REACT_APP_API_URL}api/post/${props.IdPost}`,
+      url: `${process.env.REACT_APP_API_URL}api/post/${IdPost}`,
       data: userId,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     })
       .then((res) => {
         if (res) {
@@ -55,12 +61,12 @@ function Buttons(props) {
 
   return (
     <ContainerButtons>
-      {props.Id === props.userId ? (
+      {userId === Id ? (
         <Delete onClick={handleDelete}>
           <img src={trash} alt="Supprimer" title="Supprimer" />
         </Delete>
       ) : null}
-      {props.Id === props.userId ? <button>Modifier</button> : null}
+      {userId === Id ? <button>Modifier</button> : null}
       <button>Répondre</button>
     </ContainerButtons>
   )

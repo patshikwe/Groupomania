@@ -46,7 +46,7 @@ function PostsDisplay(onUpdate) {
             </p>
             <p>{post.message}</p>
             <div className="Contenair-buttons-img">
-              <Buttons Id={Id} userId={post.userId} IdPost={post._id} />
+              <Buttons userId={Id} Id={post.userId} IdPost={post._id} />
             </div>
           </Card>
         ))}
