@@ -32,7 +32,6 @@ exports.createPost = (req, res, next) => {
 // Récupérer toutes les publications (posts) *****************
 exports.getAllPosts = (req, res, next) => {
   Post.find()
-    .select('-userId')
     .then((posts) => res.status(200).json(posts))
     .catch((error) => res.status(400).json({ error }))
 }
