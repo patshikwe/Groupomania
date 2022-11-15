@@ -34,12 +34,11 @@ const Delete = styled.div`
   }
 `
 
-function Buttons({ userId, Id, IdPost }) {
+function Buttons({ userId, Id, IdPost, onUpdateDelete }) {
   const token = window.localStorage.getItem('token')
 
   // Fonction pour supprimer un post
   const handleDelete = async () => {
-    console.log(IdPost)
     await axios({
       method: 'delete',
       url: `${process.env.REACT_APP_API_URL}api/post/${IdPost}`,
@@ -51,7 +50,7 @@ function Buttons({ userId, Id, IdPost }) {
       .then((res) => {
         if (res) {
           console.log(res)
-          window.location.reload()
+          onUpdateDelete(IdPost)
         }
       })
       .catch((error) => {
