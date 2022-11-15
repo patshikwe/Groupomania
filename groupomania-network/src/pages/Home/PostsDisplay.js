@@ -1,13 +1,13 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Card } from '../../utils/style/StyleAdd'
-import Buttons from './DeleteItem'
+import Buttons from './Buttons'
 import { useContext } from 'react'
 import { Uidcontext } from '../../utils/HomeContext'
 
 const token = localStorage.getItem('token')
 
-export function PostsDisplay(onUpdate) {
+function PostsDisplay(onUpdate) {
   const [posts, setPosts] = useState(null)
   const Id = useContext(Uidcontext)
 
@@ -46,7 +46,7 @@ export function PostsDisplay(onUpdate) {
             </p>
             <p>{post.message}</p>
             <div className="Contenair-buttons-img">
-              <Buttons Id={Id} userId={post.userId} />
+              <Buttons Id={Id} userId={post.userId} IdPost={post._id} />
             </div>
           </Card>
         ))}

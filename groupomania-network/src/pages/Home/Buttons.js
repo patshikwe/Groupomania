@@ -2,7 +2,7 @@
 import trash from '../../assets/logo/trash-can.svg'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
-// import axios from 'axios'
+import axios from 'axios'
 
 const ContainerButtons = styled.div`
   display: flex;
@@ -34,11 +34,29 @@ const Delete = styled.div`
   }
 `
 
-const Buttons = (props) => {
+function Buttons(props) {
+  const userId = props.Id
+  const handleDelete = async () => {
+    await axios({
+      method: 'delete',
+      url: `${process.env.REACT_APP_API_URL}api/post/${props.IdPost}`,
+      data: userId,
+    })
+      .then((res) => {
+        if (res) {
+          console.log(res)
+          window.location.reload()
+        }
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   return (
     <ContainerButtons>
       {props.Id === props.userId ? (
-        <Delete>
+        <Delete onClick={handleDelete}>
           <img src={trash} alt="Supprimer" title="Supprimer" />
         </Delete>
       ) : null}
