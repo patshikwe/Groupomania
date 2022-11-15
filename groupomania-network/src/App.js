@@ -8,7 +8,6 @@ import LegalNotice from './pages/LegalNotice'
 import { Uidcontext } from '../src/utils/HomeContext'
 let params = new URLSearchParams(window.location.search)
 let Id = params.get('userId')
-console.log(Id)
 
 const App = () => {
   return (
