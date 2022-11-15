@@ -5,7 +5,7 @@ import DeleteItem from './DeleteItem'
 
 const token = localStorage.getItem('token')
 
-export function PostsDisplay() {
+export function PostsDisplay(onUpdate) {
   const [posts, setPosts] = useState(null)
   const getAllMessages = async () => {
     await axios({
@@ -25,9 +25,10 @@ export function PostsDisplay() {
       })
   }
 
+  console.log('Ici PostsDisplay ==>', onUpdate)
   useEffect(() => {
     getAllMessages()
-  }, [])
+  }, [onUpdate])
 
   console.log(posts)
 

@@ -31,7 +31,7 @@ function Postform(props) {
     setImageUrl('')
     if (postPicture) {
       setPostpicture('')
-      window.location.reload() //recharger la page
+      window.location.reload() //Recharger la page
     }
   }
 
@@ -41,14 +41,15 @@ function Postform(props) {
 
     if (message || postPicture) {
       let data = { userId, message, email }
-      // const data = new FormData()
-      // data.append('userId', userId)
-      // data.append('message', message)
-      // console.log(data)
+      // const formData = new FormData()
+      // formData.append('userId', userId)
+      // formData.append('message', message)
+      // formData.append('email', email)
+      // console.log(formData)
 
       if (imageUrl) {
-        data = { userId, message, imageUrl }
-        // data.append('imageUrl', imageUrl)
+        data = { userId, message, email, imageUrl }
+        // formData.append('imageUrl', imageUrl)
         console.log(data)
       }
       await axios({
@@ -62,9 +63,9 @@ function Postform(props) {
       })
         .then((res) => {
           console.log(res)
+          props.onUpdate(message) //props fonction de l'enfant au parent
           setMessage('')
           // setPostpicture('')
-          window.location.reload()
         })
         .catch((error) => {
           console.log(error)

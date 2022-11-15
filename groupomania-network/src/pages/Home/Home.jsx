@@ -64,9 +64,9 @@ const Home = (e) => {
   const [stateHeader, setstateHeader] = useState(false)
   const [stateDivLogo, setstateDivLogo] = useState(false)
   const [stateDivFaicon, setstateDivFaicon] = useState(false)
+  const [message, setmessage] = useState(null)
 
   const Id = useContext(Uidcontext)
-  console.log(Id)
 
   const changeCssScroll = () => {
     if (window.scrollY > 100) {
@@ -81,6 +81,12 @@ const Home = (e) => {
   }
 
   window.addEventListener('scroll', changeCssScroll)
+
+  // Fonction pour remonter l'information de l'enfant au parent
+  const onUpdate = (post) => {
+    const messageUpdate = post
+    setmessage(messageUpdate)
+  }
 
   axios
     .get(`${process.env.REACT_APP_API_URL}api/auth/${Id}`)
@@ -124,9 +130,9 @@ const Home = (e) => {
                 Bienvenue, <span>{email}</span>
               </h1>
             </div>
-            <Postform user={email} />
+            <Postform user={email} onUpdate={onUpdate} />
           </WritePost>
-          <PostsDisplay />
+          <PostsDisplay onUpdate={message} />
         </ContainerPosts>
       </DivContainer>
     )
