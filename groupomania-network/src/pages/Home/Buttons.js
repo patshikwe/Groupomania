@@ -3,6 +3,8 @@ import trash from '../../assets/logo/trash-can.svg'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import axios from 'axios'
+import Modal from '../../utils/Modal'
+import { useState } from 'react'
 
 const ContainerButtons = styled.div`
   display: flex;
@@ -16,6 +18,10 @@ const ContainerButtons = styled.div`
     width: 3.8rem;
     margin: 5px 0 5px 0;
     cursor: pointer;
+    @media (max-width: 300px) {
+      width: 3rem;
+      font-size: 0.7em;
+    }
   }
 
   button: hover {
@@ -33,9 +39,22 @@ const Delete = styled.div`
     transform: translateY(2px);
   }
 `
+// Div occultant = voile
+const Sail = styled.div`
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  background-color: #0000009e;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 1;
+`
 
-function Buttons({ userId, Id, IdPost, onUpdateDelete }) {
+function Buttons({ userId, Id, IdPost, postMessage, onUpdateDelete }) {
   const token = window.localStorage.getItem('token')
+  const [confirmationModal, setConfirmationModal] = useState(null)
 
   // Fonction pour supprimer un post
   const handleDelete = async () => {
@@ -58,15 +77,38 @@ function Buttons({ userId, Id, IdPost, onUpdateDelete }) {
       })
   }
 
+  // Fonction pour le contenu de la modale
+  const handleConfirmationModal = () => {
+    setConfirmationModal({
+      title: "Suppression d'un post",
+      message: 'Vous êtes au point de suppprimer ce post:',
+      postMessage, //contenu du message posté
+    })
+  }
+
   return (
     <ContainerButtons>
       {userId === Id ? (
-        <Delete onClick={handleDelete}>
+        <Delete onClick={handleConfirmationModal}>
           <img src={trash} alt="Supprimer" title="Supprimer" />
         </Delete>
       ) : null}
       {userId === Id ? <button>Modifier</button> : null}
       <button>Répondre</button>
+      {confirmationModal ? (
+        <>
+          <Modal
+            title={confirmationModal.title} // accès contenu setConfirmationModal
+            message={confirmationModal.message} // accès contenu setConfirmationModal
+            postMessage={confirmationModal.postMessage}
+            toCancel={() => setConfirmationModal(false)} // fonction pour annuler
+            onConfirmDelete={() => handleDelete()} // fonction pour supprimer
+          />
+          <Sail />
+        </>
+      ) : null}
+
+      {/* <Sail className={confirmationModal ? 'display-flex' : ''} /> */}
     </ContainerButtons>
   )
 }

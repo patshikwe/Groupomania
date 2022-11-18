@@ -52,6 +52,7 @@ function PostsDisplay(onUpdate) {
                 Id={post.userId}
                 IdPost={post._id}
                 onUpdateDelete={(IdPost) => setUpdateDeletePost(IdPost)} //enfant => parent(props fonction)
+                postMessage={post.message}
               />
             </div>
           </Card>

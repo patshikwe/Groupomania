@@ -42,6 +42,7 @@ export const SectionForm = styled.section`
   }
 `
 export const Card = styled.article`
+  position: relative;
   overflow: auto;
   box-shadow: 1px 2px 13px 3px #817d7d;
   margin-bottom: 1rem;
