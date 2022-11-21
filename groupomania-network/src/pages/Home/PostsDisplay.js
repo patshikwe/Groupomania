@@ -43,7 +43,10 @@ function PostsDisplay(onUpdate) {
           <Card key={post._id}>
             <p>
               <span>{post.email}</span>
-              <span>{post.createdAt}</span>
+              {post.createdAt ? <span>Posté: {post.createdAt}</span> : null}
+              {post.updatedAt !== post.createdAt ? (
+                <span>Modifié: {post.updatedAt}</span>
+              ) : null}
             </p>
             <p>{post.message}</p>
             <div className="Contenair-buttons-img">
