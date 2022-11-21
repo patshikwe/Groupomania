@@ -4,6 +4,7 @@ import { Card } from '../../utils/style/StyleAdd'
 import Buttons from './Buttons'
 import { useContext } from 'react'
 import { Uidcontext } from '../../utils/HomeContext'
+import Liked from './Liked'
 
 const token = localStorage.getItem('token')
 
@@ -43,7 +44,7 @@ function PostsDisplay(onUpdate) {
           <Card key={post._id}>
             <p>
               <span>{post.email}</span>
-              {post.createdAt ? <span>Posté: {post.createdAt}</span> : null}
+              {post.createdAt ? <span>Créé: {post.createdAt}</span> : null}
               {post.updatedAt !== post.createdAt ? (
                 <span>Modifié: {post.updatedAt}</span>
               ) : null}
@@ -58,6 +59,7 @@ function PostsDisplay(onUpdate) {
                 postMessage={post.message}
               />
             </div>
+            <Liked IdPost={post._id} />
           </Card>
         ))}
     </div>
