@@ -1,10 +1,12 @@
 // Fichier composant pour aimé (liked)
+import axios from 'axios'
+import { useContext, useState } from 'react'
 import styled from 'styled-components'
+import { Uidcontext } from '../../utils/HomeContext'
 import colors from '../../utils/style/colors'
-// import coeur from '../../assets/logo/heart-border.png'
 
 const ContainerHeart = styled.div`
-  //   width: 5rem;
+  width: 40px;
   .boom {
     width: 40px;
     height: 35px;
@@ -76,23 +78,44 @@ const ContainerHeart = styled.div`
     position: absolute;
     bottom: 0;
   }
-  .boom:hover .item {
+  .item {
     height: 100%;
   }
 `
 
-function Liked(IdPost) {
-  const handleLiked = () => {
-    console.log("J'ai clické! =>", IdPost)
+const Liked = (props) => {
+  let like = 1
+  const userId = useContext(Uidcontext)
+  const token = window.localStorage.getItem('token')
+  const Id = props.IdPost
+  const [liked, setLiked] = useState('')
+  const message = "J'aime!"
+
+  const handleLiked = async () => {
+    const data = { like, userId }
+    console.log("J'ai clické! =>", like, Id, userId, token)
+    console.log('Valeur data =', data)
+
+    await axios({
+      method: 'post',
+      url: `${process.env.REACT_APP_API_URL}api/post/${Id}/like`,
+      data: data,
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => {
+        console.log(res)
+        console.log(res.data.message)
+        setLiked(res.data.message)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
+
   return (
-    <ContainerHeart
-      onClick={() => {
-        handleLiked()
-      }}
-    >
-      <div className="boom">
-        <div className="item"></div>
+    <ContainerHeart>
+      <div className="boom" onClick={handleLiked}>
+        <div className={liked === message ? 'item' : null}></div>
       </div>
     </ContainerHeart>
   )

@@ -12,6 +12,8 @@ const ModelsPost = mongoose.Schema(
       maxlength: 500,
     },
     email: { type: String, required: true },
+    likes: { type: Number, default: 0 },
+    usersLiked: { type: [String] },
   },
   { timestamps: true }
 )
