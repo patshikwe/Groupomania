@@ -74,12 +74,17 @@ const ContainerHeart = styled.div`
       ${colors.primary},
       ${colors.secondary}
     );
-    transition: 0.3s ease-in-out;
+    animation: item 2.9s ease-in-out forwards;
     position: absolute;
     bottom: 0;
   }
-  .item {
-    height: 100%;
+  @keyframes item {
+    100% {
+      height: 100%;
+    }
+    50% {
+      height: 50%;
+    }
   }
 `
 
