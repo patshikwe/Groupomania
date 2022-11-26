@@ -9,9 +9,8 @@ const ModalStyle = styled.div`
   color: black;
   border: 5px solid red;
   border-radius: 5px;
-  width: 100%;
+  width: 90%;
   top: 3vh;
-  left: 0;
   overflow: hidden;
   header {
     padding-bottom: 4px;
