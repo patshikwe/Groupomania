@@ -1,6 +1,6 @@
 // Page d'accueil(Home page)
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import logo from '../../assets/logo/icon-left-font-monochrome-black.svg'
 import user from '../../assets/logo/circle-user.svg'
 import Logout from '../Auth/Logout'
@@ -16,6 +16,7 @@ import axios from 'axios'
 import '../../styles/index.css'
 import { useContext } from 'react'
 import { WritePost } from '../../utils/style/WritePost'
+import Loading from '../../utils/Loading'
 
 const DivContainer = styled.div`
   display: flex;
@@ -65,7 +66,9 @@ const Home = (e) => {
   const [stateDivLogo, setstateDivLogo] = useState(false)
   const [stateDivFaicon, setstateDivFaicon] = useState(false)
   const [message, setmessage] = useState(null)
+  const [isDataLoading, setDataLoading] = useState(false)
 
+  const token = window.localStorage.getItem('token')
   const Id = useContext(Uidcontext)
 
   const changeCssScroll = () => {
@@ -87,21 +90,26 @@ const Home = (e) => {
     const messageUpdate = post
     setmessage(messageUpdate)
   }
+  const sendAxios = () => {
+    setDataLoading(true)
+    axios
+      .get(`${process.env.REACT_APP_API_URL}api/auth/${Id}`)
+      .then((res) => {
+        console.log(res.data)
+        setUserId(res.data._id)
+        setEmail(res.data.email)
+        setDataLoading(false)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
-  axios
-    .get(`${process.env.REACT_APP_API_URL}api/auth/${Id}`)
-    .then((res) => {
-      console.log(res.data)
-      setUserId(res.data._id)
-      setEmail(res.data.email)
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+  useEffect(() => {
+    sendAxios()
+  }, [])
 
   console.log(userId)
-
-  const token = window.localStorage.getItem('token')
 
   // condition pour sécuriser la session
   if (token && Id !== null) {
@@ -124,15 +132,22 @@ const Home = (e) => {
           </DivFaIcon>
         </Header>
         <ContainerPosts>
-          <WritePost className="global">
-            <div className="divH1">
-              <h1>
-                Bienvenue, <span>{email}</span>
-              </h1>
-            </div>
-            <Postform user={email} onUpdate={onUpdate} />
-          </WritePost>
-          <PostsDisplay onUpdate={message} />
+          {isDataLoading ? (
+            <Loading />
+          ) : (
+            <>
+              (
+              <WritePost className="global">
+                <div className="divH1">
+                  <h1>
+                    Bienvenue, <span>{email}</span>
+                  </h1>
+                </div>
+                <Postform user={email} onUpdate={onUpdate} />
+              </WritePost>
+              <PostsDisplay onUpdate={message} />)
+            </>
+          )}
         </ContainerPosts>
       </DivContainer>
     )
