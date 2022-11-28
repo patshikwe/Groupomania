@@ -1,6 +1,6 @@
 // Fichier composant pour aimé (liked)
 import axios from 'axios'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Uidcontext } from '../../utils/HomeContext'
 import colors from '../../utils/style/colors'
@@ -89,12 +89,16 @@ const ContainerHeart = styled.div`
 `
 
 const Liked = (props) => {
-  let like = 1
+  const like = 1
   const userId = useContext(Uidcontext)
   const token = window.localStorage.getItem('token')
   const Id = props.IdPost
-  const [liked, setLiked] = useState('')
+  // const isLiked = props.isLiked
+  const usersLiked = props.usersLiked
+  const [isliked, setIsLiked] = useState(false)
+  const [love, setLove] = useState(null)
   const message = "J'aime!"
+  console.log(usersLiked)
 
   const handleLiked = async () => {
     const data = { like, userId }
@@ -110,17 +114,27 @@ const Liked = (props) => {
       .then((res) => {
         console.log(res)
         console.log(res.data.message)
-        setLiked(res.data.message)
+        setLove(res.data.message)
       })
       .catch((err) => {
         console.log(err)
       })
   }
 
+  useEffect(() => {
+    if (usersLiked.includes(userId)) {
+      setIsLiked(true)
+    }
+  }, [usersLiked, userId])
+  console.log(isliked)
+
   return (
     <ContainerHeart>
       <div className="boom" onClick={handleLiked}>
-        <div className={liked === message ? 'item' : null}></div>
+        <div
+          className={love === message || isliked === true ? 'item' : null}
+          updateIsliked={handleLiked}
+        ></div>
       </div>
     </ContainerHeart>
   )

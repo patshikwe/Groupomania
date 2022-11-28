@@ -8,7 +8,7 @@ import Liked from './Liked'
 
 const token = localStorage.getItem('token')
 
-function PostsDisplay(onUpdate) {
+function PostsDisplay(onUpdate, updateIsliked) {
   const [posts, setPosts] = useState(null)
   const [updateDeletePost, setUpdateDeletePost] = useState(null)
   const Id = useContext(Uidcontext)
@@ -33,7 +33,7 @@ function PostsDisplay(onUpdate) {
 
   useEffect(() => {
     handleGetAllMessages()
-  }, [onUpdate, updateDeletePost]) // Vérification de changement pour auto rechargement
+  }, [onUpdate, updateIsliked, updateDeletePost]) // Vérification de changement pour auto rechargement
 
   console.log(posts)
 
@@ -59,7 +59,11 @@ function PostsDisplay(onUpdate) {
                 postMessage={post.message}
               />
             </div>
-            <Liked IdPost={post._id} />
+            <Liked
+              IdPost={post._id}
+              isLiked={post.likes}
+              usersLiked={post.usersLiked}
+            />
           </Card>
         ))}
     </div>

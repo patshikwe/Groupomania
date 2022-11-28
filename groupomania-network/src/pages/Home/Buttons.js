@@ -54,7 +54,7 @@ const Sail = styled.div`
 
 function Buttons({ userId, Id, IdPost, postMessage, onUpdateDelete }) {
   const token = window.localStorage.getItem('token')
-  const [confirmationModal, setConfirmationModal] = useState(null)
+  const [confirmationModal, setConfirmationModal] = useState(false)
 
   // Fonction pour supprimer un post
   const handleDelete = async () => {
