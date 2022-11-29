@@ -86,6 +86,14 @@ const ContainerHeart = styled.div`
       height: 50%;
     }
   }
+
+  .posit {
+    position: relative;
+    bottom: -35px;
+  }
+  .heigth {
+    height: 100%;
+  }
 `
 
 const Liked = (props) => {
@@ -93,17 +101,15 @@ const Liked = (props) => {
   const userId = useContext(Uidcontext)
   const token = window.localStorage.getItem('token')
   const Id = props.IdPost
-  // const isLiked = props.isLiked
   const usersLiked = props.usersLiked
   const [isliked, setIsLiked] = useState(false)
   const [love, setLove] = useState(null)
-  const message = "J'aime!"
+  const onLike = "J'aime!"
+  const unLike = "J'aime, annulé."
   console.log(usersLiked)
 
   const handleLiked = async () => {
     const data = { like, userId }
-    console.log("J'ai clické! =>", like, Id, userId, token)
-    console.log('Valeur data =', data)
 
     await axios({
       method: 'post',
@@ -121,20 +127,26 @@ const Liked = (props) => {
       })
   }
 
+  // Vérifier si usrsId se trouve dans usersLiked
   useEffect(() => {
     if (usersLiked.includes(userId)) {
       setIsLiked(true)
     }
   }, [usersLiked, userId])
-  console.log(isliked)
+  console.log(isliked, love)
+
+  // Remonter l'information vers le parent
+  props.updateIsLiked(love)
+  // props.listenLiked(love)
 
   return (
     <ContainerHeart>
       <div className="boom" onClick={handleLiked}>
-        <div
-          className={love === message || isliked === true ? 'item' : null}
-          updateIsliked={handleLiked}
-        ></div>
+        {love === onLike && isliked === false ? (
+          <div className="item"></div>
+        ) : null}
+        {love === unLike && isliked === true && <div className=""></div>}
+        {isliked && <div className="item"></div>}
       </div>
     </ContainerHeart>
   )

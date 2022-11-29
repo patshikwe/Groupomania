@@ -8,9 +8,10 @@ import Liked from './Liked'
 
 const token = localStorage.getItem('token')
 
-function PostsDisplay(onUpdate, updateIsliked) {
+function PostsDisplay(onUpdate, listenLiked) {
   const [posts, setPosts] = useState(null)
   const [updateDeletePost, setUpdateDeletePost] = useState(null)
+  const [updateLike, setUpdateLike] = useState(null)
   const Id = useContext(Uidcontext)
 
   const handleGetAllMessages = async () => {
@@ -31,9 +32,16 @@ function PostsDisplay(onUpdate, updateIsliked) {
       })
   }
 
+  // Remonter l'information enfant vers parent
+  const updateIsLiked = (love) => {
+    console.log('Envoi données enfant vers parent')
+    console.log(love)
+    const liked = love
+    setUpdateLike(liked)
+  }
   useEffect(() => {
     handleGetAllMessages()
-  }, [onUpdate, updateIsliked, updateDeletePost]) // Vérification de changement pour auto rechargement
+  }, [onUpdate, updateDeletePost]) // Vérification de changement pour auto rechargement
 
   console.log(posts)
 
@@ -63,6 +71,8 @@ function PostsDisplay(onUpdate, updateIsliked) {
               IdPost={post._id}
               isLiked={post.likes}
               usersLiked={post.usersLiked}
+              updateIsLiked={updateIsLiked}
+              listenLiked={updateLike}
             />
           </Card>
         ))}
