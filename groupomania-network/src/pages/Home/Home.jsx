@@ -90,9 +90,10 @@ const Home = (e) => {
     const messageUpdate = post
     setmessage(messageUpdate)
   }
-  const sendAxios = () => {
+
+  const sendAxios = async () => {
     setDataLoading(true)
-    axios
+    await axios
       .get(`${process.env.REACT_APP_API_URL}api/auth/${Id}`)
       .then((res) => {
         console.log(res.data)
