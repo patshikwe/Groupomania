@@ -185,11 +185,12 @@ export const WritePost = styled.div`
   // classe générale
   .background {
     text-align: center;
-    border: 1px solid ${colors.primary};
+    // border: 1px solid ${colors.primary};
     border-radius: 20px;
     box-shadow: #23272b3d 2px 3px 3px;
-    background-color: white;
+    background-color: ${colors.tertieryDark};
     font-weight: bold;
+    color: white;
   }
 
   // input file enfant div .containerImage
