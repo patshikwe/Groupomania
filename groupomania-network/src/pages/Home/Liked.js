@@ -10,8 +10,6 @@ const ContainerHeart = styled.div`
   .boom {
     width: 40px;
     height: 35px;
-    bottom: 20px;
-    right: 3%;
     cursor: pointer;
     clip-path: polygon(
       10% 30%,
@@ -65,34 +63,22 @@ const ContainerHeart = styled.div`
     background-color: white;
   }
   .item {
-    width: 100%;
+    width: 40px;
     height: 0;
     background: linear-gradient(
       ${colors.primary},
-      ${colors.tertieryDark},
       ${colors.secondary},
       ${colors.primary},
       ${colors.secondary}
     );
-    animation: item 2.9s ease-in-out forwards;
+    animation: item 1s ease-in-out forwards;
     position: absolute;
     bottom: 0;
   }
   @keyframes item {
     100% {
-      height: 100%;
+      height: 35px;
     }
-    50% {
-      height: 50%;
-    }
-  }
-
-  .posit {
-    position: relative;
-    bottom: -35px;
-  }
-  .heigth {
-    height: 100%;
   }
 `
 
