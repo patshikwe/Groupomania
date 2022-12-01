@@ -138,7 +138,6 @@ const Home = (e) => {
             <Loading />
           ) : (
             <>
-              (
               <WritePost className="global">
                 <div className="divH1">
                   <h1>
@@ -148,7 +147,7 @@ const Home = (e) => {
                 <Postform user={email} onUpdate={onUpdate} />
               </WritePost>
               <Load />
-              <PostsDisplay onUpdate={message} />)
+              <PostsDisplay onUpdate={message} />
             </>
           )}
         </ContainerPosts>
