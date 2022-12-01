@@ -55,6 +55,7 @@ const Sail = styled.div`
 function Buttons({ userId, Id, IdPost, postMessage, onUpdateDelete }) {
   const token = window.localStorage.getItem('token')
   const [confirmationModal, setConfirmationModal] = useState(false)
+  const admin = String('63829d29b0603dc667d0c3ad')
 
   // Fonction pour supprimer un post
   const handleDelete = async () => {
@@ -88,12 +89,12 @@ function Buttons({ userId, Id, IdPost, postMessage, onUpdateDelete }) {
 
   return (
     <ContainerButtons>
-      {userId === Id ? (
+      {userId === Id || userId === admin ? (
         <Delete onClick={handleConfirmationModal}>
           <img src={trash} alt="Supprimer" title="Supprimer" />
         </Delete>
       ) : null}
-      {userId === Id ? <button>Modifier</button> : null}
+      {userId === Id || userId === admin ? <button>Modifier</button> : null}
       <button>Répondre</button>
       {confirmationModal ? (
         <>
@@ -107,8 +108,6 @@ function Buttons({ userId, Id, IdPost, postMessage, onUpdateDelete }) {
           <Sail />
         </>
       ) : null}
-
-      {/* <Sail className={confirmationModal ? 'display-flex' : ''} /> */}
     </ContainerButtons>
   )
 }
