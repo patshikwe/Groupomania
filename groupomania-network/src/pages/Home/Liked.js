@@ -80,6 +80,14 @@ const ContainerHeart = styled.div`
       height: 35px;
     }
   }
+
+  .vide {
+    position: relative;
+    z-index: 1;
+    background: white;
+    width: 40px;
+    height: 35px;
+  }
 `
 
 const Liked = (props) => {
@@ -121,17 +129,13 @@ const Liked = (props) => {
   }, [usersLiked, userId])
   console.log(isliked, love)
 
-  // Remonter l'information vers le parent
-  props.updateIsLiked(love)
-  // props.listenLiked(love)
-
   return (
     <ContainerHeart>
       <div className="boom" onClick={handleLiked}>
         {love === onLike && isliked === false ? (
           <div className="item"></div>
         ) : null}
-        {love === unLike && isliked === true && <div className=""></div>}
+        {love === unLike && isliked === true && <div className="vide"></div>}
         {isliked && <div className="item"></div>}
       </div>
     </ContainerHeart>

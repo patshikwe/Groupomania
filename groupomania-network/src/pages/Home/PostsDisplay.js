@@ -12,7 +12,7 @@ const token = localStorage.getItem('token')
 function PostsDisplay(onUpdate, listenLiked) {
   const [posts, setPosts] = useState(null)
   const [updateDeletePost, setUpdateDeletePost] = useState(null)
-  const [updateLike, setUpdateLike] = useState(null)
+
   const Id = useContext(Uidcontext)
 
   const handleGetAllMessages = async () => {
@@ -33,13 +33,6 @@ function PostsDisplay(onUpdate, listenLiked) {
       })
   }
 
-  // Remonter l'information enfant vers parent
-  const updateIsLiked = (love) => {
-    console.log('Envoi données enfant vers parent')
-    console.log(love)
-    const liked = love
-    setUpdateLike(liked)
-  }
   useEffect(() => {
     handleGetAllMessages()
   }, [onUpdate, updateDeletePost]) // Vérification de changement pour auto rechargement
@@ -74,8 +67,6 @@ function PostsDisplay(onUpdate, listenLiked) {
               IdPost={post._id}
               isLiked={post.likes}
               usersLiked={post.usersLiked}
-              updateIsLiked={updateIsLiked}
-              listenLiked={updateLike}
             />
           </Card>
         ))}

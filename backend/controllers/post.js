@@ -148,41 +148,4 @@ exports.likes = (req, res, next) => {
       })
       .catch((error) => res.status(500).json({ error }))
   }
-
-  /* ================================ */
-
-  // switch (like) {
-  //   case 1:
-  //     console.log('case 1')
-  //     Post.updateOne(
-  //       { _id: postId },
-  //       {
-  //         $inc: { likes: 1 },
-  //         $push: { usersLiked: userId },
-  //       }
-  //     )
-  //       .then(() => res.status(200).json({ message: "J'aime!" }))
-  //       .catch((error) => res.status(400).json({ error }))
-  //     break
-
-  //   case 0:
-  //     console.log('case 0')
-
-  //     Post.findOne({ _id: postId })
-  //       .then((post) => {
-  //         if (post.usersLiked.includes(userId)) {
-  //           Post.updateOne(
-  //             { _id: postId },
-  //             {
-  //               $inc: { likes: -1 },
-  //               $pull: { usersLiked: userId },
-  //             }
-  //           )
-  //             .then(() => res.status(200).json({ message: "J'aime, annulé." }))
-  //             .catch((error) => res.status(400).json({ error }))
-  //         }
-  //       })
-  //       .catch((error) => res.status(500).json({ error }))
-  //     break
-  // }
 }
