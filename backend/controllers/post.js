@@ -10,23 +10,38 @@ exports.createPost = (req, res, next) => {
   console.log('contenu body', req.body)
 
   // console.log(filename)
-  // console.log('Création image')
+  console.log('Création image')
   console.log(req.protocol)
   console.log(req.get('host'))
 
   // console.log("C'est le req.file")
-  // console.log(req.file, 'sans filename!')
+  console.log(req.file, 'sans filename!')
 
   const postObject = req.body
   console.log('contenu body = postObject', postObject)
-  // delete postObject.userId
-  // console.log('suppression id', postObject)
-  const post = new Post({ ...postObject })
-  console.log(post)
-  post
-    .save()
-    .then(() => res.status(201).json({ message: 'Objet enregistré !' }))
-    .catch((error) => res.status(400).json({ error }))
+
+  if (req.file === null || req.file === undefined || filename === undefined) {
+    const post = new Post({
+      ...postObject,
+    })
+    console.log('Sans filename ==>', post)
+    post
+      .save()
+      .then(() => res.status(201).json({ message: 'Objet enregistré !' }))
+      .catch((error) => res.status(400).json({ error }))
+  } else {
+    const post = new Post({
+      ...postObject,
+      imageUrl: `${req.protocol}://${req.get('host')}/images/${
+        req.file.filename
+      }`,
+    })
+    console.log('Avec filename ==>', post)
+    post
+      .save()
+      .then(() => res.status(201).json({ message: 'Objet enregistré !' }))
+      .catch((error) => res.status(400).json({ error }))
+  }
 }
 
 // Récupérer toutes les publications (posts) *****************
