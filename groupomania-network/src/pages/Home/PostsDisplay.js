@@ -5,6 +5,7 @@ import Buttons from './Buttons'
 import { useContext } from 'react'
 import { Uidcontext } from '../../utils/HomeContext'
 import Liked from './Liked'
+import { timestampParser } from '../../utils/utils'
 
 const token = localStorage.getItem('token')
 
@@ -52,9 +53,11 @@ function PostsDisplay(onUpdate, listenLiked) {
           <Card key={post._id}>
             <p>
               <span>{post.email}</span>
-              {post.createdAt ? <span>Créé: {post.createdAt}</span> : null}
+              {post.createdAt ? (
+                <span>Créé: {timestampParser(post.createdAt)}</span>
+              ) : null}
               {post.updatedAt !== post.createdAt ? (
-                <span>Modifié: {post.updatedAt}</span>
+                <span>Modifié: {timestampParser(post.updatedAt)}</span>
               ) : null}
             </p>
             <p>{post.message}</p>
