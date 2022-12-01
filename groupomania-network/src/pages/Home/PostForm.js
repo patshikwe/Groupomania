@@ -40,22 +40,22 @@ function Postform(props) {
     console.log(imageUrl)
 
     if (message || postPicture) {
-      let data = { userId, message, email }
-      // const formData = new FormData()
-      // formData.append('userId', userId)
-      // formData.append('message', message)
-      // formData.append('email', email)
-      // console.log(formData)
+      // let data = { userId, message, email }
+      const formData = new FormData()
+      formData.append('userId', userId)
+      formData.append('message', message)
+      formData.append('email', email)
+      console.log(formData)
 
       if (imageUrl) {
-        data = { userId, message, email, imageUrl }
-        // formData.append('imageUrl', imageUrl)
-        console.log(data)
+        // data = { userId, message, email, imageUrl }
+        formData.append('imageUrl', imageUrl)
+        // console.log(data)
       }
       await axios({
         method: 'post',
         url: `${process.env.REACT_APP_API_URL}api/post`,
-        data: data,
+        data: formData,
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -64,10 +64,11 @@ function Postform(props) {
           console.log(res)
           props.onUpdate(message) //props fonction de l'enfant au parent
           setMessage('')
-          // setPostpicture('')
+          setPostpicture('')
         })
         .catch((error) => {
           console.log(error)
+          alert("Erreur lors de l'envoi des données vers le serveur!")
         })
     } else {
       alert('Veuillez entrer votre message!')
@@ -105,9 +106,15 @@ function Postform(props) {
               <div className="divMessage">
                 <p>{message}</p>
               </div>
-              <div className="divPicture">
-                <img src={postPicture} title={`${imageUrl.name}`} alt="" />
-              </div>
+              {postPicture && (
+                <div className="divPicture">
+                  <img
+                    src={postPicture}
+                    title={`${imageUrl.name}`}
+                    alt={`${imageUrl.name}`}
+                  />
+                </div>
+              )}
             </div>
           </li>
         ) : null}
