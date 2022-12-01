@@ -1,4 +1,4 @@
-// Fichier waves(ondes) placé dans Home.jsx
+// Fichier Load(ondes) placé dans Home.jsx
 const { default: styled } = require('styled-components')
 
 const Waves = styled.div`
