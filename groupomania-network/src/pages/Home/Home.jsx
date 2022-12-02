@@ -18,6 +18,7 @@ import { useContext } from 'react'
 import { WritePost } from '../../utils/style/WritePost'
 import Loading from '../../utils/Loading'
 import Load from '../../utils/Load'
+import Hide from '../../utils/Hide'
 
 const DivContainer = styled.div`
   display: flex;
@@ -147,6 +148,7 @@ const Home = (e) => {
                 <Postform user={email} onUpdate={onUpdate} />
               </WritePost>
               <Load />
+              <Hide />
               <PostsDisplay onUpdate={message} />
             </>
           )}
