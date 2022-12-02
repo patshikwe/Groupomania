@@ -1,6 +1,6 @@
 // Page d'accueil(Home page)
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import logo from '../../assets/logo/icon-left-font-monochrome-black.svg'
 import user from '../../assets/logo/circle-user.svg'
 import Logout from '../Auth/Logout'
@@ -92,7 +92,7 @@ const Home = (e) => {
     setmessage(messageUpdate)
   }
 
-  const sendAxios = async () => {
+  const sendAxios = useCallback(async () => {
     setDataLoading(true)
     await axios
       .get(`${process.env.REACT_APP_API_URL}api/auth/${Id}`)
@@ -105,11 +105,11 @@ const Home = (e) => {
       .catch((err) => {
         console.log(err)
       })
-  }
+  }, [Id])
 
   useEffect(() => {
     sendAxios()
-  }, [])
+  }, [sendAxios])
 
   console.log(userId)
 
