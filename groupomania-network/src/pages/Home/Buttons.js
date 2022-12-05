@@ -95,7 +95,7 @@ function Buttons({ userId, Id, IdPost, postMessage, onUpdateDelete }) {
         </Delete>
       ) : null}
       {userId === Id || userId === admin ? <button>Modifier</button> : null}
-      <button>Répondre</button>
+      {/* <button>Répondre</button> */}
       {confirmationModal ? (
         <>
           <Modal
