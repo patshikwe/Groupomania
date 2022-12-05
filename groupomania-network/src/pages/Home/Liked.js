@@ -131,7 +131,7 @@ const Liked = (props) => {
 
   return (
     <ContainerHeart>
-      <div className="boom" onClick={handleLiked}>
+      <div className="boom" title="Coeur" onClick={handleLiked}>
         {love === onLike && isliked === false ? (
           <div className="item"></div>
         ) : null}
