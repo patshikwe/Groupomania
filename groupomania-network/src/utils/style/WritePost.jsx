@@ -36,7 +36,7 @@ export const WritePost = styled.div`
   }
   h1 span {
     color: ${colors.primary};
-    animation: displayUser 3.5s;
+    animation: displayUser 5s;
   }
 
   h1 {
