@@ -52,10 +52,21 @@ const Sail = styled.div`
   opacity: 1;
 `
 
-function Buttons({ userId, Id, IdPost, postMessage, onUpdateDelete }) {
+function Buttons({
+  userId,
+  Id,
+  IdPost,
+  postMessage,
+  onUpdateDelete,
+  onModifMessage,
+  updatePost,
+}) {
   const token = window.localStorage.getItem('token')
   const [confirmationModal, setConfirmationModal] = useState(false)
   const admin = String('63829d29b0603dc667d0c3ad')
+
+  // Condition pour afficher uniquement le bouton sélectionné
+  const modifOnePost = IdPost === (updatePost && updatePost.postToEdit)
 
   // Fonction pour supprimer un post
   const handleDelete = async () => {
@@ -78,6 +89,13 @@ function Buttons({ userId, Id, IdPost, postMessage, onUpdateDelete }) {
       })
   }
 
+  /**
+   * @param {string} userId:id utilisateur
+   * @param {string} Id:id utilisateur qui a créé le message
+   * @param {string} IdPost: id du post ou message
+   * @param {object} updatePost: contenant un boolean et un string
+   */
+
   // Fonction pour le contenu de la modale
   const handleConfirmationModal = () => {
     setConfirmationModal({
@@ -87,14 +105,32 @@ function Buttons({ userId, Id, IdPost, postMessage, onUpdateDelete }) {
     })
   }
 
+  console.log('Ici Buttons.js', updatePost && typeof updatePost.postToEdit)
+  console.log('Ici Buttons.js', typeof IdPost)
+
   return (
     <ContainerButtons>
+      {/* Bouton Supprimer */}
       {userId === Id || userId === admin ? (
         <Delete onClick={handleConfirmationModal}>
           <img src={trash} alt="Supprimer" title="Supprimer" />
         </Delete>
       ) : null}
-      {userId === Id || userId === admin ? <button>Modifier</button> : null}
+
+      {/* Bouton Modifier */}
+      {userId === Id || userId === admin
+        ? !updatePost && (
+            <button id={IdPost} onClick={onModifMessage}>
+              Modifier
+            </button>
+          )
+        : null}
+
+      {/* Bouton Envoyer */}
+      {userId === Id || userId === admin
+        ? updatePost && modifOnePost && <button id={IdPost}>Envoyer</button>
+        : null}
+
       {/* <button>Répondre</button> */}
       {confirmationModal ? (
         <>

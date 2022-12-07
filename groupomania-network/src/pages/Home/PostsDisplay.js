@@ -6,12 +6,14 @@ import { useContext } from 'react'
 import { Uidcontext } from '../../utils/HomeContext'
 import Liked from './Liked'
 import { timestampParser } from '../../utils/utils'
+import ModifPost from './ModifPost'
 
 const token = localStorage.getItem('token')
 
-function PostsDisplay(onUpdate, listenLiked) {
+function PostsDisplay(onUpdate) {
   const [posts, setPosts] = useState(null)
   const [updateDeletePost, setUpdateDeletePost] = useState(null)
+  const [updatePost, setUpdatePost] = useState(null)
 
   const Id = useContext(Uidcontext)
 
@@ -33,6 +35,19 @@ function PostsDisplay(onUpdate, listenLiked) {
       })
   }
 
+  // Fonction pour la mise à jour d'un post dans Home
+  const updateHandlePost = (e) => {
+    console.log('Ici ==> updateHandlePost')
+    console.log('Afficher id du bouton:', e.target.id)
+
+    setUpdatePost({
+      isUpdating: true,
+      postToEdit: e.target.id,
+    })
+  }
+
+  console.log(updatePost)
+
   useEffect(() => {
     handleGetAllMessages()
   }, [onUpdate, updateDeletePost]) // Vérification de changement pour auto rechargement
@@ -53,16 +68,21 @@ function PostsDisplay(onUpdate, listenLiked) {
                 <span>Modifié: {timestampParser(post.updatedAt)}</span>
               ) : null}
             </p>
-            <p>{post.message}</p>
+            {/* Ici affichage des messages ou postes */}
+            <ModifPost message={post.message} />
             <div className="Contenair-buttons-img">
+              {/* Ici les props pour les boutons, voir Buttons.js */}
               <Buttons
                 userId={Id}
                 Id={post.userId}
                 IdPost={post._id}
                 onUpdateDelete={(IdPost) => setUpdateDeletePost(IdPost)} //enfant => parent(props fonction)
                 postMessage={post.message}
+                onModifMessage={updateHandlePost}
+                updatePost={updatePost}
               />
             </div>
+            {/* Ici les props pour Liked, voir Liked.js */}
             <Liked
               IdPost={post._id}
               isLiked={post.likes}
