@@ -41,22 +41,26 @@ function Postform(props) {
 
     if (message || postPicture) {
       // let data = { userId, message, email }
+
       const formData = new FormData()
       formData.append('userId', userId)
       formData.append('message', message)
       formData.append('email', email)
-      console.log(formData)
+      console.log(formData.get('userId'))
 
       if (imageUrl) {
         // data = { userId, message, email, imageUrl }
-        formData.append('imageUrl', imageUrl)
         // console.log(data)
+
+        formData.append('imageUrl', imageUrl)
+        console.log(formData.get('imageUrl'))
       }
       await axios({
         method: 'post',
         url: `${process.env.REACT_APP_API_URL}api/post`,
         data: formData,
         headers: {
+          // 'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
         },
       })
@@ -68,7 +72,7 @@ function Postform(props) {
         })
         .catch((error) => {
           console.log(error)
-          alert("Erreur lors de l'envoi des données vers le serveur!")
+          alert("Échec lors de l'envoi des données vers le serveur!")
         })
     } else {
       alert('Veuillez entrer votre message!')
@@ -122,7 +126,7 @@ function Postform(props) {
           <input
             className="inputImage"
             type="file"
-            name="imageUrl"
+            name="file"
             accept=".jpg, .jpeg, .png"
             onChange={(e) => handlePicture(e)}
           />
