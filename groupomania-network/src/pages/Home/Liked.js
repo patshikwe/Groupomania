@@ -109,7 +109,7 @@ const Liked = (props) => {
     await axios({
       method: 'post',
       url: `${process.env.REACT_APP_API_URL}api/post/${Id}/like`,
-      data: data,
+      data: { data },
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => {
