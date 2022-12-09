@@ -30,13 +30,14 @@ exports.createPost = (req, res, next) => {
       .then(() => res.status(201).json({ message: 'Objet enregistré !' }))
       .catch((error) => res.status(400).json({ error }))
   } else {
+    console.log('Avec filename 1 ==>', post)
     const post = new Post({
       ...postObject,
       imageUrl: `${req.protocol}://${req.get('host')}/images/${
         req.file.filename
       }`,
     })
-    console.log('Avec filename ==>', post)
+    console.log('Avec filename 2 ==>', post)
     post
       .save()
       .then(() => res.status(201).json({ message: 'Objet enregistré !' }))
