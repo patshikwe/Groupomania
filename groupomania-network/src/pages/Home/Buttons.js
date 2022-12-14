@@ -105,8 +105,8 @@ function Buttons({
     })
   }
 
-  console.log('Ici Buttons.js', updatePost && typeof updatePost.postToEdit)
-  console.log('Ici Buttons.js', typeof IdPost)
+  console.log('Ici Buttons.js', updatePost && updatePost.postToEdit)
+  console.log('Ici Buttons.js', IdPost)
 
   return (
     <ContainerButtons>

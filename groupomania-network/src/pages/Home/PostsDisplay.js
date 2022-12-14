@@ -42,7 +42,7 @@ function PostsDisplay(onUpdate) {
 
     setUpdatePost({
       isUpdating: true,
-      postToEdit: e.target.id,
+      postToEdit: e.target.id, //id du message sélectionné
     })
   }
 
@@ -68,8 +68,13 @@ function PostsDisplay(onUpdate) {
                 <span>Modifié: {timestampParser(post.updatedAt)}</span>
               ) : null}
             </p>
-            {/* Ici affichage des messages ou postes */}
-            <ModifPost message={post.message} />
+            {/* Ici affichage des messages et ses props */}
+            <ModifPost
+              message={post.message}
+              updatePost={updatePost}
+              IdPost={post._id}
+            />
+
             <div className="Contenair-buttons-img">
               {/* Ici les props pour les boutons, voir Buttons.js */}
               <Buttons
