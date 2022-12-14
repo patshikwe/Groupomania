@@ -14,6 +14,7 @@ function PostsDisplay(onUpdate) {
   const [posts, setPosts] = useState(null)
   const [updateDeletePost, setUpdateDeletePost] = useState(null)
   const [updatePost, setUpdatePost] = useState(null)
+  const [isButtonSendActived, setIsButtonSendActived] = useState(false)
 
   const Id = useContext(Uidcontext)
 
@@ -47,6 +48,11 @@ function PostsDisplay(onUpdate) {
   }
 
   console.log(updatePost)
+  // Fonction pour vérifier l'activation du bouton envoyer
+  const messageToSend = () => {
+    console.log('Ici PostsDisplay.js => bouton envoyé activé')
+    setIsButtonSendActived(true)
+  }
 
   useEffect(() => {
     handleGetAllMessages()
@@ -73,6 +79,7 @@ function PostsDisplay(onUpdate) {
               message={post.message}
               updatePost={updatePost}
               IdPost={post._id}
+              isButtonSendActived={isButtonSendActived} // prop pour bouton envoyer
             />
 
             <div className="Contenair-buttons-img">
@@ -85,6 +92,7 @@ function PostsDisplay(onUpdate) {
                 postMessage={post.message}
                 onModifMessage={updateHandlePost}
                 updatePost={updatePost}
+                sendMessage={messageToSend}
               />
             </div>
             {/* Ici les props pour Liked, voir Liked.js */}

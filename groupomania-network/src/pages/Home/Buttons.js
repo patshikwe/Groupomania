@@ -60,6 +60,7 @@ function Buttons({
   onUpdateDelete,
   onModifMessage,
   updatePost,
+  sendMessage,
 }) {
   const token = window.localStorage.getItem('token')
   const [confirmationModal, setConfirmationModal] = useState(false)
@@ -128,7 +129,12 @@ function Buttons({
 
       {/* Bouton Envoyer */}
       {userId === Id || userId === admin
-        ? updatePost && modifOnePost && <button id={IdPost}>Envoyer</button>
+        ? updatePost &&
+          modifOnePost && (
+            <button id={IdPost} onClick={sendMessage}>
+              Envoyer
+            </button>
+          )
         : null}
 
       {/* <button>Répondre</button> */}
