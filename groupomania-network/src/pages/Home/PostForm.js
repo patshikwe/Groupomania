@@ -136,7 +136,12 @@ function Postform(props) {
             Annuler message
           </button>
         ) : null}
-        <input className="send background" type="submit" value="Envoyer" />
+        <input
+          className="send background"
+          type="submit"
+          value="Envoyer"
+          title="Envoyer"
+        />
       </form>
     </>
   )

@@ -121,7 +121,11 @@ function Buttons({
       {/* Bouton Modifier */}
       {userId === Id || userId === admin
         ? !updatePost && (
-            <button id={IdPost} onClick={onModifMessage}>
+            <button
+              id={IdPost}
+              onClick={onModifMessage}
+              title="Modifier la publication"
+            >
               Modifier
             </button>
           )
@@ -131,7 +135,7 @@ function Buttons({
       {userId === Id || userId === admin
         ? updatePost &&
           modifOnePost && (
-            <button id={IdPost} onClick={sendMessage}>
+            <button id={IdPost} onClick={sendMessage} title="Envoyer">
               Envoyer
             </button>
           )
