@@ -132,7 +132,11 @@ function Postform(props) {
           />
         </div>
         {message || postPicture ? (
-          <button className="top background" onClick={cancelPost}>
+          <button
+            className="top background"
+            onClick={cancelPost}
+            title="Annuler message"
+          >
             Annuler message
           </button>
         ) : null}
