@@ -67,6 +67,7 @@ export const WritePost = styled.div`
 
   // input(saisie texte)
   textarea {
+    resize: none;
     overflow: auto;
     border: 12px double ${colors.tertieryDark};
     border-image: linear-gradient(
