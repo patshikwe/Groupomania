@@ -79,7 +79,7 @@ export const WritePost = styled.div`
       5;
     padding: 5px;
     box-shadow: #23272b3d 2px 3px 3px;
-    width: 75%;
+    width: 83%;
     height: 10rem;
     display: block;
     position: relative;
