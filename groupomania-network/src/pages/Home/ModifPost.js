@@ -3,6 +3,25 @@
 import { useContext, useState } from 'react'
 import { Uidcontext } from '../../utils/HomeContext'
 import axios from 'axios'
+import styled from 'styled-components'
+import colors from '../../utils/style/colors'
+
+// CSS pour textarea
+const Textarea = styled.textarea`
+  width: 100%;
+  height: 145px;
+  resize: none;
+  overflow: auto;
+  border: 12px double ${colors.tertieryDark};
+  border-image: linear-gradient(
+      ${colors.primary},
+      ${colors.secondary},
+      ${colors.tertieryDark},
+      ${colors.secondary}
+    )
+    5;
+  font-weight: bold;
+`
 
 const ModifPost = ({ message, updatePost, IdPost, isButtonSendActived }) => {
   console.log('Ici ModifPost', updatePost, IdPost)
@@ -66,7 +85,7 @@ const ModifPost = ({ message, updatePost, IdPost, isButtonSendActived }) => {
   return (
     <>
       {modifOnePost ? (
-        <textarea defaultValue={message} onChange={handleModifMessage} />
+        <Textarea defaultValue={message} onChange={handleModifMessage} />
       ) : (
         <p>{message}</p> /*affiche les messages venant de PostsDisplay*/
       )}
