@@ -63,7 +63,7 @@ const ModifPost = ({
   // Condition pour envoyer la requête
   if (
     isButtonSendActived &&
-    // messageValue !== null &&
+    messageValue !== null &&
     messageValue !== undefined &&
     modifOnePost
   ) {
