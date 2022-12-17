@@ -23,7 +23,14 @@ const Textarea = styled.textarea`
   font-weight: bold;
 `
 
-const ModifPost = ({ message, updatePost, IdPost, isButtonSendActived }) => {
+// Cette fonction rçoit en paramètre des props
+const ModifPost = ({
+  message,
+  updatePost,
+  IdPost,
+  isButtonSendActived,
+  messageReceivedIsUpdated,
+}) => {
   console.log('Ici ModifPost', updatePost, IdPost)
   const postToEdit = updatePost && updatePost.postToEdit
   const [messageValue, setMessageValue] = useState()
@@ -56,7 +63,7 @@ const ModifPost = ({ message, updatePost, IdPost, isButtonSendActived }) => {
   // Condition pour envoyer la requête
   if (
     isButtonSendActived &&
-    messageValue !== null &&
+    // messageValue !== null &&
     messageValue !== undefined &&
     modifOnePost
   ) {
@@ -74,6 +81,7 @@ const ModifPost = ({ message, updatePost, IdPost, isButtonSendActived }) => {
       })
         .then((res) => {
           console.log(res)
+          messageReceivedIsUpdated() //fonction de mis à jour appelée
         })
         .catch((error) => {
           console.log(error)

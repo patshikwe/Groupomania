@@ -15,6 +15,7 @@ function PostsDisplay(onUpdate) {
   const [updateDeletePost, setUpdateDeletePost] = useState(null)
   const [updatePost, setUpdatePost] = useState(null)
   const [isButtonSendActived, setIsButtonSendActived] = useState(false)
+  const [finishPostEdits, setFinishPostEdits] = useState(false)
 
   const Id = useContext(Uidcontext)
 
@@ -46,17 +47,27 @@ function PostsDisplay(onUpdate) {
       postToEdit: e.target.id, //id du message sélectionné
     })
   }
-
   console.log(updatePost)
+
   // Fonction pour vérifier l'activation du bouton envoyer
   const messageToSend = () => {
     console.log('Ici PostsDisplay.js => bouton envoyé activé')
     setIsButtonSendActived(true)
   }
 
+  /** Fonction pour mettre à jour le post après modification,
+   * appelée après la reponse de sendAxios dans ModifPost et
+   * revenir à l'état initial*/
+  const messageReceivedIsUpdated = () => {
+    console.log('Ici PostsDisplay.js pour mettre à jour le post')
+    setUpdatePost(null)
+    setIsButtonSendActived(false)
+    setFinishPostEdits((update) => !update)
+  }
+
   useEffect(() => {
     handleGetAllMessages()
-  }, [onUpdate, updateDeletePost]) // Vérification de changement pour auto rechargement
+  }, [onUpdate, updateDeletePost, finishPostEdits]) // Vérification de changement pour auto rechargement
 
   console.log(posts)
 
@@ -80,6 +91,7 @@ function PostsDisplay(onUpdate) {
               updatePost={updatePost}
               IdPost={post._id}
               isButtonSendActived={isButtonSendActived} // prop pour bouton envoyer
+              messageReceivedIsUpdated={messageReceivedIsUpdated}
             />
 
             <div className="Contenair-buttons-img">
