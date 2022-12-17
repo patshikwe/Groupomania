@@ -49,6 +49,12 @@ function PostsDisplay(onUpdate) {
   }
   console.log(updatePost)
 
+  // Fonction pour annuler les modifications
+  const toCancelModifications = () => {
+    console.log('Ici PostsDisplay.js => Annuler les modifications')
+    setUpdatePost(null)
+  }
+
   // Fonction pour vérifier l'activation du bouton envoyer
   const messageToSend = () => {
     console.log('Ici PostsDisplay.js => bouton envoyé activé')
@@ -105,6 +111,7 @@ function PostsDisplay(onUpdate) {
                 onModifMessage={updateHandlePost}
                 updatePost={updatePost}
                 sendMessage={messageToSend}
+                cancelModifications={toCancelModifications}
               />
             </div>
             {/* Ici les props pour Liked, voir Liked.js */}

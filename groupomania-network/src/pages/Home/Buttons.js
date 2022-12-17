@@ -61,6 +61,7 @@ function Buttons({
   onModifMessage,
   updatePost,
   sendMessage,
+  cancelModifications,
 }) {
   const token = window.localStorage.getItem('token')
   const [confirmationModal, setConfirmationModal] = useState(false)
@@ -137,6 +138,16 @@ function Buttons({
           modifOnePost && (
             <button id={IdPost} onClick={sendMessage} title="Envoyer">
               Envoyer
+            </button>
+          )
+        : null}
+
+      {/* Bouton Annuler la modification */}
+      {userId === Id || userId === admin
+        ? updatePost &&
+          modifOnePost && (
+            <button id={IdPost} onClick={cancelModifications} title="Annuler">
+              Annuler
             </button>
           )
         : null}
