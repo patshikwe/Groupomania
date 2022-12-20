@@ -45,7 +45,7 @@ const HeaderNav = () => {
   return (
     <Header>
       <DivLogo>
-        <img src={logo} className="logo" alt="logo" />
+        <img src={logo} className="logo" alt="logo Groupomania" />
       </DivLogo>
       <NavContainer>
         <StyledLink to="/">S'inscrire</StyledLink>
