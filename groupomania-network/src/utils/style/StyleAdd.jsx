@@ -29,6 +29,15 @@ export const SectionForm = styled.section`
     color: red;
   }
 
+  .div-input-password {
+    display: flex;
+    justify-content: center;
+  }
+
+  .eye {
+    width: 1rem;
+    background: white;
+  }
   input {
     border-radius: 5px;
   }
@@ -38,6 +47,8 @@ export const SectionForm = styled.section`
     cursor: pointer;
     :hover {
       color: ${colors.primary};
+      filter: drop-shadow(2px 4px 6px black);
+      text-shadow: 0 0 black;
     }
   }
 `

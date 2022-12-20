@@ -2,14 +2,44 @@
 
 import { React, useState } from 'react'
 import axios from 'axios'
+import eye from '../../assets/logo/eye.svg'
+import eyeSlash from '../../assets/logo/eye-slash.svg'
 
-const Login = () => {
+function Login() {
+  // useState pour stocker les données
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  let isPwd = true
+
+  /** Fonction pour Afficher ou cacher le mot de passe */
+  const hidePassword = () => {
+    const password = document.getElementById('password')
+    const image = document.getElementById('pwd')
+    password.type = password.type === 'password' ? 'text' : 'password'
+    image.alt =
+      image.alt === 'Masquer le mot de passe'
+        ? 'Afficher le mot de passe'
+        : 'Masquer le mot de passe'
+
+    console.log(image, isPwd)
+
+    if (isPwd) {
+      image.src = `${eye}`
+      console.log('Cas positif 1 ==>', isPwd)
+      isPwd = false
+    } else {
+      image.src = `${eyeSlash}`
+      console.log('Cas négatif 1 ==>', isPwd)
+      isPwd = true
+    }
+  }
+
+  /** Gestionnaire de connexion */
   const handleLogin = (e) => {
     e.preventDefault()
 
+    // Récupération des éléments HTML
     const emailError = document.querySelector('.email.error')
     const passwordError = document.querySelector('.password.error')
 
@@ -62,16 +92,26 @@ const Login = () => {
         />
         <div className="email error"></div>
         <br />
+        {/* Bloc Mot de passe */}
         <label htmlFor="password">Mot de passe</label>
         <br />
-        <input
-          type="text"
-          name="password"
-          id="password"
-          required
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
+        <div className="div-input-password">
+          <input
+            type="password"
+            name="password"
+            id="password"
+            required
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+          <img
+            className="eye"
+            id="pwd"
+            onClick={hidePassword}
+            src={eyeSlash}
+            alt="Masquer le mot de passe"
+          />
+        </div>
         <div className="password error"></div>
         <br />
         <input type="submit" value="Se connecter" />
