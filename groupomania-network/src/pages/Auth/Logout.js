@@ -18,8 +18,9 @@ const DivPowerOff = styled.div`
   }
 `
 
-// Suppression du token dans localStorage
 function Logout() {
+  /** Suppression du token dans localStorage
+   * et redirection vers la page d'inscription */
   const removeToken = () => {
     localStorage.removeItem('token')
     window.location.replace('/')
