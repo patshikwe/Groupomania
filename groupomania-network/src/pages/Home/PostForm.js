@@ -40,19 +40,14 @@ function Postform(props) {
     console.log(imageUrl)
 
     if (message || postPicture) {
-      // let data = { userId, message, email }
-
       const formData = new FormData()
-      formData.append('userId', userId)
-      formData.append('message', message)
-      formData.append('email', email)
+      formData.append('userId', `${userId}`)
+      formData.append('message', `${message}`)
+      formData.append('email', `${email}`)
       console.log(formData.get('userId'))
 
       if (imageUrl) {
-        // data = { userId, message, email, imageUrl }
-        // console.log(data)
-
-        formData.append('imageUrl', imageUrl)
+        formData.append('imageUrl', `${imageUrl}`)
         console.log(formData.get('imageUrl'))
       }
       await axios({
@@ -60,7 +55,6 @@ function Postform(props) {
         url: `${process.env.REACT_APP_API_URL}api/post`,
         data: formData,
         headers: {
-          // 'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
         },
       })
