@@ -41,6 +41,46 @@ const ContainerPosts = styled.section`
   left: 6%;
   width: 90%;
   height: auto;
+
+  // div containeur du h1
+  .divH1 {
+    width: 100%;
+    height: 40px;
+  }
+
+  // Animation du span enfant h1
+  @keyframes displayUser {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 0.15;
+    }
+    50% {
+      opacity: 0.25;
+    }
+    75% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  h1 span {
+    color: ${colors.primary};
+    animation: displayUser 5s;
+  }
+
+  h1 {
+    padding-top: 10px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @media (max-width: 580px) {
+      font-size: 1em;
+    }
+  }
 `
 
 const DivFaIcon = styled.div`
@@ -120,7 +160,7 @@ const Home = (e) => {
       <DivContainer>
         <Header className={stateHeader ? 'scroll' : ''}>
           <DivLogo className={stateDivLogo ? 'height bgr-white ' : ''}>
-            <img src={logo} className="logo" alt="logo" />
+            <img src={logo} className="logo" alt="logo Groupomania" />
           </DivLogo>
           <DivFaIcon className={stateDivFaicon ? 'bgr-white' : ''}>
             <DivUser>
@@ -134,25 +174,25 @@ const Home = (e) => {
             <Logout />
           </DivFaIcon>
         </Header>
-        <ContainerPosts>
-          {isDataLoading ? (
-            <Loading />
-          ) : (
-            <>
-              <WritePost className="global">
-                <div className="divH1">
-                  <h1>
-                    Bienvenue, <span>{email}</span>
-                  </h1>
-                </div>
-                <Postform user={email} onUpdate={onUpdate} />
-              </WritePost>
-              <Load />
-              <Hide />
-              <PostsDisplay onUpdate={message} />
-            </>
-          )}
-        </ContainerPosts>
+        {isDataLoading ? (
+          <Loading />
+        ) : (
+          <ContainerPosts>
+            <div className="divH1">
+              <h1>
+                Bienvenue, <span>{email}</span>
+              </h1>
+            </div>
+            <WritePost className="global">
+              <Postform user={email} onUpdate={onUpdate} />
+            </WritePost>
+            <Load />
+            {/* */}
+            <Hide />
+            {/* */}
+            <PostsDisplay onUpdate={message} />
+          </ContainerPosts>
+        )}
       </DivContainer>
     )
   } else {

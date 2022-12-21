@@ -49,6 +49,7 @@ function Postform(props) {
       if (imageUrl) {
         formData.append('imageUrl', `${imageUrl}`)
         console.log(formData.get('imageUrl'))
+        console.log(formData)
       }
       await axios({
         method: 'post',
@@ -88,13 +89,13 @@ function Postform(props) {
           required
         />
         {message || postPicture ? (
-          <li className="card-container">
+          <div className="card-container">
             <div className="cardInfoUser">
               <div className="card-left">
                 <img src={user} alt="logo utilisateur" />
               </div>
               <div className="info-user">
-                <h3>{props.user}</h3>
+                <h2>{props.user}</h2>
               </div>
               <div className="date">
                 <span>{timestampParser(Date.now())}</span>
@@ -114,7 +115,7 @@ function Postform(props) {
                 </div>
               )}
             </div>
-          </li>
+          </div>
         ) : null}
         <div className="containerImage">
           <input
@@ -129,7 +130,7 @@ function Postform(props) {
           <button
             className="top background"
             onClick={cancelPost}
-            title="Annuler message"
+            title="Annuler le message"
           >
             Annuler message
           </button>

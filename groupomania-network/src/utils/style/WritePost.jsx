@@ -5,50 +5,7 @@ import styled from 'styled-components'
 export const WritePost = styled.div`
   display: flex;
   flex-direction: column;
-
-  // div containeur du h1
-  .divH1 {
-    width: 86%;
-    height: 120px;
-    position: relative;
-    @media (max-width: 1024px) {
-      height: 100px;
-    }
-  }
-
-  // Animation du span enfant h1
-  @keyframes displayUser {
-    0% {
-      opacity: 0;
-    }
-    25% {
-      opacity: 0.15;
-    }
-    50% {
-      opacity: 0.25;
-    }
-    75% {
-      opacity: 0.5;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  h1 span {
-    color: ${colors.primary};
-    animation: displayUser 5s;
-  }
-
-  h1 {
-    padding-top: 10px;
-    text-align: center;
-    letter-spacing: 0.1em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    @media (max-width: 580px) {
-      font-size: 1em;
-    }
-  }
+  padding: 5px 0;
 
   form {
     display: block;
@@ -61,7 +18,6 @@ export const WritePost = styled.div`
     @media (max-width: 455px) {
       margin-top: 0;
       position: relative;
-      top: -28px;
     }
   }
 
@@ -125,7 +81,7 @@ export const WritePost = styled.div`
 
   // info utilisateur(email)
   .info-user {
-    h3 {
+    h2 {
       text-shadow: ${colors.secondary} 2px 3px 3px;
       font-weight: bold;
       overflow: hidden;
@@ -133,7 +89,7 @@ export const WritePost = styled.div`
     }
     @media (max-width: 500px) {
       width: 4em;
-      h3 {
+      h2 {
         font-size: 0.8em;
       }
     }

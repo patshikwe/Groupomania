@@ -115,7 +115,7 @@ function Buttons({
       {/* Bouton Supprimer */}
       {userId === Id || userId === admin ? (
         <Delete onClick={handleConfirmationModal}>
-          <img src={trash} alt="Supprimer" title="Supprimer" />
+          <img src={trash} alt="Supprimer le message" title="Supprimer" />
         </Delete>
       ) : null}
 
