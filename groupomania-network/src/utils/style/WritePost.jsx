@@ -35,20 +35,20 @@ export const WritePost = styled.div`
       5;
     padding: 5px;
     box-shadow: #23272b3d 2px 3px 3px;
-    width: 83%;
+    width: 80%;
     height: 10rem;
     display: block;
     position: relative;
     left: 10%;
     font-weight: bold;
     @media (max-width: 455px) {
-      height: 6rem;
+      // height: 6rem;
     }
   }
 
   // Prévisualisation lors de saisie
   .card-container {
-    width: 75%;
+    width: 80%;
     height: auto;
     position: relative;
     left: 10%;
@@ -97,6 +97,7 @@ export const WritePost = styled.div`
 
   // affichage date
   .date {
+    padding: 0 0 0 3px;
     width: 8em;
     @media (max-width: 580px) {
       width: 7em;
@@ -142,7 +143,6 @@ export const WritePost = styled.div`
   // classe générale
   .background {
     text-align: center;
-    // border: 1px solid ${colors.primary};
     border-radius: 20px;
     box-shadow: #23272b3d 2px 3px 3px;
     background-color: ${colors.tertieryDark};
@@ -150,7 +150,12 @@ export const WritePost = styled.div`
     color: white;
   }
 
-  // input file enfant div .containerImage
+  // div contenant input file
+  .divInputFile {
+    margin-bottom: 7px;
+  }
+
+  // input file enfant div .divInputFile
   .inputImage {
     position: relative;
     height: 26px;

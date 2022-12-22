@@ -79,8 +79,6 @@ function Postform(props) {
         <textarea
           id="writePost"
           name="writePost"
-          rows="4"
-          cols="50"
           placeholder="Quoi de neuf ?"
           onChange={(e) => {
             setMessage(e.target.value)
@@ -107,17 +105,13 @@ function Postform(props) {
               </div>
               {postPicture && (
                 <div className="divPicture">
-                  <img
-                    src={postPicture}
-                    title={`${imageUrl.name}`}
-                    alt={`${imageUrl.name}`}
-                  />
+                  <img src={postPicture} title={`${imageUrl.name}`} alt="" />
                 </div>
               )}
             </div>
           </div>
         ) : null}
-        <div className="containerImage">
+        <div className="divInputFile">
           <input
             className="inputImage"
             type="file"
