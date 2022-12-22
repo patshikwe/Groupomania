@@ -132,7 +132,7 @@ const Liked = (props) => {
 
   return (
     <ContainerHeart>
-      <div className="boom" title="Coeur" onClick={handleLiked}>
+      <div className="boom" title="Coeur pour aimer" onClick={handleLiked}>
         {love === onLike && isliked === false ? (
           <div className="item"></div>
         ) : null}
