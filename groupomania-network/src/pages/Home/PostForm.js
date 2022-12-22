@@ -126,7 +126,7 @@ function Postform(props) {
             onClick={cancelPost}
             title="Annuler le message"
           >
-            Annuler message
+            Annuler
           </button>
         ) : null}
         <input

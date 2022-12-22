@@ -185,17 +185,18 @@ export const WritePost = styled.div`
       color: white;
       border: 1px solid ${colors.tertieryDark};
     }
+    letter-spacing: 1px;
   }
 
   // btn pour annuler les messages
   .top {
     width: 100px;
-    height: 20px;
+    height: 25px;
     position: relative;
     left: 10%;
     cursor: pointer;
     @media (max-width: 455px) {
-      width: 24%;
+      width: 30%;
       overflow: hidden;
       text-overflow: ellipsis;
     }
@@ -207,10 +208,10 @@ export const WritePost = styled.div`
     top: 5%;
     left: 36%;
     width: 20%;
-    height: 20px;
+    height: 25px;
     cursor: pointer;
     @media (max-width: 455px) {
-      width: 24%;
+      width: 30%;
       left: 30%;
       overflow: hidden;
       text-overflow: ellipsis;

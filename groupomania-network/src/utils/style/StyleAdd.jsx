@@ -76,6 +76,9 @@ export const Card = styled.article`
     text-shadow: 1px 4px 7px #c77c6c;
     border: 3px solid white;
     border-radius: 10px;
+    height: 120px;
+    overflow: auto;
+    text-overflow: ellipsis;
   }
   span:nth-child(1) {
     color: ${colors.tertieryDark};
