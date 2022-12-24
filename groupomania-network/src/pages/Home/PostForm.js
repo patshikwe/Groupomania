@@ -47,9 +47,8 @@ function Postform(props) {
       console.log(formData.get('userId'))
 
       if (imageUrl) {
-        formData.append('imageUrl', `${imageUrl}`)
+        formData.append('imageUrl', imageUrl)
         console.log(formData.get('imageUrl'))
-        console.log(formData)
       }
       await axios({
         method: 'post',
@@ -57,6 +56,7 @@ function Postform(props) {
         data: formData,
         headers: {
           Authorization: `Bearer ${token}`,
+          // 'content-type': 'multipart/form-data',
         },
       })
         .then((res) => {
