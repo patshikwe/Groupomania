@@ -47,15 +47,6 @@ exports.getAllPosts = (req, res, next) => {
     .catch((error) => res.status(400).json({ error }))
 }
 
-// Récupérer une publication (post) *****************
-exports.getOnePost = (req, res, next) => {
-  Post.findOne({ _id: req.params.id, userId: req.body.userId })
-    .then((post) => res.status(200).json(post))
-    .catch((err) =>
-      res.status(404).json({ message: "L'accès à ce post vous est refus!" })
-    )
-}
-
 // Modifier post ***********************
 exports.modifyPost = (req, res, next) => {
   const postObject = req.file
@@ -72,27 +63,16 @@ exports.modifyPost = (req, res, next) => {
 }
 
 // Supprimer post ***********************
-// exports.deletePost = (req, res, next) => {
-//   console.log('Ici controller deletePost')
-//   Post.findOne({ _id: req.params.id })
-//     .then((post) => {
-//       const filename = post.imageUrl.split('/images/')[1]
-//       fs.unlink(`images/${filename}`, () => {
-//         Post.deleteOne({ _id: req.params.id })
-//           .then(() => res.status(200).json({ message: 'Objet supprimé !' }))
-//           .catch((error) => res.status(400).json({ error }))
-//       })
-//     })
-//     .catch((error) => res.status(500).json({ error }))
-// }
-
 exports.deletePost = (req, res, next) => {
   console.log('Ici controller deletePost')
   Post.findOne({ _id: req.params.id })
     .then((post) => {
-      Post.deleteOne({ _id: req.params.id })
-        .then(() => res.status(200).json({ message: 'Objet supprimé !' }))
-        .catch((error) => res.status(400).json({ error }))
+      const filename = post.imageUrl.split('/images/')[1]
+      fs.unlink(`images/${filename}`, () => {
+        Post.deleteOne({ _id: req.params.id })
+          .then(() => res.status(200).json({ message: 'Objet supprimé !' }))
+          .catch((error) => res.status(400).json({ error }))
+      })
     })
     .catch((error) => res.status(500).json({ error }))
 }
