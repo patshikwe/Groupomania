@@ -31,7 +31,7 @@ function Postform(props) {
     setImageUrl('')
     if (postPicture) {
       setPostpicture('')
-      window.location.reload() //Recharger la page
+      // window.location.reload() //Recharger la page
     }
   }
 
@@ -56,7 +56,6 @@ function Postform(props) {
         data: formData,
         headers: {
           Authorization: `Bearer ${token}`,
-          // 'content-type': 'multipart/form-data',
         },
       })
         .then((res) => {
