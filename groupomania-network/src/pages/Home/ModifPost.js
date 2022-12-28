@@ -23,9 +23,35 @@ const Textarea = styled.textarea`
   font-weight: bold;
 `
 
+// Conteneur image
+const DivContainerImage = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  .image {
+    margin: auto;
+    width: 255px;
+    height: auto;
+    border: #744610 3px solid;
+    border-image: linear-gradient(
+        ${colors.primary},
+        #4ac4ec,
+        ${colors.secondary},
+        ${colors.tertieryDark}
+      )
+      5;
+
+    @media (max-width: 455px) {
+      width: 98%;
+    }
+  }
+`
+
 // Cette fonction rçoit en paramètre des props
 const ModifPost = ({
   message,
+  imageUrl,
   updatePost,
   IdPost,
   isButtonSendActived,
@@ -95,7 +121,14 @@ const ModifPost = ({
       {modifOnePost ? (
         <Textarea defaultValue={message} onChange={handleModifMessage} />
       ) : (
-        <p>{message}</p> /*affiche les messages venant de PostsDisplay*/
+        <>
+          <p>{message}</p> {/*affiche les messages venant de PostsDisplay*/}
+          {imageUrl ? (
+            <DivContainerImage>
+              <img src={imageUrl} className="image" alt="" />
+            </DivContainerImage>
+          ) : null}
+        </>
       )}
     </>
   )

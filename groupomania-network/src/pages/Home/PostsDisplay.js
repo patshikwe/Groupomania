@@ -94,8 +94,10 @@ function PostsDisplay(onUpdate) {
             {/* Ici affichage des messages et ses props */}
             <ModifPost
               message={post.message}
+              imageUrl={post.imageUrl}
               updatePost={updatePost}
               IdPost={post._id}
+              Id={post.userId}
               isButtonSendActived={isButtonSendActived} // prop pour bouton envoyer
               messageReceivedIsUpdated={messageReceivedIsUpdated}
             />

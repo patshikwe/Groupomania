@@ -124,15 +124,18 @@ export const WritePost = styled.div`
       display: flex;
     }
 
+    // Div conteneur du message
     .divMessage {
       overflow: auto;
     }
 
+    // Div conteneur image et image
     .divPicture {
       height: auto;
       img {
-        width: 100%;
-        height: 100%;
+        margin: auto;
+        width: 255px;
+        height: auto;
         @media (max-width: 455px) {
           width: 98%;
         }
