@@ -62,9 +62,9 @@ const ContainerHeart = styled.div`
     background-size: 30px 29px;
     background-color: white;
   }
+
   .item {
     width: 40px;
-    // height: 0;
     height: 35px;
     background: linear-gradient(
       ${colors.primary},
@@ -72,15 +72,9 @@ const ContainerHeart = styled.div`
       ${colors.primary},
       ${colors.secondary}
     );
-    // animation: item 1s ease-in-out forwards;
     position: absolute;
     bottom: 0;
   }
-  // @keyframes item {
-  //   100% {
-  //     height: 35px;
-  //   }
-  // }
 
   .vide {
     position: relative;
