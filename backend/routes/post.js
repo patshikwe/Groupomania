@@ -8,10 +8,11 @@ const multer = require('../middleware/multer-config')
 const postCtrl = require('../controllers/post')
 
 // *************** Routes *************************
-/* router => appelle express avec la fonction Router
-   la méthode => get;post;put;delete
-   postCtrl => renvoie au dossier controllers/post.js
-   le point relie la fonction, la nomination de la fonction fait référence à son rôle.
+/* router => appelle express avec la fonction Router.
+   Les méthodes => get;post;put;delete pour une requête.
+   postCtrl => renvoie au dossier controllers/post.js.
+   Le point permet de cibler un élèment d'un parent.  
+   La nomination de la fonction fait référence à son rôle.
 */
 
 router.post('/', auth, multer, postCtrl.createPost)
