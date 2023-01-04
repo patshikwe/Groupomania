@@ -18,20 +18,28 @@ function Postform(props) {
   const email = props.user
   console.log(email)
 
-  // Affichage d'image au front
+  /**
+   * Fonction pour récupérer l'url de l'image de l'input file;
+   * setPostpicture: fonction de useState pour afficher l'image avec postPicture;
+   *  setImageUrl: fonction de useState pour envoyer l'url de l'image avec imageUrl.
+   */
   const handlePicture = (e) => {
     e.preventDefault()
     setPostpicture(URL.createObjectURL(e.target.files[0]))
     setImageUrl(e.target.files[0])
   }
 
-  // Pour annuler le message
-  function cancelPost(e) {
+  /**
+   * Fonction pour annuler la publication
+   * @param {function} setMessage => annuler le message
+   * @param {function} setImageUrl => annuler l'envoi de l'url de l'image
+   * @param {function} setPostpicture => annuler l'affichage de l'image
+   */
+  function cancelPost() {
     setMessage('')
     setImageUrl('')
     if (postPicture) {
       setPostpicture('')
-      // window.location.reload() //Recharger la page
     }
   }
 
