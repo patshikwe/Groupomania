@@ -10,7 +10,7 @@ import ModifPost from './ModifPost'
 
 const token = localStorage.getItem('token')
 
-function PostsDisplay(onUpdate) {
+function PostsDisplay({ onUpdate }) {
   const [posts, setPosts] = useState(null)
   const [updateDeletePost, setUpdateDeletePost] = useState(null)
   const [updatePost, setUpdatePost] = useState(null)
@@ -93,12 +93,12 @@ function PostsDisplay(onUpdate) {
             </p>
             {/* Ici affichage des messages et ses props */}
             <ModifPost
-              message={post.message}
-              imageUrl={post.imageUrl}
+              postMessage={post.message}
+              image={post.imageUrl}
               updatePost={updatePost}
               IdPost={post._id}
               Id={post.userId}
-              isButtonSendActived={isButtonSendActived} // prop pour bouton envoyer
+              isButtonSendActived={isButtonSendActived} // props pour bouton envoyer
               messageReceivedIsUpdated={messageReceivedIsUpdated}
             />
 
