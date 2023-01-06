@@ -94,33 +94,38 @@ function Postform(props) {
           required
         />
         {message || postPicture ? (
-          <div className="card-container">
-            <div className="cardInfoUser">
-              <div className="card-left">
+          <div className="card-container bdr-img">
+            <div className="card-info-user">
+              <div className="card-info-user-img">
                 <img src={user} alt="logo utilisateur" />
               </div>
-              <div className="info-user">
+              <div>
                 <h2>{props.user}</h2>
               </div>
               <div className="date">
                 <span>{timestampParser(Date.now())}</span>
               </div>
             </div>
-            <div className="message-content">
-              <div className="divMessage">
+            <div className="bloc-message-picture bdr-img ">
+              <div className="overfl-auto ">
                 <p>{message}</p>
               </div>
               {postPicture && (
-                <div className="divPicture">
-                  <img src={postPicture} title={`${imageUrl.name}`} alt="" />
+                <div>
+                  <img
+                    src={postPicture}
+                    className="image bdr-img width-media "
+                    title={`${imageUrl.name}`}
+                    alt=""
+                  />
                 </div>
               )}
             </div>
           </div>
         ) : null}
-        <div className="divInputFile">
+        <div className="mrg-botm">
           <input
-            className="inputImage"
+            className="input-image"
             type="file"
             name="file"
             accept=".jpg, .jpeg, .png"

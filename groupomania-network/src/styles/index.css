@@ -23,24 +23,67 @@
     height: 39px;
 }
 
+
+/*==== Medias queries ==================*/
 @media (max-width: 312px) {
     .bgr-white {
         background: none !important;
     }
-}
 
-@media (max-width:454px) {
-    .height {
-        height: 31px;
-    }
-}
-
-@media (max-width: 312px) {
     .scroll {
         background: #FFD7D7 !important;
     }
 }
 
+@media (max-width: 314px) {
+    .input-image {
+        width: 141px !important;
+    }
+}
+
+@media (max-width: 455px) {
+    .height {
+        height: 31px;
+    }
+
+    .width-media {
+        width: 98% !important;
+    }
+
+    .send,
+    .top {
+        width: 30%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .send {
+        left: 30%;
+    }
+}
+
+@media (max-width: 500px) {
+    .card-info-user :nth-child(2) {
+        width: 4em !important;
+    }
+
+    .card-info-user h2 {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 580px) {
+    .date {
+        width: 7em !important;
+    }
+
+    span {
+        font-size: 0.7em;
+    }
+}
+
+
+/* =============================================== */
 .scroll {
     position: fixed;
     z-index: 1;
@@ -66,6 +109,8 @@
     flex-direction: column-reverse;
 }
 
+/* Appliquée au dernier article sauf dans l'application 
+de column-reverse, cela devient le 1er article */
 .last-child:last-child {
     padding-top: 6px;
 }
@@ -75,9 +120,144 @@ a:visited {
     color: var(--tertiery-dark);
 }
 
-/* Variables couleurs: primaire, secondaire, tertiaire */
+/* Déclaration des Variables 
+couleurs: primaire, secondaire, tertiaire */
 :root {
     --primary-light: #FD2D01;
     --secondary-lessClear: #FFD7D7;
     --tertiery-dark: #4E5166;
+}
+
+.mrg-botm {
+    margin-bottom: 7px;
+}
+
+.bdr-img {
+    border: 3px solid var(--secondary-lessClear);
+    border-image: linear-gradient(var(--primary-light),
+            #4ac4ec,
+            var(--secondary-lessClear),
+            var(--tertiery-dark)) 5;
+}
+
+/* Image affichée pendant ModifPost.js */
+.image {
+    margin: auto;
+    width: 255px;
+    height: auto;
+}
+
+/* Prévisualisation lors de saisie de texte */
+.card-container {
+    width: 80%;
+    height: auto;
+    position: relative;
+    left: 10%;
+    top: 1px;
+    box-shadow: #23272b3d 2px 3px 3px;
+}
+
+/* carte contenant image, email et date */
+.card-info-user {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* div contenant image utilisateur */
+.card-info-user-img {
+    width: 2em;
+}
+
+/* div contenant email utilisateur */
+.card-info-user :nth-child(2) {
+    width: 8em;
+}
+
+/* h2 contenant l'identité de l'utilisateur */
+.card-info-user h2 {
+    text-shadow: var(--secondary-lessClear) 2px 3px 3px;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* affichage date */
+.date {
+    padding: 0 0 0 3px;
+    width: 8em;
+}
+
+/* Bloc message et image */
+.bloc-message-picture {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cible  toutes les div de cette classe */
+.bloc-message-picture div {
+    width: 100%;
+    display: flex;
+}
+
+/* Div conteneur du message */
+.overfl-auto {
+    overflow: auto;
+}
+
+/* classe générale */
+.background {
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: #23272b3d 2px 3px 3px;
+    background-color: var(--tertiery-dark);
+    font-weight: bold;
+    color: white;
+}
+
+/* input file pour la section de l'image  */
+.input-image {
+    position: relative;
+    height: 26px;
+    left: 10%;
+    width: 186px;
+    border: 1px solid var(--primary-light);
+    box-shadow: #23272b3d 2px 3px 3px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* style groupé: input(envoyé), btn(annuler les messages) 
+  et input-image 
+  */
+.send,
+.top,
+.input-image {
+    letter-spacing: 1px;
+}
+
+.send:hover,
+.top:hover,
+.input-image:hover {
+    background-color: var(--primary-light);
+    color: white;
+    border: 1px solid var(--tertiery-dark);
+}
+
+/* btn pour annuler les messages */
+.top {
+    width: 100px;
+    height: 25px;
+    position: relative;
+    left: 10%;
+    cursor: pointer;
+}
+
+/* input(envoyé) */
+.send {
+    position: relative;
+    top: 5%;
+    left: 36%;
+    width: 20%;
+    height: 25px;
+    cursor: pointer;
 }
