@@ -107,8 +107,8 @@ function Buttons({
     })
   }
 
-  console.log('Ici Buttons.js', updatePost && updatePost.postToEdit)
-  console.log('Ici Buttons.js', IdPost)
+  // console.log('Ici Buttons.js', updatePost && updatePost.postToEdit)
+  // console.log('Ici Buttons.js', IdPost)
 
   return (
     <ContainerButtons>

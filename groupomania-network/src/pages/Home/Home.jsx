@@ -102,7 +102,7 @@ const DivUser = styled.div`
 `
 
 const Home = (e) => {
-  const [userId, setUserId] = useState(null)
+  // const [userId, setUserId] = useState(null)
   const [email, setEmail] = useState(null)
   const [stateHeader, setstateHeader] = useState(false)
   const [stateDivLogo, setstateDivLogo] = useState(false)
@@ -138,8 +138,7 @@ const Home = (e) => {
     await axios
       .get(`${process.env.REACT_APP_API_URL}api/auth/${Id}`)
       .then((res) => {
-        console.log(res.data)
-        setUserId(res.data._id)
+        // setUserId(res.data._id)
         setEmail(res.data.email)
         setDataLoading(false)
       })
@@ -152,7 +151,7 @@ const Home = (e) => {
     sendAxios()
   }, [sendAxios])
 
-  console.log(userId)
+  // console.log(Id)
 
   // condition pour sécuriser la session
   if (token && Id !== null) {

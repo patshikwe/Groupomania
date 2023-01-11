@@ -29,7 +29,6 @@ function PostsDisplay({ onUpdate }) {
       },
     })
       .then((res) => {
-        console.log(res)
         setPosts(res.data)
       })
       .catch((error) => {
@@ -47,17 +46,14 @@ function PostsDisplay({ onUpdate }) {
       postToEdit: e.target.id, //id du message sélectionné
     })
   }
-  console.log(updatePost)
 
   // Fonction pour annuler les modifications
   const toCancelModifications = () => {
-    console.log('Ici PostsDisplay.js => Annuler les modifications')
     setUpdatePost(null)
   }
 
   // Fonction pour vérifier l'activation du bouton envoyer
   const messageToSend = () => {
-    console.log('Ici PostsDisplay.js => bouton envoyé activé')
     setIsButtonSendActived(true)
   }
 
@@ -75,7 +71,7 @@ function PostsDisplay({ onUpdate }) {
     handleGetAllMessages()
   }, [onUpdate, updateDeletePost, finishPostEdits]) // Vérification de changement pour auto rechargement
 
-  console.log(posts)
+  // console.log(posts)
 
   return (
     <div className="global column-reverse last-child">

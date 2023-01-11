@@ -1,7 +1,7 @@
 // Fichier pour la modification des posts
 
 import { useState } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import '../../styles/index.css'
@@ -40,7 +40,7 @@ const ModifPost = ({
   isButtonSendActived,
   messageReceivedIsUpdated,
 }) => {
-  console.log('Ici ModifPost', updatePost, IdPost)
+  // console.log('Ici ModifPost', updatePost, IdPost)
   const postToEdit = updatePost && updatePost.postToEdit
   const [message, setMessage] = useState('')
   const [postPicture, setPostpicture] = useState('')
@@ -67,18 +67,17 @@ const ModifPost = ({
    * Fonction pour récupérer la saisie du texte
    */
   const handleModifMessage = (e) => {
+    e.preventDefault()
     setMessage(e.target.value)
     console.log(e.target.value)
   }
-
-  console.log(message, isButtonSendActived, postMessage)
 
   /**
    * Fonction pour récupérer l'url de l'image dans l'input file;
    * setPostpicture: fonction de useState pour afficher l'image avec postPicture;
    *  setImageUrl: fonction de useState pour envoyer l'url de l'image avec imageUrl.
    */
-  const handlePicture = (e) => {
+  const handlePicture = async (e) => {
     e.preventDefault()
     setPostpicture(URL.createObjectURL(e.target.files[0]))
     setImageUrl(e.target.files[0])
@@ -95,27 +94,45 @@ const ModifPost = ({
     if (imageUrl !== null && imageUrl !== undefined) {
       formData.append('imageUrl', imageUrl)
 
-      console.log('imageUrl')
+      // console.log('imageUrl')
     }
-    console.log('condition pour envoyer la requête')
-    const sendAxios = async () => {
-      await axios({
-        method: 'put',
-        url: `${process.env.REACT_APP_API_URL}api/post/${IdPost}`,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        data: formData,
+    console.log('imageUrl=>', imageUrl, 'message=>', message)
+    // const sendAxios = async () => {
+    //   const { data } = await axios
+    //     .put(`${process.env.REACT_APP_API_URL}api/post/${IdPost}`, formData, {
+    //       headers: {
+    //         // 'Content-Type': 'multipart/form-data',
+    //         // Accept: 'application/json',
+    //         Authorization: `Bearer ${token}`,
+    //         // 'Access-Control-Allow-Origin': '*',
+    //       },
+    //     })
+    //     .then((res) => {
+    //       console.log(res)
+    //       messageReceivedIsUpdated() //fonction de mis à jour appelée
+    //     })
+    //     .catch((error) => {
+    //       console.log(error)
+    //     })
+    // }
+    // sendAxios()
+
+    const requestOptions = {
+      method: 'PUT',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    }
+    fetch(`${process.env.REACT_APP_API_URL}api/post/${IdPost}`, requestOptions)
+      .then(async (res) => {
+        const data = await res.json()
+        if (data) {
+          console.log(data.message)
+          messageReceivedIsUpdated(data) //fonction de mis à jour appelée
+        }
       })
-        .then((res) => {
-          console.log(res)
-          messageReceivedIsUpdated() //fonction de mis à jour appelée
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-    }
-    sendAxios()
+      .catch((error) => console.log(error))
   }
 
   return (

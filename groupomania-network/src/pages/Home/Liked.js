@@ -95,7 +95,6 @@ const Liked = (props) => {
   const [love, setLove] = useState(null)
   const onLike = "J'aime!"
   const unLike = "J'aime, annulé."
-  console.log(usersLiked)
 
   const handleLiked = async () => {
     const data = { like, userId }
@@ -122,7 +121,6 @@ const Liked = (props) => {
       setIsLiked(true)
     }
   }, [usersLiked, userId])
-  console.log(isliked, love)
 
   return (
     <ContainerHeart>

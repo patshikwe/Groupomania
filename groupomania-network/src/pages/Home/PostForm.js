@@ -14,9 +14,9 @@ function Postform(props) {
   // useContext pour l'id de l'utilisateur
   const userId = useContext(Uidcontext)
 
-  console.log(userId, token, props.user)
+  // console.log(userId, token, props.user)
   const email = props.user
-  console.log(email)
+  // console.log(email)
 
   /**
    * Fonction pour récupérer l'url de l'image de l'input file;
