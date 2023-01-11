@@ -15,14 +15,18 @@
     background: rgb(180, 218, 225);
 }
 
-.bgr-white {
-    background: white !important;
+a,
+a:visited {
+    color: var(--tertiery-dark);
 }
 
-.height {
-    height: 39px;
+/* Déclaration des Variables 
+couleurs: primaire, secondaire, tertiaire */
+:root {
+    --primary-light: #FD2D01;
+    --secondary-lessClear: #FFD7D7;
+    --tertiery-dark: #4E5166;
 }
-
 
 /*==== Medias queries ==================*/
 @media (max-width: 312px) {
@@ -43,7 +47,7 @@
 
 @media (max-width: 455px) {
     .height {
-        height: 31px;
+        height: 31px !important;
     }
 
     .width-media {
@@ -92,6 +96,14 @@
     background: #FD2D01;
 }
 
+.bgr-white {
+    background: white !important;
+}
+
+.height {
+    height: 39px;
+}
+
 .global {
     align-items: center;
     border: 1px solid var(--primary-light);
@@ -113,19 +125,6 @@
 de column-reverse, cela devient le 1er article */
 .last-child:last-child {
     padding-top: 6px;
-}
-
-a,
-a:visited {
-    color: var(--tertiery-dark);
-}
-
-/* Déclaration des Variables 
-couleurs: primaire, secondaire, tertiaire */
-:root {
-    --primary-light: #FD2D01;
-    --secondary-lessClear: #FFD7D7;
-    --tertiery-dark: #4E5166;
 }
 
 .mrg-botm {
@@ -199,7 +198,10 @@ couleurs: primaire, secondaire, tertiaire */
     display: flex;
 }
 
-/* Div conteneur du message */
+.bloc-message-picture .overfl-auto {
+    height: 100px;
+}
+
 .overfl-auto {
     overflow: auto;
 }
