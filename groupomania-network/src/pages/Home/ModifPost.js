@@ -86,12 +86,12 @@ const ModifPost = ({
   // Condition pour envoyer la requête
   if (isButtonSendActived && modifOnePost) {
     const formData = new FormData()
-    if (message !== postMessage && message !== null && message !== undefined) {
-      console.log('messageValue =', message)
-      formData.append('messageValue', `${message}`)
+    if (message !== postMessage) {
+      console.log('message =', message)
+      formData.append('message', `${message}`)
     }
 
-    if (imageUrl !== null && imageUrl !== undefined) {
+    if (imageUrl) {
       formData.append('imageUrl', imageUrl)
 
       // console.log('imageUrl')
@@ -129,7 +129,7 @@ const ModifPost = ({
         const data = await res.json()
         if (data) {
           console.log(data.message)
-          messageReceivedIsUpdated(data) //fonction de mis à jour appelée
+          messageReceivedIsUpdated(data.message) //fonction de mis à jour appelée
         }
       })
       .catch((error) => console.log(error))
