@@ -1,7 +1,6 @@
 // Fichier pour la modification des posts
 
 import { useState } from 'react'
-// import axios from 'axios'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import '../../styles/index.css'
@@ -31,7 +30,7 @@ const DivContainerImage = styled.div`
   height: auto;
 `
 
-// Cette fonction rçoit en paramètre des props
+// Cette fonction reçoit en paramètre des props
 const ModifPost = ({
   postMessage,
   image,
@@ -69,7 +68,6 @@ const ModifPost = ({
   const handleModifMessage = (e) => {
     e.preventDefault()
     setMessage(e.target.value)
-    console.log(e.target.value)
   }
 
   /**
@@ -87,35 +85,12 @@ const ModifPost = ({
   if (isButtonSendActived && modifOnePost) {
     const formData = new FormData()
     if (message !== postMessage) {
-      console.log('message =', message)
       formData.append('message', `${message}`)
     }
 
     if (imageUrl) {
       formData.append('imageUrl', imageUrl)
-
-      // console.log('imageUrl')
     }
-    console.log('imageUrl=>', imageUrl, 'message=>', message)
-    // const sendAxios = async () => {
-    //   const { data } = await axios
-    //     .put(`${process.env.REACT_APP_API_URL}api/post/${IdPost}`, formData, {
-    //       headers: {
-    //         // 'Content-Type': 'multipart/form-data',
-    //         // Accept: 'application/json',
-    //         Authorization: `Bearer ${token}`,
-    //         // 'Access-Control-Allow-Origin': '*',
-    //       },
-    //     })
-    //     .then((res) => {
-    //       console.log(res)
-    //       messageReceivedIsUpdated() //fonction de mis à jour appelée
-    //     })
-    //     .catch((error) => {
-    //       console.log(error)
-    //     })
-    // }
-    // sendAxios()
 
     const requestOptions = {
       method: 'PUT',
@@ -128,7 +103,6 @@ const ModifPost = ({
       .then(async (res) => {
         const data = await res.json()
         if (data) {
-          console.log(data.message)
           messageReceivedIsUpdated(data.message) //fonction de mis à jour appelée
         }
       })
