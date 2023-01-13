@@ -56,14 +56,11 @@ couleurs: primaire, secondaire, tertiaire */
 
     .send,
     .top {
-        width: 30%;
+        width: 30% !important;
         overflow: hidden;
         text-overflow: ellipsis;
     }
 
-    .send {
-        left: 30%;
-    }
 }
 
 @media (max-width: 500px) {
