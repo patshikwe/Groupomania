@@ -20,10 +20,6 @@ const userRoutes = require('./routes/user')
 const dotenv = require('dotenv')
 dotenv.config()
 
-// Tout logger
-const morgan = require('morgan')
-app.use(morgan('dev'))
-
 // Logique de connexion à MongoDB
 mongoose
   .connect(
@@ -54,13 +50,12 @@ app.use((req, res, next) => {
 
 // *************************** # *************************************************
 
-/* Le 1er middleware extrait le corps Json et le second middleware 
-    précise que le req.body contiendra des valeurs de n'importe quel type
-    au lieu de simplement des chaînes venant de l'application front-end
-    pour la gestion de requête POST.
+/* le 1er middleware précise que le req.body contiendra des valeurs de n'importe 
+   quel type au lieu simplement des chaînes venant de l'application front-end
+   pour la gestion de requête POST et le second middleware extrait le corps Json.
 */
-app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
 app.use('/images', express.static(path.join(__dirname, 'images')))
 app.use('/api/post', postRoutes)
