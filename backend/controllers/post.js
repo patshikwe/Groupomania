@@ -6,21 +6,13 @@ const fs = require('fs')
 
 // Création post *************************
 exports.createPost = (req, res, next) => {
-  console.log('contenu body', req.body)
-
-  console.log('Création image')
-  console.log(req.protocol)
-  console.log(req.get('host'))
-
-  console.log("C'est le req.file =>", req.file)
-
   const postObject = req.body
 
   if (req.file === null || req.file === undefined) {
     const post = new Post({
       ...postObject,
     })
-    console.log('Sans filename ==>', post)
+
     post
       .save()
       .then(() => res.status(201).json({ message: 'Objet enregistré !' }))
@@ -32,7 +24,7 @@ exports.createPost = (req, res, next) => {
         req.file.filename
       }`,
     })
-    console.log('Avec filename 2 ==>', post)
+
     post
       .save()
       .then(() => res.status(201).json({ message: 'Objet enregistré !' }))
@@ -51,7 +43,7 @@ exports.getAllPosts = (req, res, next) => {
 exports.modifyPost = (req, res, next) => {
   const postObject = req.file
     ? {
-        ...JSON.parse(req.body.post),
+        ...req.body,
         imageUrl: `${req.protocol}://${req.get('host')}/images/${
           req.file.filename
         }`,
@@ -64,7 +56,6 @@ exports.modifyPost = (req, res, next) => {
 
 // Supprimer post ***********************
 exports.deletePost = (req, res, next) => {
-  console.log('Ici controller deletePost')
   Post.findOne({ _id: req.params.id })
     .then((post) => {
       const filename = post.imageUrl.split('/images/')[1]
@@ -92,11 +83,8 @@ exports.likes = (req, res, next) => {
   const like = req.body.like
   const userId = req.body.userId
   const postId = req.params.id
-  console.log(like, userId, postId)
 
   if (like) {
-    console.log('Entrée dans like')
-
     Post.findOne({ _id: postId })
       .then((post) => {
         if (post.usersLiked.includes(userId)) {
@@ -110,7 +98,6 @@ exports.likes = (req, res, next) => {
             .then(() => res.status(200).json({ message: "J'aime, annulé." }))
             .catch((error) => res.status(400).json({ error }))
         } else {
-          console.log('Entrée ==> Post.updateOne')
           Post.updateOne(
             { _id: postId },
             {
