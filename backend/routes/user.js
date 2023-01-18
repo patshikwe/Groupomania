@@ -5,7 +5,6 @@ const express = require('express')
 const router = express.Router()
 const userCtrl = require('../controllers/user')
 const validPassword = require('../middleware/valid-password')
-const userController = require('../controllers/user-controller')
 
 /* Routes
    userCtrl -> chemin vers controllers/user.js
@@ -15,11 +14,5 @@ const userController = require('../controllers/user-controller')
 */
 router.post('/register', validPassword, userCtrl.signup)
 router.post('/login', userCtrl.login)
-
-// Option utilisateurs
-router.get('/', userController.getAllUsers)
-router.get('/:id', userController.userInfo)
-router.put('/:id', userController.updateUser)
-router.delete('/:id', userController.deleteUser)
 
 module.exports = router
