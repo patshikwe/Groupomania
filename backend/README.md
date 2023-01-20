@@ -12,8 +12,8 @@ Détails du projet pour le back-end et le front-end
 1. Page de connexion:
    =================
 Une page de connexion permettant à l’utilisateur de se connecter, ou bien  de créer un compte s’il n’en possède pas.
-la connexion doit se faire à partir de deux éléments : le mail
-de l’employé, et un mot de passe.
+la connexion doit se faire à partir de deux éléments : le mail de l’employé, et un mot de passe.
+
 * Détails de la fonctionnalité de connexion:
     ● Un utilisateur doit avoir la possibilité de se déconnecter.
     ● La session de l’utilisateur persiste pendant qu’il est connecté.
@@ -53,6 +53,17 @@ Vous aurez besoin d'avoir Node et `npm` installés localement sur votre machine.
 
 Clonez ce dépôt. Depuis le dossier "backend" du projet, exécutez `npm install` pour installer toutes les dépendances.  
 Vous pouvez ensuite exécuter le serveur avec la commande `node server`.
+
+---
+
+### Configuration
+
+- Mettez vos informations de cluster dans `app.js` à l'intérieur de `mongoose.connect`
+- Créez le fichier `.env` dans la racine
+  - Voir le modèle env_exemple pour remplir .env
+- Créer un dossier nommer images dans le backend pour stocker les images
+
+---
 
 ## Port et Routes
 
