@@ -1,10 +1,13 @@
 // Ces sont des variables d'environnement à remplir
 
+// Nom d'utilisateur de la base des données
 DB_USER = '#####'
-DB_PASSWORD = '#####'
-DB_NAME = '#####'
-SECRET_WORD_TOKEN = '#############################'
 
-/*
-Créer un dossier nommer images dans le backend pour stocker les images.
-*/
+// Mot de passe de la base des données
+DB_PASSWORD = '#####'
+
+// Nom de la base des données
+DB_NAME = '#####'
+
+// votre clé secrète aléatoire associé au token
+SECRET_WORD_TOKEN = '#############################'
