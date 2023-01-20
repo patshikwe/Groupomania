@@ -16,6 +16,8 @@ function SignUp() {
   const passwordConfirmError = document.querySelector('.password-confirm.error')
   const termsError = document.querySelector('.terms.error')
   const passwordError = document.querySelector('.password.error')
+
+  // Variables avec la valeur positive
   let isPwd = true
   let isPwdConf = true
 
@@ -29,15 +31,11 @@ function SignUp() {
         ? 'Afficher le mot de passe'
         : 'Masquer le mot de passe'
 
-    console.log(image, isPwd)
-
     if (isPwd) {
       image.src = `${eye}`
-      console.log('Cas positif 1 ==>', isPwd)
       isPwd = false
     } else {
       image.src = `${eyeSlash}`
-      console.log('Cas négatif 1 ==>', isPwd)
       isPwd = true
     }
   }
@@ -53,15 +51,11 @@ function SignUp() {
         ? 'Afficher le mot de passe'
         : 'Masquer le mot de passe'
 
-    console.log(image, isPwdConf)
-
     if (isPwdConf) {
       image.src = `${eye}`
-      console.log('Cas positif 2 ==>', isPwdConf)
       isPwdConf = false
     } else {
       image.src = `${eyeSlash}`
-      console.log('Cas négatif 2 ==>', isPwdConf)
       isPwdConf = true
     }
   }
@@ -95,7 +89,6 @@ function SignUp() {
         },
       })
         .then((res) => {
-          console.log(res)
           if (res.data.err) {
             alert(res.data.err.message)
           } else if (res.data.errors) {
@@ -113,7 +106,7 @@ function SignUp() {
   return (
     <>
       <h1>S'inscrire</h1>
-      <form action="" onSubmit={handleRegister} id="sign-up-form">
+      <form onSubmit={handleRegister} id="sign-up-form">
         {/* Bloc Email */}
         <label htmlFor="email">Email</label>
         <br />

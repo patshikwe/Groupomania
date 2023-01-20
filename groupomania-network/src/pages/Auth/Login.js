@@ -10,6 +10,7 @@ function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  // Variable avec la valeur positive
   let isPwd = true
 
   /** Fonction pour Afficher ou cacher le mot de passe */
@@ -22,15 +23,11 @@ function Login() {
         ? 'Afficher le mot de passe'
         : 'Masquer le mot de passe'
 
-    console.log(image, isPwd)
-
     if (isPwd) {
       image.src = `${eye}`
-      console.log('Cas positif 1 ==>', isPwd)
       isPwd = false
     } else {
       image.src = `${eyeSlash}`
-      console.log('Cas négatif 1 ==>', isPwd)
       isPwd = true
     }
   }
@@ -52,7 +49,6 @@ function Login() {
       },
     })
       .then((res) => {
-        console.log(res)
         localStorage.setItem('token', res.data.token)
 
         if (res.data.errorEmail || res.data.errorPassword) {
@@ -68,9 +64,7 @@ function Login() {
           window.location = `/home?userId=${res.data.userId}`
         }
       })
-      .catch((err) => {
-        console.log(err)
-      })
+      .catch((err) => console.log(err))
 
     // Vider les inputs
     setEmail('')
