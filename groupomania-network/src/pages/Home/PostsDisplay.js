@@ -28,19 +28,12 @@ function PostsDisplay({ onUpdate }) {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then((res) => {
-        setPosts(res.data)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+      .then((res) => setPosts(res.data))
+      .catch((error) => console.log(error))
   }
 
   // Fonction pour la mise à jour d'un post dans Home
   const updateHandlePost = (e) => {
-    console.log('Ici ==> updateHandlePost')
-    console.log('Afficher id du bouton:', e.target.id)
-
     setUpdatePost({
       isUpdating: true,
       postToEdit: e.target.id, //id du message sélectionné
@@ -61,7 +54,6 @@ function PostsDisplay({ onUpdate }) {
    * appelée après la reponse de sendAxios dans ModifPost et
    * revenir à l'état initial*/
   const messageReceivedIsUpdated = () => {
-    console.log('Ici PostsDisplay.js pour mettre à jour le post')
     setUpdatePost(null)
     setIsButtonSendActived(false)
     setFinishPostEdits((update) => !update)
@@ -70,8 +62,6 @@ function PostsDisplay({ onUpdate }) {
   useEffect(() => {
     handleGetAllMessages()
   }, [onUpdate, updateDeletePost, finishPostEdits]) // Vérification de changement pour auto rechargement
-
-  // console.log(posts)
 
   return (
     <div className="global column-reverse last-child">
@@ -112,7 +102,7 @@ function PostsDisplay({ onUpdate }) {
                 cancelModifications={toCancelModifications}
               />
             </div>
-            {/* Ici les props pour Liked, voir Liked.js */}
+            {/* Ici les props pour liker, voir Liked.js */}
             <Liked
               IdPost={post._id}
               isLiked={post.likes}

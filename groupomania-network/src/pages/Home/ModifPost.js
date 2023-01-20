@@ -39,7 +39,6 @@ const ModifPost = ({
   isButtonSendActived,
   messageReceivedIsUpdated,
 }) => {
-  // console.log('Ici ModifPost', updatePost, IdPost)
   const postToEdit = updatePost && updatePost.postToEdit
   const [message, setMessage] = useState('')
   const [postPicture, setPostpicture] = useState('')

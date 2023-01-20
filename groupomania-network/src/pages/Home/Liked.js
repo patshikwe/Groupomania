@@ -1,4 +1,4 @@
-// Fichier composant pour aimé (liked)
+// Fichier composant pour liker
 import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'

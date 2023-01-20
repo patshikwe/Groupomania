@@ -102,7 +102,6 @@ const DivUser = styled.div`
 `
 
 const Home = (e) => {
-  // const [userId, setUserId] = useState(null)
   const [email, setEmail] = useState(null)
   const [stateHeader, setstateHeader] = useState(false)
   const [stateDivLogo, setstateDivLogo] = useState(false)
@@ -138,7 +137,6 @@ const Home = (e) => {
     await axios
       .get(`${process.env.REACT_APP_API_URL}api/auth/${Id}`)
       .then((res) => {
-        // setUserId(res.data._id)
         setEmail(res.data.email)
         setDataLoading(false)
       })
@@ -150,8 +148,6 @@ const Home = (e) => {
   useEffect(() => {
     sendAxios()
   }, [sendAxios])
-
-  // console.log(Id)
 
   // condition pour sécuriser la session
   if (token && Id !== null) {
@@ -186,9 +182,9 @@ const Home = (e) => {
               <Postform user={email} onUpdate={onUpdate} />
             </WritePost>
             <Load />
-            {/* */}
+            {/* Spinner pour le chargement de la page */}
             <Hide />
-            {/* */}
+            {/* Rideau occultant */}
             <PostsDisplay onUpdate={message} />
           </ContainerPosts>
         )}
