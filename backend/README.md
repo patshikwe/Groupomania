@@ -83,6 +83,10 @@ Connexion
 
 - POST : `/api/auth/login`
 
+Récupération des données d'un utilisateur
+
+- GET : `/api/auth/:id`
+
 **Routes pour un post** :
 
 Création d'un post
