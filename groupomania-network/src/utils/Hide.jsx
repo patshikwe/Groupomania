@@ -1,3 +1,5 @@
+// Rideau occultant
+
 import styled from 'styled-components'
 
 const Hiden = styled.div`
