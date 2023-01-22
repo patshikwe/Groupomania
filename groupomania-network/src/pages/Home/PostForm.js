@@ -14,6 +14,7 @@ function Postform(props) {
   // useContext pour l'id de l'utilisateur
   const userId = useContext(Uidcontext)
 
+  // email de l'utilisateur
   const email = props.user
 
   /**
@@ -43,18 +44,15 @@ function Postform(props) {
 
   const handleSumit = async (e) => {
     e.preventDefault()
-    console.log(imageUrl)
 
     if (message || postPicture) {
       const formData = new FormData()
       formData.append('userId', `${userId}`)
       formData.append('message', `${message}`)
       formData.append('email', `${email}`)
-      console.log(formData.get('userId'))
 
       if (imageUrl) {
         formData.append('imageUrl', imageUrl)
-        console.log(formData.get('imageUrl'))
       }
       await axios({
         method: 'post',
@@ -65,7 +63,6 @@ function Postform(props) {
         },
       })
         .then((res) => {
-          console.log(res)
           props.onUpdate(message) //props fonction de l'enfant au parent
           setMessage('')
           setPostpicture('')
