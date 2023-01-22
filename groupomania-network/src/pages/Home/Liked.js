@@ -96,6 +96,7 @@ const Liked = (props) => {
   const onLike = "J'aime!"
   const unLike = "J'aime, annulé."
 
+  /** Gestionnaire pour liker */
   const handleLiked = async () => {
     const data = { like, userId }
 
@@ -106,8 +107,6 @@ const Liked = (props) => {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => {
-        console.log(res)
-        console.log(res.data.message)
         setLove(res.data.message)
       })
       .catch((err) => {

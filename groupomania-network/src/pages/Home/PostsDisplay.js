@@ -17,8 +17,10 @@ function PostsDisplay({ onUpdate }) {
   const [isButtonSendActived, setIsButtonSendActived] = useState(false)
   const [finishPostEdits, setFinishPostEdits] = useState(false)
 
+  // useContext pour l'id de l'utilisateur
   const Id = useContext(Uidcontext)
 
+  /** Gestionnaire pour récupérer tous les posts */
   const handleGetAllMessages = async () => {
     await axios({
       method: 'get',

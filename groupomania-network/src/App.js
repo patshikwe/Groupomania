@@ -1,4 +1,5 @@
-// import Routes from './components/Routes'
+// Fichier contenant les routes
+
 import { Routes, Route } from 'react-router-dom'
 import { React } from 'react'
 import Home from './pages/Home/Home'

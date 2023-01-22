@@ -82,7 +82,6 @@ function Buttons({
     })
       .then((res) => {
         if (res) {
-          console.log(res)
           onUpdateDelete(IdPost)
         }
       })
@@ -106,9 +105,6 @@ function Buttons({
       postMessage, //contenu du message posté
     })
   }
-
-  // console.log('Ici Buttons.js', updatePost && updatePost.postToEdit)
-  // console.log('Ici Buttons.js', IdPost)
 
   return (
     <ContainerButtons>

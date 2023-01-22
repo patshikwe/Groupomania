@@ -1,3 +1,5 @@
+// Page pour s'inscrire
+
 import SignUp from '../../pages/Auth/SignUp'
 import { SurveyContainer } from '../../utils/style/StyleAdd'
 import { SectionForm } from '../../utils/style/StyleAdd'

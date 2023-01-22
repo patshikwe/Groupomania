@@ -109,9 +109,13 @@ const Home = (e) => {
   const [message, setmessage] = useState(null)
   const [isDataLoading, setDataLoading] = useState(false)
 
+  // Récupération de token stocké dans localStorage
   const token = window.localStorage.getItem('token')
+
+  // Récupération Id utilisateur stocké dans useContext
   const Id = useContext(Uidcontext)
 
+  /** Fonction pour changer le CSS au scroll */
   const changeCssScroll = () => {
     if (window.scrollY > 100) {
       setstateHeader(true)
