@@ -40,7 +40,7 @@ const ModifPost = ({
   messageReceivedIsUpdated,
 }) => {
   const postToEdit = updatePost && updatePost.postToEdit
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState()
   const [postPicture, setPostpicture] = useState('')
   const [imageUrl, setImageUrl] = useState('')
 
@@ -83,8 +83,13 @@ const ModifPost = ({
   // Condition pour envoyer la requête
   if (isButtonSendActived && modifOnePost) {
     const formData = new FormData()
-    if (message !== postMessage) {
-      formData.append('message', `${message}`)
+    if (message) {
+      if (message === undefined) {
+        setMessage(postMessage)
+        formData.append('message', `${message}`)
+      } else {
+        formData.append('message', `${message}`)
+      }
     }
 
     if (imageUrl) {
