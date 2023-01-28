@@ -70,7 +70,7 @@ export const Card = styled.article`
     background-color: white;
     display: flex;
     flex-direction: column;
-    padding: 2px 0 2px 0;
+    padding: 2px 0 2px 2px;
   }
   p:nth-child(2) {
     text-shadow: 1px 4px 7px #c77c6c;
