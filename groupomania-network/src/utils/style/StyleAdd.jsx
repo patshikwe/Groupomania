@@ -38,6 +38,7 @@ export const SectionForm = styled.section`
     width: 1rem;
     background: white;
   }
+
   input {
     border-radius: 5px;
   }
@@ -62,21 +63,21 @@ export const Card = styled.article`
   background-color: ${colors.tertieryDark};
   color: white;
   width: 90%;
-  p {
-    padding: 0 2px 0 2px;
-  }
+
   p:nth-child(1) {
     color: ${colors.tertieryDark};
     border: 3px solid ${colors.secondary};
     background-color: white;
     display: flex;
     flex-direction: column;
+    padding: 2px 0 2px 0;
   }
   p:nth-child(2) {
     text-shadow: 1px 4px 7px #c77c6c;
-    border: 3px solid white;
+    border: 4px solid white;
     border-radius: 10px;
-    height: 120px;
+    padding: 5px;
+    height: auto;
     overflow: auto;
     text-overflow: ellipsis;
   }
