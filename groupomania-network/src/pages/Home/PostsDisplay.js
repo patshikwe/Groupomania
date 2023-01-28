@@ -66,7 +66,7 @@ function PostsDisplay({ onUpdate }) {
   }, [onUpdate, updateDeletePost, finishPostEdits]) // Vérification de changement pour auto rechargement
 
   return (
-    <div className="global column-reverse last-child">
+    <div className="global column last-child">
       {posts &&
         posts.map((post) => (
           <Card key={post._id}>
