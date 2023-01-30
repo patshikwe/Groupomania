@@ -52,7 +52,7 @@ Vous aurez besoin d'avoir Node et `npm` installés localement sur votre machine.
 ## Installation
 
 Clonez ce dépôt. Depuis le dossier "backend" du projet, exécutez `npm install` pour installer toutes les dépendances.  
-Vous pouvez ensuite exécuter le serveur avec la commande `node server`.
+Vous pouvez ensuite exécuter le serveur avec la commande `nodemon server`.
 
 ---
 
