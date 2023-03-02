@@ -1,5 +1,6 @@
 # tshimpakakwekwepatrick_7_27052022
 ## Groupomania
+<img src="groupomania-network/src/assets/logo/icon-left-font-monochrome-white.svg"/>
 
 ### *Contexte du projet*
 ~~~~
