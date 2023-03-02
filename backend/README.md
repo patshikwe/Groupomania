@@ -38,7 +38,7 @@ Un utilisateur doit pouvoir liker un post, une seule fois pour chaque post.
 5. Rôle administrateur:
    ===================
 Dans le but de pouvoir faire de la modération si nécessaire, il faudra créer
-un utilisateur “administrateur” ; celui-ci aura les droits de modification /
+un utilisateur “administrateur” ; celui-ci aura les droits de modification et
 suppression sur tous les posts du réseau social.
 
 ```
