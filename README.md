@@ -3,8 +3,8 @@
 
 ### *Contexte du projet*
 ~~~~
-Le projet consiste à construire un réseau social interne pour les employés de Groupomania. Le
-but de cet outil est de faciliter les interactions entre collègues. Le département RH de
+Le projet consiste à construire un réseau social interne pour les employés de Groupomania. 
+Le but de cet outil est de faciliter les interactions entre collègues. Le département RH de
 Groupomania a imaginé plusieurs fonctionnalités pour favoriser les échanges entre collègues.
 ~~~~
 ### Mission
