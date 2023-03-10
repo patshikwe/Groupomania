@@ -8,6 +8,8 @@ Le projet consiste à construire un réseau social interne pour les employés de
 Le but de cet outil est de faciliter les interactions entre collègues. Le département RH de
 Groupomania a imaginé plusieurs fonctionnalités pour favoriser les échanges entre collègues.
 ~~~~
+**_J'ai carte blanche pour le design_**.
+
 ### Mission
 
 Détails du projet pour le back-end et le front-end
@@ -47,3 +49,11 @@ suppression sur tous les posts du réseau social.
 
 ```
 _Chaque partie contient un README.md avec les détails techniques pour la configuration_.
+
+### Aperçu
+
+#### Page d'accueil mobile
+[![page d'accueil mobile](./img_for_readme/Groupomania_accueil.png)](#)
+
+#### Page d'accueil mobile option scroll
+[![pzge d'accueil mobile option scroll](./img_for_readme/Groupomania_accueil_scroll.png)](#)
