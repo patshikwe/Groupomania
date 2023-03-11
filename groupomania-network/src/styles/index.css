@@ -1,233 +1,234 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&display=swap');
 
 * {
-    font-family: 'Lato', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    list-style-type: none;
-    outline: none;
-    border: none;
-    text-decoration: none;
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  outline: none;
+  border: none;
+  text-decoration: none;
 }
 
 ::selection {
-    background: rgb(180, 218, 225);
+  background: rgb(180, 218, 225);
 }
 
 a,
 a:visited {
-    color: var(--tertiery-dark);
+  color: var(--tertiery-dark);
 }
 
 /* Déclaration des Variables 
 couleurs: primaire, secondaire, tertiaire */
 :root {
-    --primary-light: #FD2D01;
-    --secondary-lessClear: #FFD7D7;
-    --tertiery-dark: #4E5166;
+  --primary-light: #fd2d01;
+  --secondary-lessClear: #ffd7d7;
+  --tertiery-dark: #4e5166;
 }
 
 /*==== Medias queries ==================*/
 @media (max-width: 312px) {
-    .bgr-white {
-        background: none !important;
-    }
+  .bgr-white {
+    background: none !important;
+  }
 
-    .scroll {
-        background: #FFD7D7 !important;
-    }
+  .scroll {
+    background: #ffd7d7 !important;
+  }
 }
 
 @media (max-width: 314px) {
-    .input-image {
-        width: 141px !important;
-    }
+  .input-image {
+    width: 141px !important;
+  }
 }
 
 @media (max-width: 455px) {
-    .height {
-        height: 31px !important;
-    }
+  .height {
+    height: 31px !important;
+  }
 
-    .width-media {
-        width: 98% !important;
-    }
+  .width-media {
+    width: 98% !important;
+  }
 
-    .send,
-    .top {
-        width: 30% !important;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
+  .send,
+  .top {
+    width: 30% !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 @media (max-width: 500px) {
-    .card-info-user :nth-child(2) {
-        width: 4em !important;
-    }
+  .card-info-user :nth-child(2) {
+    width: 4em !important;
+  }
 
-    .card-info-user h2 {
-        font-size: 0.8em;
-    }
+  .card-info-user h2 {
+    font-size: 0.8em;
+  }
 }
 
 @media (max-width: 580px) {
-    .date {
-        width: 7em !important;
-    }
+  .date {
+    width: 7em !important;
+  }
 
-    span {
-        font-size: 0.7em;
-    }
+  span {
+    font-size: 0.7em;
+  }
 }
-
 
 /* =============================================== */
 .scroll {
-    position: fixed;
-    z-index: 1;
-    right: 1%;
-    width: 98% !important;
-    background: #FD2D01;
+  position: fixed;
+  z-index: 1;
+  right: 1%;
+  width: 98% !important;
+  background: #fd2d01;
 }
 
 .bgr-white {
-    background: white !important;
+  background: white !important;
 }
 
 .height {
-    height: 39px;
+  height: 39px;
 }
 
 .global {
-    align-items: center;
-    border: 1px solid var(--primary-light);
-    box-shadow: #23272b3d 2px 3px 3px;
-    border-radius: 10px;
-    width: 80%;
-    height: auto;
-    position: relative;
-    left: 10%;
-    margin-top: 10px;
+  align-items: center;
+  border: 1px solid var(--primary-light);
+  box-shadow: #23272b3d 2px 3px 3px;
+  border-radius: 10px;
+  width: 80%;
+  height: auto;
+  position: relative;
+  left: 10%;
+  margin-top: 10px;
 }
 
 .column {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .column-reverse {
-    display: flex;
-    flex-direction: column-reverse;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 /* Appliquée au dernier article sauf dans l'application 
 de column-reverse, cela devient le 1er article */
 .last-child:last-child {
-    padding-top: 6px;
+  padding-top: 6px;
 }
 
 .mrg-botm {
-    margin-bottom: 7px;
+  margin-bottom: 7px;
 }
 
 .bdr-img {
-    border: 3px solid var(--secondary-lessClear);
-    border-image: linear-gradient(var(--primary-light),
-            #4ac4ec,
-            var(--secondary-lessClear),
-            var(--tertiery-dark)) 5;
+  border: 3px solid var(--secondary-lessClear);
+  border-image: linear-gradient(
+      var(--primary-light),
+      #4ac4ec,
+      var(--secondary-lessClear),
+      var(--tertiery-dark)
+    )
+    5;
 }
 
 /* Image affichée pendant ModifPost.js */
 .image {
-    margin: auto;
-    width: 255px;
-    height: auto;
+  margin: auto;
+  width: 255px;
+  height: auto;
 }
 
 /* Prévisualisation lors de saisie de texte */
 .card-container {
-    width: 80%;
-    height: auto;
-    position: relative;
-    left: 10%;
-    top: 1px;
-    box-shadow: #23272b3d 2px 3px 3px;
+  width: 80%;
+  height: auto;
+  position: relative;
+  left: 10%;
+  top: 1px;
+  box-shadow: #23272b3d 2px 3px 3px;
 }
 
 /* carte contenant image, email et date */
 .card-info-user {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* div contenant image utilisateur */
 .card-info-user-img {
-    width: 2em;
+  width: 2em;
 }
 
 /* div contenant email utilisateur */
 .card-info-user :nth-child(2) {
-    width: 8em;
+  width: 8em;
 }
 
 /* h2 contenant l'identité de l'utilisateur */
 .card-info-user h2 {
-    text-shadow: var(--secondary-lessClear) 2px 3px 3px;
-    font-weight: bold;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  text-shadow: var(--secondary-lessClear) 2px 3px 3px;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* affichage date */
 .date {
-    padding: 0 0 0 3px;
-    width: 8em;
+  padding: 0 0 0 3px;
+  width: 8em;
 }
 
 /* Bloc message et image */
 .bloc-message-picture {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Cible  toutes les div de cette classe */
 .bloc-message-picture div {
-    width: 100%;
-    display: flex;
+  width: 100%;
+  display: flex;
 }
 
 .bloc-message-picture .overfl-auto {
-    height: 100px;
+  height: auto;
 }
 
 .overfl-auto {
-    overflow: auto;
+  overflow: auto;
 }
 
 /* classe générale */
 .background {
-    text-align: center;
-    border-radius: 20px;
-    box-shadow: #23272b3d 2px 3px 3px;
-    background-color: var(--tertiery-dark);
-    font-weight: bold;
-    color: white;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: #23272b3d 2px 3px 3px;
+  background-color: var(--tertiery-dark);
+  font-weight: bold;
+  color: white;
 }
 
 /* input file pour la section de l'image  */
 .input-image {
-    position: relative;
-    height: 26px;
-    left: 10%;
-    width: 186px;
-    border: 1px solid var(--primary-light);
-    box-shadow: #23272b3d 2px 3px 3px;
-    cursor: pointer;
-    font-weight: bold;
+  position: relative;
+  height: 26px;
+  left: 10%;
+  width: 186px;
+  border: 1px solid var(--primary-light);
+  box-shadow: #23272b3d 2px 3px 3px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 /* style groupé: input(envoyé), btn(annuler les messages) 
@@ -236,32 +237,32 @@ de column-reverse, cela devient le 1er article */
 .send,
 .top,
 .input-image {
-    letter-spacing: 1px;
+  letter-spacing: 1px;
 }
 
 .send:hover,
 .top:hover,
 .input-image:hover {
-    background-color: var(--primary-light);
-    color: white;
-    border: 1px solid var(--tertiery-dark);
+  background-color: var(--primary-light);
+  color: white;
+  border: 1px solid var(--tertiery-dark);
 }
 
 /* btn pour annuler les messages */
 .top {
-    width: 100px;
-    height: 25px;
-    position: relative;
-    left: 10%;
-    cursor: pointer;
+  width: 100px;
+  height: 25px;
+  position: relative;
+  left: 10%;
+  cursor: pointer;
 }
 
 /* input(envoyé) */
 .send {
-    position: relative;
-    top: 5%;
-    left: 36%;
-    width: 20%;
-    height: 25px;
-    cursor: pointer;
+  position: relative;
+  top: 5%;
+  left: 36%;
+  width: 20%;
+  height: 25px;
+  cursor: pointer;
 }
