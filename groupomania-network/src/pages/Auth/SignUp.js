@@ -18,46 +18,37 @@ function SignUp() {
   const passwordError = document.querySelector('.password.error')
 
   // Variables avec la valeur positive
-  let isPwd = true
-  let isPwdConf = true
+  let isPwd = false
+  let isPwdConf = false
 
   /** Fonction pour Afficher ou cacher le mot de passe */
   const hidePassword = () => {
     const password = document.getElementById('password')
     const image = document.getElementById('pwd')
-    password.type = password.type === 'password' ? 'text' : 'password'
+    password.type = password.type === 'text' ? 'password' : 'text'
     image.alt =
-      image.alt === 'Masquer le mot de passe'
-        ? 'Afficher le mot de passe'
-        : 'Masquer le mot de passe'
+      image.alt === 'Afficher le mot de passe'
+        ? 'Masquer le mot de passe'
+        : 'Afficher le mot de passe'
 
-    if (isPwd) {
-      image.src = `${eye}`
-      isPwd = false
-    } else {
-      image.src = `${eyeSlash}`
-      isPwd = true
-    }
+    isPwd = !isPwd
+
+    isPwd ? (image.src = `${eye}`) : (image.src = `${eyeSlash}`)
   }
 
   /** Fonction pour Afficher ou Cacher le mot de passe de confirmation */
   const hidePasswordConfirm = () => {
     const passwordConfirm = document.getElementById('password-conf')
     const image = document.getElementById('pwd-confirm')
-    passwordConfirm.type =
-      passwordConfirm.type === 'password' ? 'text' : 'password'
+    passwordConfirm.type = passwordConfirm.type === 'text' ? 'password' : 'text'
     image.alt =
-      image.alt === 'Masquer le mot de passe'
-        ? 'Afficher le mot de passe'
-        : 'Masquer le mot de passe'
+      image.alt === 'Afficher le mot de passe'
+        ? 'Masquer le mot de passe'
+        : 'Afficher le mot de passe'
 
-    if (isPwdConf) {
-      image.src = `${eye}`
-      isPwdConf = false
-    } else {
-      image.src = `${eyeSlash}`
-      isPwdConf = true
-    }
+    isPwdConf = !isPwdConf
+
+    isPwdConf ? (image.src = `${eye}`) : (image.src = `${eyeSlash}`)
   }
 
   /** Gestionnaire de formulaire */
