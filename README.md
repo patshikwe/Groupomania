@@ -56,4 +56,4 @@ _Chaque partie contient un README.md avec les détails techniques pour la config
 [![page d'accueil mobile](./img_for_readme/Groupomania_accueil.png)](#)
 
 #### Page d'accueil mobile option scroll
-[![pzge d'accueil mobile option scroll](./img_for_readme/Groupomania_accueil_scroll.png)](#)
+[![page d'accueil mobile option scroll](./img_for_readme/Groupomania_accueil_scroll.png)](#)
