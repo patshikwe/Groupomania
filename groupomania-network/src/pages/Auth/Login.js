@@ -9,6 +9,7 @@ function Login() {
   // useState pour stocker les données
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [isError, setIserror] = useState('')
 
   // Variable avec la valeur positive
   let isPwd = true
@@ -64,7 +65,7 @@ function Login() {
           window.location = `/home?userId=${res.data.userId}`
         }
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.log(setIserror(err)))
 
     // Vider les inputs
     setEmail('')
@@ -110,6 +111,7 @@ function Login() {
         <br />
         <input type="submit" value="Se connecter" />
       </form>
+      {isError ? (<p>Problème de connexion</p>) : ("")}
     </>
   )
 }
