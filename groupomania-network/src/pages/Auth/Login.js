@@ -4,6 +4,7 @@ import { React, useState } from 'react'
 import axios from 'axios'
 import eye from '../../assets/logo/eye.svg'
 import eyeSlash from '../../assets/logo/eye-slash.svg'
+import ErrorMessage from '../../utils/ErrorMessage'
 
 function Login() {
   // useState pour stocker les données
@@ -111,7 +112,7 @@ function Login() {
         <br />
         <input type="submit" value="Se connecter" />
       </form>
-      {isError ? (<p>Problème de connexion</p>) : ("")}
+      {isError ? (<ErrorMessage />) : ("")}
     </>
   )
 }

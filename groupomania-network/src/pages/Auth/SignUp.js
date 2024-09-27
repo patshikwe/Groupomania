@@ -4,12 +4,15 @@ import { React, useState } from 'react'
 import axios from 'axios'
 import eye from '../../assets/logo/eye.svg'
 import eyeSlash from '../../assets/logo/eye-slash.svg'
+import ErrorMessage from '../../utils/ErrorMessage'
 
 function SignUp() {
   // useState pour stocker les données
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [controlPassword, setControlPassword] = useState('')
+  const [isError, setIserror] = useState('')
+
 
   // Récupération des éléments HTML
   const terms = document.getElementById('terms')
@@ -90,7 +93,7 @@ function SignUp() {
             window.location = '/login'
           }
         })
-        .catch((err) => console.log(err))
+        .catch((err) => console.log(setIserror(err)))
     }
   }
 
@@ -167,6 +170,7 @@ function SignUp() {
         <br />
         <input type="submit" value="Valider inscription" />
       </form>
+      {isError ? (<ErrorMessage />) : ("")}
     </>
   )
 }
