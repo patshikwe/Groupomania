@@ -1,5 +1,5 @@
-# tshimpakakwekwepatrick_7_27052022
-## Groupomania
+# Groupomania
+
 [![logo Groupomania](./img_for_readme/icon-above-font.png)](#)
 
 ### *Contexte du projet*
